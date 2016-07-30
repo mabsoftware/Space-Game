@@ -9,6 +9,8 @@ import acm.program.GraphicsProgram;
 
 public class SpaceGame extends GraphicsProgram 
 {
+	private boolean running; // game state.
+	
 	public static void main(String args[])
 	{
 		new SpaceGame().start();
@@ -18,10 +20,14 @@ public class SpaceGame extends GraphicsProgram
 	{
 		this.setSize(320 * 2, 240 * 2);
 		this.setTitle("Space Game");
+		running = true;
 	}
 	
 	public void run()
 	{
-		
+		while (running)
+		{
+			// Game loop.
+		}
 	}
 }
