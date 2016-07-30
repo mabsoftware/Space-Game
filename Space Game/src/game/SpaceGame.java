@@ -1,6 +1,7 @@
 /* Space Game in Java
  * Written in 2016
  * Main method.
+ * 4 Contributors.
  */
 
 package game;
