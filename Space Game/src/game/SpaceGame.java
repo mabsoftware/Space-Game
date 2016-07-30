@@ -1,8 +1,6 @@
 /* Space Game in Java
- * Written in 2016
- * Main method.
- * 4 Contributors.
- * New Comment.
+ * Started 7/30/16.
+ * Main method class.
  */
 
 package game;
@@ -29,12 +27,7 @@ public class SpaceGame extends GraphicsProgram
 	{
 		while (running)
 		{
-			// Game loop.
-			// New Comment.
-			// Newer Comments.
-			// Comment to test fetching.
 			
-			// Newest comment by Justin Chang
-		}
+		} // game loop.
 	}
 }
