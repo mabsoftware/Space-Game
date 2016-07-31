@@ -62,6 +62,9 @@ public class SpaceGame extends GraphicsProgram
 		} // game loop.
 	}
 	
+	//////////////////////////////////////////////
+	// All user input is handled here.          //
+	//////////////////////////////////////////////
 	public void keyPressed(KeyEvent k)
 	{
 		System.out.println(k);
@@ -87,4 +90,5 @@ public class SpaceGame extends GraphicsProgram
 			player.stopMovingRight();
 		}
 	}
+	///////////////////////////////////////////////
 }

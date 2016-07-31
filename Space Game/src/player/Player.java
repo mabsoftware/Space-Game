@@ -7,6 +7,7 @@ import java.awt.Color;
 public class Player extends GPolygon
 {
 	private Vector myVector;
+	
 	private boolean left;
 	private boolean right;
 	
