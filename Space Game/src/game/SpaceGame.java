@@ -58,7 +58,7 @@ public class SpaceGame extends GraphicsProgram
 			///////////////////////
 			// Clock tick here. ///
 			///////////////////////
-			pause(100);
+			pause(60);
 		} // game loop.
 	}
 	
@@ -67,7 +67,6 @@ public class SpaceGame extends GraphicsProgram
 	//////////////////////////////////////////////
 	public void keyPressed(KeyEvent k)
 	{
-		System.out.println(k);
 		if (k.getKeyChar() == 'a')
 		{
 			player.goLeft();
@@ -80,7 +79,6 @@ public class SpaceGame extends GraphicsProgram
 	
 	public void keyReleased(KeyEvent k)
 	{
-		System.out.println(k);
 		if (k.getKeyChar() == 'a')
 		{
 			player.stopMovingLeft();
