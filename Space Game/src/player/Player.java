@@ -2,6 +2,7 @@ package player;
 
 import acm.graphics.GPolygon;
 import physics.Vector;
+import java.awt.Color;
 
 public class Player extends GPolygon
 {
@@ -18,10 +19,12 @@ public class Player extends GPolygon
 		this.addPolarEdge(10, 0);
 		this.addPolarEdge(7, 60);
 		this.addPolarEdge(10, 120);
-		//this.addPolarEdge(10, 180);
 		this.addPolarEdge(10, 240);
 		this.addPolarEdge(7, 300);
-		//this.addPolarEdge(10, 360);
+		
+		this.setFillColor(Color.WHITE);
+		this.setColor(Color.WHITE);
+		this.setFilled(true);
 		
 		left = false;
 		right = false;
