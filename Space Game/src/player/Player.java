@@ -1,12 +1,13 @@
 package player;
 
 import acm.graphics.GPolygon;
-import acm.graphics.GPoint;
 import physics.Vector;
 
 public class Player extends GPolygon
 {
 	private Vector myVector;
+	private boolean left;
+	private boolean right;
 	
 	public Player(double startX, double startY, double xVel, double yVel)
 	{
@@ -22,9 +23,8 @@ public class Player extends GPolygon
 		this.addPolarEdge(7, 300);
 		//this.addPolarEdge(10, 360);
 		
-		
-		
-		
+		left = false;
+		right = false;
 	}
 	
 	public Vector getVector()
@@ -32,4 +32,36 @@ public class Player extends GPolygon
 	
 	public void rotateShip(double degrees)
 	{ this.rotate(degrees); }
+	
+	public void goLeft()
+	{
+		left = true;
+	}
+	
+	public void goRight()
+	{
+		right = true;
+	}
+	
+	public void stopMovingLeft()
+	{
+		left = false;
+	}
+	
+	public void stopMovingRight()
+	{
+		right = false;
+	}
+	
+	public void monitor()
+	{
+		if (left)
+		{
+			this.rotate(5);
+		}
+		else if (right)
+		{
+			this.rotate(-5);
+		}
+	}
 }

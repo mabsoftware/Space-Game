@@ -2,7 +2,6 @@
  * Started 7/30/16.
  * Main method class.
  */
-
 package game;
 
 import acm.program.GraphicsProgram;
@@ -34,7 +33,8 @@ public class SpaceGame extends GraphicsProgram
 	{
 		while (running)
 		{
-			
+			player.monitor();
+			pause(100);
 		} // game loop.
 	}
 	
@@ -43,11 +43,24 @@ public class SpaceGame extends GraphicsProgram
 		System.out.println(k);
 		if (k.getKeyChar() == 'a')
 		{
-			player.rotate(5);
+			player.goLeft();
 		}
 		else if (k.getKeyChar() == 'd')
 		{
-			player.rotate(-5);
+			player.goRight();
+		}
+	}
+	
+	public void keyReleased(KeyEvent k)
+	{
+		System.out.println(k);
+		if (k.getKeyChar() == 'a')
+		{
+			player.stopMovingLeft();
+		}
+		else if (k.getKeyChar() == 'd')
+		{
+			player.stopMovingRight();
 		}
 	}
 }
