@@ -12,5 +12,5 @@ public class Enemy extends GPolygon
 	public void rotate(double degrees)
 	{
 		this.rotate(degrees);
-	}
+	} // rotates enemy.
 }
