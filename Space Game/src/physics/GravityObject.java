@@ -29,6 +29,28 @@ public class GravityObject extends GImage
 		return this.getMass() / Math.pow(d, 2);
 	}
 	
+	public Vector getVector()
+	{ return myVector; }
+	
+	public void addVectorToMyVector(Vector v)
+	{
+		myVector.add(v);
+	}
+	
 	public void move()
 	{ this.move(myVector.getXComponent(), myVector.getYComponent()); }
+	
+	public static void handleGravityObjectInteractions(GravityObject[] gravityObjects)
+	{
+		for (GravityObject g: gravityObjects)
+		{
+			for (GravityObject otherG: gravityObjects)
+			{
+				if (g != otherG)
+				{
+					g.addVectorToMyVector(otherG.getVector());
+				} // if g and otherG aren't the same thing.
+			}
+		} // O(n ^ 2) algorithm.
+	}
 }
