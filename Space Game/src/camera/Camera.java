@@ -1,6 +1,5 @@
 package camera;
 
-public class Camera
-{
+public class Camera {
 
 }
