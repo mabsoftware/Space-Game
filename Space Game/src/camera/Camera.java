@@ -1,5 +1,5 @@
 package camera;
-import acm.graphics.Grect;
+import acm.graphics.GRect;
 
 public class Camera extends GRect 
 {
