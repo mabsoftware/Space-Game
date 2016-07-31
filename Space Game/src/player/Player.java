@@ -24,8 +24,8 @@ public class Player extends GPolygon
 		this.addPolarEdge(10, 240);
 		this.addPolarEdge(7, 300);
 		
-		this.setFillColor(Color.WHITE);
-		this.setColor(Color.WHITE);
+		this.setFillColor(Color.GRAY);
+		this.setColor(Color.GRAY);
 		this.setFilled(true);
 		
 		left = false;
