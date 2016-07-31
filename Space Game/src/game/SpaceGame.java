@@ -12,7 +12,7 @@ import java.awt.Color;
 public class SpaceGame extends GraphicsProgram 
 {
 	private boolean running; // game state.
-	private Player player = new Player(100, 100, 0, 0); // create a new player.
+	private Player player;
 	
 	public static void main(String args[])
 	{
@@ -26,6 +26,8 @@ public class SpaceGame extends GraphicsProgram
 		running = true; // running boolean for the game loop.
 		
 		this.setBackground(Color.BLACK);
+		
+		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
 		
 		this.add(player); // add the player to the window.
 		
