@@ -58,7 +58,7 @@ public class SpaceGame extends GraphicsProgram
 			///////////////////////
 			// Clock tick here. ///
 			///////////////////////
-			pause(60);
+			pause(100);
 		} // game loop.
 	}
 	
