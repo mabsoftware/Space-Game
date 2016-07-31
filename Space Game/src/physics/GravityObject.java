@@ -15,4 +15,9 @@ public class GravityObject extends GImage
 		myVector.setXComponent(xVel);
 		myVector.setYComponent(yVel); // set GravityObject's vector.
 	}
+	
+	public void move()
+	{
+		this.move(myVector.getXComponent(), myVector.getYComponent());
+	}
 }
