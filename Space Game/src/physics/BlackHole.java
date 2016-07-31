@@ -11,4 +11,4 @@ public class BlackHole extends GravityObject
 		super(image, startX, startY, 0, 0, 0); // black holes don't move in the game, and you can't see them.
 		
 	}
-}
+} // extends Gravity Object, exactly the same except invisible and way more gravity.

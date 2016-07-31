@@ -68,5 +68,5 @@ public class Player extends GPolygon
 		{
 			this.rotate(-5);
 		}
-	}
+	} // monitor user input.
 }

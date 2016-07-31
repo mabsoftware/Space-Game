@@ -56,5 +56,5 @@ public class GravityObject extends GImage
 		} // O(n ^ 2) algorithm.
 		
 		System.arraycopy(temp, 0, gravityObjects, 0, gravityObjects.length);
-	}
+	} // to monitor gravity objects.
 }
