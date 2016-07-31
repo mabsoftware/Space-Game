@@ -8,11 +8,14 @@ import acm.program.GraphicsProgram;
 import player.Player;
 import java.awt.event.KeyEvent;
 import java.awt.Color;
+import background.Background;
+import background.Star;
 
 public class SpaceGame extends GraphicsProgram 
 {
 	private boolean running; // game state.
 	private Player player;
+	private Background background;
 	
 	public static void main(String args[])
 	{
@@ -37,6 +40,11 @@ public class SpaceGame extends GraphicsProgram
 		/////////////////////////////////////////////////////////////////////
 		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
 		this.add(player); // add the player to the window.
+		background = new Background(60, this.getWidth(), this.getHeight());
+		for (Star star: background.getBackground())
+		{
+			this.add(star);
+		}
 		/////////////////////////////////////////////////////////////////////
 		// User input and output is initialized here.                      //
 		/////////////////////////////////////////////////////////////////////
