@@ -8,8 +8,7 @@ public class Projectile extends GImage
 {
 	private double myX;
 	private double myY;
-	private double missleXSpeed;
-	private double missleYSpeed;
+	private final double missleSpeed = 5;
 	private Vector myVector;
 	private Image myImage;
 	
@@ -19,7 +18,8 @@ public class Projectile extends GImage
 		myImage = image;
 		myX = startX;
 		myY = startY; // create instance variables.
-		missleXSpeed = 5;
-		missleYSpeed = 0;
+		
+		myVector = p.getVector();
+		myVector.multiplyByScalar(missleSpeed); // player's vector + missle's speed ( a scalar ).
 	}
 }
