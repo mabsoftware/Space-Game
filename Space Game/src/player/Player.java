@@ -10,6 +10,7 @@ public class Player extends GPolygon
 	
 	private boolean left;
 	private boolean right;
+	private Projectile[] myProjectiles;
 	
 	public Player(double startX, double startY, double xVel, double yVel)
 	{
