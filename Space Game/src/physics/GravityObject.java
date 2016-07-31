@@ -42,15 +42,19 @@ public class GravityObject extends GImage
 	
 	public static void handleGravityObjectInteractions(GravityObject[] gravityObjects)
 	{
-		for (GravityObject g: gravityObjects)
+		GravityObject[] temp = new GravityObject[gravityObjects.length];
+		for (int i = 0; i < gravityObjects.length; i++)
 		{
-			for (GravityObject otherG: gravityObjects)
+			temp[i] = gravityObjects[i];
+			for (int j = 0; j < gravityObjects.length; j++)
 			{
-				if (g != otherG)
+				if (i != j)
 				{
-					g.addVectorToMyVector(otherG.getVector());
-				} // if g and otherG aren't the same thing.
+					temp[i].addVectorToMyVector(gravityObjects[j].getVector());
+				} // if they aren't the same thing.
 			}
 		} // O(n ^ 2) algorithm.
+		
+		System.arraycopy(temp, 0, gravityObjects, 0, gravityObjects.length);
 	}
 }
