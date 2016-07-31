@@ -13,6 +13,8 @@ import java.awt.Color;
 import background.Background;
 import background.Star;
 import camera.Camera;
+import physics.GravityObject;
+import physics.Vector;
 
 public class SpaceGame extends GraphicsProgram 
 {
@@ -20,6 +22,7 @@ public class SpaceGame extends GraphicsProgram
 	private Player player;
 	private Background background;
 	private Camera camera;
+	private GravityObject[] gravityObjects;
 	
 	public static void main(String args[])
 	{
@@ -51,6 +54,9 @@ public class SpaceGame extends GraphicsProgram
 		{
 			this.add(star);
 		}
+		
+		GravityObject g = new GravityObject("assets/LargePlanet.png", 100, 100, 50, 0, 0);
+		this.add(g); // gravity object test.
 		/////////////////////////////////////////////////////////////////////
 		// User input and output is initialized here.                      //
 		/////////////////////////////////////////////////////////////////////

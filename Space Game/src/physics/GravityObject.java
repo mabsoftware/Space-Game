@@ -1,7 +1,6 @@
 package physics;
 
 import acm.graphics.GImage;
-import java.awt.Image;
 import physics.Vector;
 import player.Player;
 
@@ -10,14 +9,15 @@ public class GravityObject extends GImage
 	private Vector myVector; // gravity objects move too.
 	private double myMass;
 	
-	public GravityObject(Image image, double startX, double startY, double radius, double xVel, double yVel)
+	public GravityObject(String image, double startX, double startY, double radius, double xVel, double yVel)
 	{
 		super(image, startX, startY);
 		
-		myVector.setXComponent(xVel);
-		myVector.setYComponent(yVel); // set GravityObject's vector.
+		myVector = new Vector(xVel, yVel); // set GravityObject's vector.
 		
 		myMass = radius * radius;
+		
+		this.setSize(radius * 2, radius * 2);
 	}
 	
 	public double getMass()
