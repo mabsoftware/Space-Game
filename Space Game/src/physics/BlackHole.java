@@ -8,7 +8,7 @@ public class BlackHole extends GravityObject
 	
 	public BlackHole(Image image, double startX, double startY)
 	{
-		super(image, startX, startY, 0, 0); // black holes don't move in the game.
+		super(image, startX, startY, 0, 0, 0); // black holes don't move in the game, and you can't see them.
 		
 	}
 }
