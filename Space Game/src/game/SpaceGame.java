@@ -54,8 +54,8 @@ public class SpaceGame extends GraphicsProgram
 			this.add(star);
 		}
 		
-		gravityObjects[0] = new GravityObject("assets/LargePlanet.png", -100, -100, 200, 0, 0, 2);
-		//gravityObjects[1] = new GravityObject("assets/LargePlanet.png", 300, 300, 50, 0, 0, 2);
+		gravityObjects[0] = new GravityObject("assets/images/LargePlanet.png", -100, -100, 200, 0, 0, 2);
+		//gravityObjects[1] = new GravityObject("assets/images/LargePlanet.png", 300, 300, 50, 0, 0, 2);
 		for (GravityObject g: gravityObjects)
 		{
 			if (g != null)
