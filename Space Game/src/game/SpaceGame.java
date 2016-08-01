@@ -34,29 +34,32 @@ public class SpaceGame extends GraphicsProgram
 		/////////////////////////////////////////////////////////////////////
 		// The window and its attributes are initialized here.             //
 		/////////////////////////////////////////////////////////////////////
-		this.setSize(320 * 2, 240 * 2);
+		this.setSize(320 * 3, 240 * 3);
 		this.setTitle("Space Game"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
 		
-		camera = new Camera(0, 0, 640, 480);
+		camera = new Camera(0, 0, this.getWidth(), this.getHeight());
 		/////////////////////////////////////////////////////////////////////
-		// Loop variable initialized here.                                 //
+		// Loop variable and others initialized here.                      //
 		/////////////////////////////////////////////////////////////////////
 		running = true; // running boolean for the game loop.
-		
+		gravityObjects = new GravityObject[100];
 		/////////////////////////////////////////////////////////////////////
 		// Players, AIs, Gravity Objects, and others initialized here.     //
 		/////////////////////////////////////////////////////////////////////
 		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
 		this.add(player); // add the player to the window.
-		background = new Background(60, this.getWidth(), this.getHeight());
+		background = new Background(120, this.getWidth(), this.getHeight());
 		for (Star star: background.getBackground())
 		{
 			this.add(star);
 		}
 		
-		GravityObject g = new GravityObject("assets/LargePlanet.png", 100, 100, 50, 0, 0);
-		this.add(g); // gravity object test.
+		gravityObjects[0] = new GravityObject("assets/LargePlanet.png", 100, 100, 50, 0, 0);
+		for (GravityObject g: gravityObjects)
+		{
+			this.add(g);
+		}
 		/////////////////////////////////////////////////////////////////////
 		// User input and output is initialized here.                      //
 		/////////////////////////////////////////////////////////////////////
