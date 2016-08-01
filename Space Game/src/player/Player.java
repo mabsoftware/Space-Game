@@ -24,8 +24,8 @@ public class Player extends GImage
 	public Player(String s, double startX, double startY, double xVel, double yVel)
 	{
 		super(s, startX, startY); // create player GImage.
-		setXUniverse(startX+500);
-		setYUniverse(startY+500);
+		setXUniverse(startX + 500);
+		setYUniverse(startY + 500);
 
 		myVector = new Vector(xVel, yVel); // set initial player vector.
 

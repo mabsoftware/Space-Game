@@ -1,5 +1,5 @@
 package ai;
-//
+
 import acm.graphics.GPolygon;
 import java.awt.Color;
 import player.Player;
