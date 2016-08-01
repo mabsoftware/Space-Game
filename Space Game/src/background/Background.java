@@ -7,8 +7,8 @@ public class Background {
 		stars = new Star[numStars];
 		for (int i = 0; i < stars.length; i++)
 		{
-			stars[i] = new Star(Math.random() * w, Math.random() * h, Math.random() * 2);
-		}
+			stars[i] = new Star(Math.random() * w - w / 2, Math.random() * h - h / 2, Math.random() * 2);
+		} // updated star generating function.
 	}
 	
 	public Star[] getBackground()
