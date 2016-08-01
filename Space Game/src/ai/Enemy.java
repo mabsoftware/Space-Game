@@ -1,5 +1,5 @@
 package ai;
-
+//
 import acm.graphics.GPolygon;
 
 public class Enemy extends GPolygon

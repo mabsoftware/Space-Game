@@ -1,5 +1,5 @@
 package ai;
-
+//
 import player.Player;
 
 public class AI
@@ -29,6 +29,9 @@ public class AI
 		}	
 	}
 	
-	
+	public void followTarget()
+	{
+		
+	}
 	
 }
