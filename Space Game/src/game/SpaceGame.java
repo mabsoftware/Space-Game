@@ -3,6 +3,7 @@
  * Started 7/30/16.
  * Main method and main class.
  */
+
 package game;
 
 import acm.graphics.*;
@@ -16,6 +17,7 @@ import background.Star;
 import camera.Camera;
 import map.Map;
 import physics.GravityObject;
+import background.BlackBackground;
 
 public class SpaceGame extends GraphicsProgram 
 {
@@ -101,6 +103,20 @@ public class SpaceGame extends GraphicsProgram
 			player.move(this);
 			player.adjustForGravity(gravityObjects);
 			
+			//GravityObject.handleGravityObjectInteractions(gravityObjects);
+			
+			//this.add(new BlackBackground(this.getWidth(), this.getHeight()));
+		
+			background = new Background(120, this.getWidth(), this.getHeight());
+			
+			for (Star star: background.getBackground())
+			{
+				this.remove(star);
+				
+			}
+			
+		
+			
 			for (GravityObject g: gravityObjects)
 			{
 				if (g != null)
@@ -123,7 +139,8 @@ public class SpaceGame extends GraphicsProgram
 	{
 		for (GravityObject obj : gravityObjects)
 		{
-			obj.setLocation(obj.getXUniverse() - this.getXUniverse(), obj.getYUniverse() - this.getYUniverse());	
+			if (obj != null)
+				obj.setLocation(obj.getXUniverse() - this.getXUniverse(), obj.getYUniverse() - this.getYUniverse());	
 		}
 	}
 	
