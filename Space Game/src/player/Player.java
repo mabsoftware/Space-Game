@@ -3,6 +3,7 @@ package player;
 import acm.graphics.GImage;
 import physics.Vector;
 import physics.GravityObject;
+import game.SpaceGame;
 
 public class Player extends GImage
 {
@@ -14,10 +15,14 @@ public class Player extends GImage
 	
 	private double angle;
 	private double speed;
+	private double xUniverse;
+	private double yUniverse;
 	
 	public Player(String s, double startX, double startY, double xVel, double yVel)
 	{
 		super(s, startX, startY); // create player GImage.
+		setXUniverse(startX);
+		setYUniverse(startY);
 		
 		myVector = new Vector(xVel, yVel); // set initial player vector.
 		
@@ -27,7 +32,7 @@ public class Player extends GImage
 		right = false;
 		speed = 0;
 	}
-	
+
 	public Vector getVector()
 	{ return myVector; }
 	
@@ -68,8 +73,10 @@ public class Player extends GImage
 		}
 	} // monitor user - I know the angles look backwards, but the rotate function is different.
 	
-	public void move()
-	{ this.move(myVector.getXComponent(), myVector.getYComponent()); }
+	public void move(SpaceGame s)
+	{ 
+		s.setLocation((int)myVector.getXComponent(), (int)myVector.getYComponent());
+	}
 	
 	public void increaseSpeed()
 	{
@@ -90,5 +97,22 @@ public class Player extends GImage
 				myVector.add(temp);
 			}
 		}
+	}
+	
+	public double getXUniverse()
+	{
+		return xUniverse;
+	}
+
+	public double getYUniverse() {
+		return yUniverse;
+	}
+	
+	private void setXUniverse(double x) {
+		this.xUniverse = x;
+	}
+
+	public void setYUniverse(double y) {
+		this.yUniverse = y;
 	}
 }
