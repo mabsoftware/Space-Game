@@ -17,7 +17,6 @@ import background.Star;
 import camera.Camera;
 import map.Map;
 import physics.GravityObject;
-import background.BlackBackground;
 
 public class SpaceGame extends GraphicsProgram 
 {
@@ -60,7 +59,7 @@ public class SpaceGame extends GraphicsProgram
 		/////////////////////////////////////////////////////////////////////
 		player = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
 		this.add(player); // add the player to the window.
-		background = new Background(120, this.getWidth(), this.getHeight());
+		background = new Background(10000, 10000, 10000);
 		for (Star star: background.getBackground())
 		{
 			this.add(star);
@@ -105,13 +104,13 @@ public class SpaceGame extends GraphicsProgram
 			
 			//this.add(new BlackBackground(this.getWidth(), this.getHeight()));
 		
-			background = new Background(120, this.getWidth(), this.getHeight());
+			//background = new Background(120, this.getWidth(), this.getHeight());
 			
 			for (Star star: background.getBackground())
 			{
-				this.remove(star);
+				star.move(-player.getVector().getXComponent(), -player.getVector().getYComponent());
 				
-			}
+			} // now you can see yourself moving against a star background.
 			
 		
 			
