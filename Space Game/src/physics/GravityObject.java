@@ -9,11 +9,15 @@ public class GravityObject extends GImage
 	private Vector myVector; // gravity objects move too.
 	private double myMass;
 	private double myMultiplier;
+	private double xUniverse;
+	private double yUniverse;
 	
-	public GravityObject(String image, double startX, double startY, double radius, double xVel, double yVel, double multiplier)
+	public GravityObject(String image, double startX, double startY, double radius, double xVel, double yVel, double multiplier, double xu, double yu)
 	{
 		super(image, startX, startY);
-		
+		setXUniverse(xu);
+		setYUniverse(yu);
+
 		myVector = new Vector(xVel, yVel); // set GravityObject's vector.
 		
 		myMass = radius * radius;
@@ -64,6 +68,22 @@ public class GravityObject extends GImage
 	public double getDistance(Player p)
 	{
 		return Math.sqrt(Math.pow(p.getX() - this.getX(), 2) + Math.pow(p.getY() - this.getY(), 2));
+	}
+
+	public double getYUniverse() {
+		return yUniverse;
+	}
+
+	public void setYUniverse(double yUniverse) {
+		this.yUniverse = yUniverse;
+	}
+
+	public double getXUniverse() {
+		return xUniverse;
+	}
+
+	public void setXUniverse(double xUniverse) {
+		this.xUniverse = xUniverse;
 	}
 	
 }

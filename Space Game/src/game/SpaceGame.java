@@ -27,6 +27,9 @@ public class SpaceGame extends GraphicsProgram
 	private int gravityIndex;
 	private Map map;
 	
+	private double xUniverse;
+	private double yUniverse;
+	
 	public static void main(String args[])
 	{
 		new SpaceGame().start(); // run the application.
@@ -42,6 +45,8 @@ public class SpaceGame extends GraphicsProgram
 		this.setBackground(Color.BLACK);
 		gravityIndex = 0;
 		map = new Map();
+		this.setXUniverse(500);
+		this.setYUniverse(500);
 		
 		camera = new Camera(0, 0, this.getWidth(), this.getHeight());
 		/////////////////////////////////////////////////////////////////////
@@ -52,8 +57,8 @@ public class SpaceGame extends GraphicsProgram
 		/////////////////////////////////////////////////////////////////////
 		// Players, AIs, Gravity Objects, and others initialized here.     //
 		/////////////////////////////////////////////////////////////////////
-		//player = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
-		//this.add(player); // add the player to the window.
+		player = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
+		this.add(player); // add the player to the window.
 		background = new Background(120, this.getWidth(), this.getHeight());
 		for (Star star: background.getBackground())
 		{
@@ -76,6 +81,9 @@ public class SpaceGame extends GraphicsProgram
 		// User input and output is initialized here.                      //
 		/////////////////////////////////////////////////////////////////////
 		this.addKeyListeners(); // add some key listeners.
+		
+		//stuff
+		this.draw();
 	}
 	
 	public void run()
@@ -85,6 +93,7 @@ public class SpaceGame extends GraphicsProgram
 		//////////////////////////////////////////////////////////////////////
 		while (running)
 		{
+			this.draw();
 			////////////////////////////////////////////////
 			// Monitor all objects here.                  //
 			////////////////////////////////////////////////
@@ -100,8 +109,6 @@ public class SpaceGame extends GraphicsProgram
 				}
 			}
 			
-			this.draw(this.iterator(), camera);
-			
 			///////////////////////
 			// Clock tick here. ///
 			///////////////////////
@@ -112,26 +119,19 @@ public class SpaceGame extends GraphicsProgram
 	//////////////////////////////////////////////
 	// Decides whether to "draw" each element   //
 	//////////////////////////////////////////////
-	public void draw(Iterator i, Camera c)
+	public void draw()
 	{
-		while (i.hasNext())
+		for (GravityObject obj : gravityObjects)
 		{
-			GObject e = (GObject)i.next();
-			e.setVisible(false);
-			GPoint topLeft = new GPoint(e.getX(), e.getY());
-			GPoint topRight = new GPoint(e.getX() + e.getWidth(), e.getY());
-			GPoint bottomLeft = new GPoint(e.getX(), e.getY() + getHeight());
-			GPoint bottomRight = new GPoint(e.getX() + e.getWidth(), e.getY() + e.getHeight());
-			if (c.contains(topLeft) || c.contains(topRight) || c.contains(bottomLeft) || c.contains(bottomRight))
-			{
-				e.setVisible(true);
-			}
+			obj.setLocation(obj.getXUniverse() - this.getXUniverse(), obj.getYUniverse() - this.getYUniverse());	
 		}
 	}
 	
-	public void addGravityObject(String image, double startX, double startY, double radius, double xVel, double yVel, double multiplier, double universeX, double universeY)
+	public void addGravityObject(String image, double startX, double startY, 
+			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
 	{
-		gravityObjects[gravityIndex] = new GravityObject(image, startX, startY, radius, xVel, yVel, multiplier, universeX, universeY);
+		gravityObjects[gravityIndex] = new GravityObject(image, startX, startY, 
+				radius, xVel, yVel, multiplier, xUniverse, yUniverse);
 		gravityIndex++;
 	}
 	
@@ -166,4 +166,20 @@ public class SpaceGame extends GraphicsProgram
 		}
 	}
 	///////////////////////////////////////////////
+
+	public double getXUniverse() {
+		return xUniverse;
+	}
+
+	public void setXUniverse(double xUniverse) {
+		this.xUniverse = xUniverse;
+	}
+
+	public double getYUniverse() {
+		return yUniverse;
+	}
+
+	public void setYUniverse(double yUniverse) {
+		this.yUniverse = yUniverse;
+	}
 }

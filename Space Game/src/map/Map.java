@@ -30,7 +30,7 @@ public class Map
 	{	
 		for (int i = 0; i < this.map1.length; i++)
 		{
-			game.addGravityObject("assets/LargePlanet.png", map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5], map1[i][6], map1[i][7]);
+			game.addGravityObject("assets/images/LargePlanet.png", map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5], map1[i][6], map1[i][7]);
 		}
 		
 	}
