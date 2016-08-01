@@ -1,5 +1,5 @@
 package ai;
-//
+
 import acm.graphics.GPolygon;
 import player.Player;
 
