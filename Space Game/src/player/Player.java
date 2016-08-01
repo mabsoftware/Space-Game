@@ -8,14 +8,12 @@ import game.SpaceGame;
 public class Player extends GImage
 {
 	private Vector myVector;
-	//coment
 	
 	private boolean left;
 	private boolean right;
 	private Projectile[] myProjectiles;
 	
 	private double angle;
-	private double speed;
 	private double xUniverse;
 	private double yUniverse;
 	
@@ -31,7 +29,6 @@ public class Player extends GImage
 		
 		left = false;
 		right = false;
-		speed = 0;
 	}
 
 	public Vector getVector()
@@ -87,6 +84,12 @@ public class Player extends GImage
 	{
 		myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
 		myVector.setYComponent(myVector.getYComponent() - Math.cos(Math.toRadians(angle)));	
+	}
+	
+	public void decreaseSpeed()
+	{
+		myVector.setXComponent(myVector.getXComponent() - Math.sin(Math.toRadians(angle)));
+		myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
 	}
 	
 	public void adjustForGravity(GravityObject[] gObjects)

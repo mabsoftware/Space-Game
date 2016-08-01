@@ -163,6 +163,10 @@ public class SpaceGame extends GraphicsProgram
 		{
 			player.increaseSpeed();
 		}
+		else if (k.getKeyChar() == 's')
+		{
+			player.decreaseSpeed();
+		}
 	}
 	
 	public void keyReleased(KeyEvent k)
