@@ -1,3 +1,7 @@
+/* Player Class.
+ * Last edited 8 / 01 / 16.
+ * Extremely Important Class.
+ */
 package player;
 
 import acm.graphics.*;
@@ -88,8 +92,11 @@ public class Player extends GImage
 	
 	public void decreaseSpeed()
 	{
-		myVector.setXComponent(myVector.getXComponent() - Math.sin(Math.toRadians(angle)));
-		myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
+		if (myVector.getXComponent() > 0 && myVector.getYComponent() > 0)
+		{
+			myVector.setXComponent(myVector.getXComponent() - Math.sin(Math.toRadians(angle)));
+			myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
+		} // players can only decrease speed - they can't go backwards.
 	}
 	
 	public void adjustForGravity(GravityObject[] gObjects)
