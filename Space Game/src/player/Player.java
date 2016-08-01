@@ -106,15 +106,18 @@ public class Player extends GImage
 		return xUniverse;
 	}
 
-	public double getYUniverse() {
+	public double getYUniverse() 
+	{
 		return yUniverse;
 	}
 	
-	private void setXUniverse(double x) {
+	private void setXUniverse(double x) 
+	{
 		this.xUniverse = x;
 	}
 
-	public void setYUniverse(double y) {
+	public void setYUniverse(double y) 
+	{
 		this.yUniverse = y;
 	}
 }
