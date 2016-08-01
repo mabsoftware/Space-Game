@@ -8,8 +8,9 @@ public class GravityObject extends GImage
 {
 	private Vector myVector; // gravity objects move too.
 	private double myMass;
+	private double myMultiplier;
 	
-	public GravityObject(String image, double startX, double startY, double radius, double xVel, double yVel)
+	public GravityObject(String image, double startX, double startY, double radius, double xVel, double yVel, double multiplier)
 	{
 		super(image, startX, startY);
 		
@@ -18,6 +19,8 @@ public class GravityObject extends GImage
 		myMass = radius * radius;
 		
 		this.setSize(radius * 2, radius * 2);
+		
+		myMultiplier = multiplier;
 	}
 	
 	public double getMass()
@@ -26,7 +29,7 @@ public class GravityObject extends GImage
 	public double getGravityScalar(Player p)
 	{
 		double d = Math.sqrt(Math.pow((this.getX() - p.getX()), 2) + Math.pow((this.getY() - p.getY()), 2));
-		return this.getMass() / Math.pow(d, 2);
+		return myMultiplier * this.getMass() / Math.pow(d, 2);
 	}
 	
 	public Vector getVector()
