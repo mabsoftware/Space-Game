@@ -13,6 +13,7 @@ import java.awt.Color;
 import background.Background;
 import background.Star;
 import camera.Camera;
+import map.Map;
 import physics.GravityObject;
 
 public class SpaceGame extends GraphicsProgram 
@@ -22,6 +23,8 @@ public class SpaceGame extends GraphicsProgram
 	private Background background;
 	private Camera camera;
 	private GravityObject[] gravityObjects;
+	private int gravityIndex;
+	private Map map;
 	
 	public static void main(String args[])
 	{
@@ -36,6 +39,8 @@ public class SpaceGame extends GraphicsProgram
 		this.setSize(320 * 3, 240 * 3);
 		this.setTitle("Space Game"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
+		gravityIndex = 0;
+		map = new Map();
 		
 		camera = new Camera(0, 0, this.getWidth(), this.getHeight());
 		/////////////////////////////////////////////////////////////////////
@@ -54,8 +59,11 @@ public class SpaceGame extends GraphicsProgram
 			this.add(star);
 		}
 		
-		gravityObjects[0] = new GravityObject("assets/images/LargePlanet.png", -100, -100, 200, 0, 0, 2);
-		//gravityObjects[1] = new GravityObject("assets/images/LargePlanet.png", 300, 300, 50, 0, 0, 2);
+		gravityObjects = new GravityObject[100];
+		gravityIndex = 0;
+		map = new Map();
+		map.setMap(this);
+		
 		for (GravityObject g: gravityObjects)
 		{
 			if (g != null)
@@ -118,6 +126,12 @@ public class SpaceGame extends GraphicsProgram
 				e.setVisible(true);
 			}
 		}
+	}
+	
+	public void addGravityObject(String image, double startX, double startY, double radius, double xVel, double yVel, double multiplier)
+	{
+		gravityObjects[gravityIndex] = new GravityObject(image, startX, startY, radius, xVel, yVel, multiplier);
+		gravityIndex++;
 	}
 	
 	//////////////////////////////////////////////
