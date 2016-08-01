@@ -8,6 +8,7 @@ package game;
 
 import acm.graphics.*;
 import acm.program.GraphicsProgram;
+import ai.Enemy;
 import player.Player;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
@@ -20,14 +21,14 @@ import physics.GravityObject;
 public class SpaceGame extends GraphicsProgram 
 {
 	private boolean running; // game state.
-	private Player player;
+	private Player[] players;
 	private Background background;
 	private GravityObject[] gravityObjects;
 	private int gravityIndex;
 	private Map map;
-	
 	private double xUniverse;
 	private double yUniverse;
+	private Enemy[] enemies;
 	
 	public static void main(String args[])
 	{
@@ -54,8 +55,10 @@ public class SpaceGame extends GraphicsProgram
 		/////////////////////////////////////////////////////////////////////
 		// Players, AIs, Gravity Objects, and others initialized here.     //
 		/////////////////////////////////////////////////////////////////////
-		player = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
-		this.add(player); // add the player to the window.
+		players = new Player[1];
+		enemies = new Enemy[1];
+		players[0] = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
+		this.add(players[0]); // add the player to the window.
 		background = new Background(10000, 10000, 10000);
 		for (Star star: background.getBackground())
 		{
@@ -66,6 +69,9 @@ public class SpaceGame extends GraphicsProgram
 		gravityIndex = 0;
 		map = new Map();
 		map.setMap(this);
+		
+		enemies[0] = new Enemy(this.getWidth() / 3, this.getHeight() / 3, players);
+		this.add(enemies[0]);
 		
 		for (GravityObject g: gravityObjects)
 		{
@@ -93,9 +99,9 @@ public class SpaceGame extends GraphicsProgram
 			////////////////////////////////////////////////
 			// Monitor all objects here.                  //
 			////////////////////////////////////////////////
-			player.monitor();
-			player.move(this);
-			player.adjustForGravity(gravityObjects);
+			players[0].monitor();
+			players[0].move(this);
+			players[0].adjustForGravity(gravityObjects);
 			
 			//GravityObject.handleGravityObjectInteractions(gravityObjects);
 			
@@ -105,7 +111,7 @@ public class SpaceGame extends GraphicsProgram
 			
 			for (Star star: background.getBackground())
 			{
-				star.move(-player.getVector().getXComponent(), -player.getVector().getYComponent());
+				star.move(-players[0].getVector().getXComponent(), -players[0].getVector().getYComponent());
 				
 			} // now you can see yourself moving against a star background.
 			
@@ -153,19 +159,19 @@ public class SpaceGame extends GraphicsProgram
 	{
 		if (k.getKeyChar() == 'a')
 		{
-			player.goLeft();
+			players[0].goLeft();
 		}
 		else if (k.getKeyChar() == 'd')
 		{
-			player.goRight();
+			players[0].goRight();
 		}
 		else if (k.getKeyChar() == 'w')
 		{
-			player.increaseSpeed();
+			players[0].increaseSpeed();
 		}
 		else if (k.getKeyChar() == 's')
 		{
-			player.decreaseSpeed();
+			players[0].decreaseSpeed();
 		}
 	}
 	
@@ -173,11 +179,11 @@ public class SpaceGame extends GraphicsProgram
 	{
 		if (k.getKeyChar() == 'a')
 		{
-			player.stopMovingLeft();
+			players[0].stopMovingLeft();
 		}
 		else if (k.getKeyChar() == 'd')
 		{
-			player.stopMovingRight();
+			players[0].stopMovingRight();
 		}
 	}
 	///////////////////////////////////////////////

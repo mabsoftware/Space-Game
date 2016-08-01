@@ -1,28 +1,37 @@
 package ai;
 
 import acm.graphics.GPolygon;
+import java.awt.Color;
 import player.Player;
+import physics.Vector;
 
 public class Enemy extends GPolygon
 {
-	private double myX;
-	private double myY;
+	
 	private double distance;
 	private Player target;
 	private Player[] myPlayers;
 	private double angle;
-	private double xVel;
-	private double yVel;
 	
-	public Enemy(double startX, double startY, Player[] players)
+	private Vector myVector;
+	
+	public Enemy(double startX, double startY, double xVel, double yVel, Player[] players)
 	{
 		super(startX, startY);
+		
+		this.addEdge(0, -10);
+		this.addEdge(-8, 5);
+		this.addEdge(8, 5);
+		this.setFillColor(Color.YELLOW);
+		this.setColor(Color.YELLOW);
+		this.setFilled(true);
+		
+		myVector = new Vector(xVel, yVel);
+		
 		angle = 0;
-		myX = startX;
-		myY = startY;
 		myPlayers = players;
 		target = myPlayers[0];
-		distance = Math.sqrt(Math.pow(myX - target.getXUniverse(), 2) + Math.pow(myY - target.getYUniverse(), 2));
+		distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
 	}
 	
 	public void setAngle(double newAngle)
@@ -45,27 +54,26 @@ public class Enemy extends GPolygon
 	{
 		for (int i = 0; i < myPlayers.length; i++)
 		{
-			if (Math.sqrt(Math.pow(myX - target.getXUniverse(), 2) + Math.pow(myY - target.getYUniverse(), 2)) < distance)
+			if (Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2)) < distance)
 			target = myPlayers[i];
-			distance = Math.sqrt(Math.pow(myX - target.getXUniverse(), 2) + Math.pow(myY - target.getYUniverse(), 2));
+			distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
 		}	
 	}
 	
 	public void followTarget()
 	{
-		angle = Math.atan2(Math.abs(target.getYUniverse() - myY), Math.abs(target.getXUniverse() - myX));
+		angle = Math.atan2(Math.abs(target.getYUniverse() - this.getY()), Math.abs(target.getXUniverse() - this.getY()));
 		if (angle < 0)
 		{
 			angle += 180;
 		}
 		setAngle(angle);
-		xVel = Math.cos(Math.toRadians(angle));
-		yVel = Math.sin(Math.toRadians(angle));
+		myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
+		myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
 	}
 	
 	public void move()
 	{
-		myX += xVel;
-		myY += yVel;
+		this.move(myVector.getXComponent(), myVector.getYComponent());
 	}
 }
