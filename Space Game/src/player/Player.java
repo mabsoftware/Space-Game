@@ -76,6 +76,8 @@ public class Player extends GImage
 	public void move(SpaceGame s)
 	{ 
 		s.setLocation((int)myVector.getXComponent(), (int)myVector.getYComponent());
+		this.setXUniverse(myVector.getXComponent());
+		this.setYUniverse(myVector.getYComponent()); 
 	}
 	
 	public void increaseSpeed()
