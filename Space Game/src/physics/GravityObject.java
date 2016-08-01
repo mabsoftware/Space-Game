@@ -57,4 +57,10 @@ public class GravityObject extends GImage
 		
 		System.arraycopy(temp, 0, gravityObjects, 0, gravityObjects.length);
 	} // to monitor gravity objects.
+	
+	public double getDistance(Player p)
+	{
+		return Math.sqrt(Math.pow(p.getX() - this.getX(), 2) + Math.pow(p.getY() - this.getY(), 2));
+	}
+	
 }

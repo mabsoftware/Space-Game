@@ -80,6 +80,7 @@ public class SpaceGame extends GraphicsProgram
 			////////////////////////////////////////////////
 			player.monitor();
 			player.move();
+			player.adjustForGravity(gravityObjects);
 			
 			for (GravityObject g: gravityObjects)
 			{
@@ -134,10 +135,6 @@ public class SpaceGame extends GraphicsProgram
 		else if (k.getKeyChar() == 'w')
 		{
 			player.increaseSpeed();
-		}
-		else if (k.getKeyChar() == 's')
-		{
-			player.decreaseSpeed();
 		}
 	}
 	

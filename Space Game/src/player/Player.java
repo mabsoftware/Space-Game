@@ -3,6 +3,7 @@ package player;
 import acm.graphics.GPolygon;
 import physics.Vector;
 import java.awt.Color;
+import physics.GravityObject;
 
 public class Player extends GPolygon
 {
@@ -11,6 +12,9 @@ public class Player extends GPolygon
 	private boolean left;
 	private boolean right;
 	private Projectile[] myProjectiles;
+	
+	private double angle;
+	private double speed;
 	
 	public Player(double startX, double startY, double xVel, double yVel)
 	{
@@ -30,6 +34,7 @@ public class Player extends GPolygon
 		
 		left = false;
 		right = false;
+		speed = 0;
 	}
 	
 	public Vector getVector()
@@ -63,10 +68,36 @@ public class Player extends GPolygon
 		if (left)
 		{
 			this.rotate(5);
+			angle -= 5;
 		}
 		else if (right)
 		{
 			this.rotate(-5);
+			angle += 5;
 		}
-	} // monitor user
+	} // monitor user - I know the angles look backwards, but the rotate function is different.
+	
+	public void move()
+	{ this.move(myVector.getXComponent(), myVector.getYComponent()); }
+	
+	public void increaseSpeed()
+	{
+		myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
+		myVector.setYComponent(myVector.getYComponent() - Math.cos(Math.toRadians(angle)));	
+	}
+	
+	public void adjustForGravity(GravityObject[] gObjects)
+	{
+		for (GravityObject g : gObjects)
+		{
+			if (g != null)
+			{
+				double scalar = g.getGravityScalar(this);
+				double distance = g.getDistance(this);
+				Vector temp = new Vector(g.getX() - this.getX(), g.getY() - this.getY());
+				temp.multiplyByScalar(scalar / distance);
+				myVector.add(temp);
+			}
+		}
+	}
 }
