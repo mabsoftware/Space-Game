@@ -55,7 +55,6 @@ public class SpaceGame extends GraphicsProgram
 		// Loop variable and others initialized here.                      //
 		/////////////////////////////////////////////////////////////////////
 		running = true; // running boolean for the game loop.
-		gravityObjects = new GravityObject[100];
 		/////////////////////////////////////////////////////////////////////
 		// Players, AIs, Gravity Objects, and others initialized here.     //
 		/////////////////////////////////////////////////////////////////////
@@ -85,7 +84,6 @@ public class SpaceGame extends GraphicsProgram
 		this.addKeyListeners(); // add some key listeners.
 		
 		//stuff
-		this.draw();
 	}
 	
 	public void run()
@@ -184,19 +182,23 @@ public class SpaceGame extends GraphicsProgram
 	}
 	///////////////////////////////////////////////
 
-	public double getXUniverse() {
+	public double getXUniverse() 
+	{
 		return xUniverse;
 	}
 
-	public void setXUniverse(double xUniverse) {
+	public void setXUniverse(double xUniverse) 
+	{
 		this.xUniverse = xUniverse;
 	}
 
-	public double getYUniverse() {
+	public double getYUniverse() 
+	{
 		return yUniverse;
 	}
 
-	public void setYUniverse(double yUniverse) {
+	public void setYUniverse(double yUniverse) 
+	{
 		this.yUniverse = yUniverse;
 	}
 }
