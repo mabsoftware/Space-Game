@@ -78,6 +78,8 @@ public class Player extends GImage
 		//super.move(myVector.getXComponent(), myVector.getYComponent());
 		s.setXUniverse(s.getXUniverse() + myVector.getXComponent());
 		s.setYUniverse(s.getYUniverse() + myVector.getYComponent());
+		setXUniverse(getXUniverse() + myVector.getXComponent());
+		setYUniverse(getYUniverse() + myVector.getYComponent());
 	}
 	
 	public void increaseSpeed()
