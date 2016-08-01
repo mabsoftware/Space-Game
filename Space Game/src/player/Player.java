@@ -1,13 +1,10 @@
 package player;
 
-import acm.graphics.GPolygon;
+import acm.graphics.GImage;
 import physics.Vector;
-import java.awt.Color;
 import physics.GravityObject;
-import java.applet.*;
-import java.net.*;
 
-public class Player extends GPolygon
+public class Player extends GImage
 {
 	private Vector myVector;
 	
@@ -18,21 +15,11 @@ public class Player extends GPolygon
 	private double angle;
 	private double speed;
 	
-	public Player(double startX, double startY, double xVel, double yVel)
+	public Player(String s, double startX, double startY, double xVel, double yVel)
 	{
-		super(startX, startY); // create player GImage.
+		super(s, startX, startY); // create player GImage.
 		
 		myVector = new Vector(xVel, yVel); // set initial player vector.
-
-		this.addPolarEdge(10, 0);
-		this.addPolarEdge(7, 60);
-		this.addPolarEdge(10, 120);
-		this.addPolarEdge(10, 240);
-		this.addPolarEdge(7, 300);
-		
-		this.setFillColor(Color.GRAY);
-		this.setColor(Color.GRAY);
-		this.setFilled(true);
 		
 		left = false;
 		right = false;
@@ -43,7 +30,7 @@ public class Player extends GPolygon
 	{ return myVector; }
 	
 	public void rotateShip(double degrees)
-	{ this.rotate(degrees); }
+	{ this.movePolar(0, degrees); }
 	
 	public void goLeft()
 	{
@@ -69,12 +56,12 @@ public class Player extends GPolygon
 	{
 		if (left)
 		{
-			this.rotate(5);
+			this.movePolar(0, 5);
 			angle -= 5;
 		}
 		else if (right)
 		{
-			this.rotate(-5);
+			this.movePolar(0, -5);
 			angle += 5;
 		}
 	} // monitor user - I know the angles look backwards, but the rotate function is different.
