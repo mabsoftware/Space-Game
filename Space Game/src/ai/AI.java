@@ -16,18 +16,19 @@ public class AI
 		myY = y;
 		myPlayers = players;
 		target = myPlayers[0];
-		distance = Math.sqrt(Math.pow(myX - target.getX(), 2) + Math.pow(myY - target.getY(), 2));
+		distance = Math.sqrt(Math.pow(myX - target.getXUniverse(), 2) + Math.pow(myY - target.getYUniverse(), 2));
 	}
 	
 	public void findTarget()
 	{
 		for (int i = 0; i < myPlayers.length; i++)
 		{
-			if (Math.sqrt(Math.pow(myX - target.getX(), 2) + Math.pow(myY - target.getY(), 2)) < distance)
+			if (Math.sqrt(Math.pow(myX - target.getXUniverse(), 2) + Math.pow(myY - target.getYUniverse(), 2)) < distance)
 			target = myPlayers[i];
-			distance = Math.sqrt(Math.pow(myX - target.getX(), 2) + Math.pow(myY - target.getY(), 2));
-		}
-		
+			distance = Math.sqrt(Math.pow(myX - target.getXUniverse(), 2) + Math.pow(myY - target.getYUniverse(), 2));
+		}	
 	}
+	
+	
+	
 }
-
