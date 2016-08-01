@@ -14,7 +14,6 @@ import background.Background;
 import background.Star;
 import camera.Camera;
 import physics.GravityObject;
-import physics.Vector;
 
 public class SpaceGame extends GraphicsProgram 
 {
@@ -58,7 +57,10 @@ public class SpaceGame extends GraphicsProgram
 		gravityObjects[0] = new GravityObject("assets/LargePlanet.png", 100, 100, 50, 0, 0);
 		for (GravityObject g: gravityObjects)
 		{
-			this.add(g);
+			if (g != null)
+			{
+				this.add(g);
+			}
 		}
 		/////////////////////////////////////////////////////////////////////
 		// User input and output is initialized here.                      //
@@ -77,6 +79,15 @@ public class SpaceGame extends GraphicsProgram
 			// Monitor all objects here.                  //
 			////////////////////////////////////////////////
 			player.monitor();
+			player.move();
+			
+			for (GravityObject g: gravityObjects)
+			{
+				if (g != null)
+				{
+					g.move();
+				}
+			}
 			
 			this.draw(this.iterator(), camera);
 			
@@ -119,6 +130,14 @@ public class SpaceGame extends GraphicsProgram
 		else if (k.getKeyChar() == 'd')
 		{
 			player.goRight();
+		}
+		else if (k.getKeyChar() == 'w')
+		{
+			player.increaseSpeed();
+		}
+		else if (k.getKeyChar() == 's')
+		{
+			player.decreaseSpeed();
 		}
 	}
 	
