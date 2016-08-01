@@ -12,55 +12,59 @@ import game.SpaceGame;
 public class Player extends GImage
 {
 	private Vector myVector;
-	
+
 	private boolean left;
 	private boolean right;
 	private Projectile[] myProjectiles;
-	
+
 	private double angle;
 	private double xUniverse;
 	private double yUniverse;
-	
+
 	public Player(String s, double startX, double startY, double xVel, double yVel)
 	{
 		super(s, startX, startY); // create player GImage.
 		setXUniverse(startX+500);
 		setYUniverse(startY+500);
-		
+
 		myVector = new Vector(xVel, yVel); // set initial player vector.
-		
+
 		this.setSize(20, 50); // set size of ship.
-		
+
 		left = false;
 		right = false;
 	}
 
 	public Vector getVector()
-	{ return myVector; }
-	
+	{
+		return myVector;
+	}
+
 	public void rotateShip(double degrees)
-	{ this.movePolar(0, degrees); }
-	
+	{
+		this.movePolar(0, degrees);
+	}
+
 	public void goLeft()
 	{
 		left = true;
 	}
-	
+
 	public void goRight()
 	{
 		right = true;
 	}
-	
+
 	public void stopMovingLeft()
 	{
 		left = false;
 	}
-	
+
 	public void stopMovingRight()
 	{
 		right = false;
 	}
-	
+
 	public void monitor()
 	{
 		if (left)
@@ -74,7 +78,7 @@ public class Player extends GImage
 			angle += 5;
 		}
 	} // monitor user - I know the angles look backwards, but the rotate function is different.
-	
+
 	public void move(SpaceGame s)
 	{ 
 		//super.move(myVector.getXComponent(), myVector.getYComponent());
@@ -83,13 +87,13 @@ public class Player extends GImage
 		setXUniverse(getXUniverse() + myVector.getXComponent());
 		setYUniverse(getYUniverse() + myVector.getYComponent());
 	}
-	
+
 	public void increaseSpeed()
 	{
 		myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
 		myVector.setYComponent(myVector.getYComponent() - Math.cos(Math.toRadians(angle)));	
 	}
-	
+
 	public void decreaseSpeed()
 	{
 		if (myVector.getXComponent() > 0 && myVector.getYComponent() > 0)
@@ -98,7 +102,7 @@ public class Player extends GImage
 			myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
 		} // players can only decrease speed - they can't go backwards.
 	}
-	
+
 	public void adjustForGravity(GravityObject[] gObjects)
 	{
 		for (GravityObject g : gObjects)
@@ -113,7 +117,7 @@ public class Player extends GImage
 			}
 		}
 	}
-	
+
 	public double getXUniverse()
 	{
 		return xUniverse;
@@ -123,7 +127,7 @@ public class Player extends GImage
 	{
 		return yUniverse;
 	}
-	
+
 	private void setXUniverse(double x) 
 	{
 		this.xUniverse = x;
