@@ -129,9 +129,9 @@ public class SpaceGame extends GraphicsProgram
 		}
 	}
 	
-	public void addGravityObject(String image, double startX, double startY, double radius, double xVel, double yVel, double multiplier, double universeX, double universeY)
+	public void addGravityObject(String image, double startX, double startY, double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
 	{
-		gravityObjects[gravityIndex] = new GravityObject(image, startX, startY, radius, xVel, yVel, multiplier, universeX, universeY);
+		gravityObjects[gravityIndex] = new GravityObject(image, startX, startY, radius, xVel, yVel, multiplier, xUniverse, yUniverse);
 		gravityIndex++;
 	}
 	
