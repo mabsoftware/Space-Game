@@ -14,7 +14,6 @@ import java.util.Iterator;
 import java.awt.Color;
 import background.Background;
 import background.Star;
-import camera.Camera;
 import map.Map;
 import physics.GravityObject;
 
@@ -23,7 +22,6 @@ public class SpaceGame extends GraphicsProgram
 	private boolean running; // game state.
 	private Player player;
 	private Background background;
-	private Camera camera;
 	private GravityObject[] gravityObjects;
 	private int gravityIndex;
 	private Map map;
@@ -49,7 +47,6 @@ public class SpaceGame extends GraphicsProgram
 		this.setXUniverse(500);
 		this.setYUniverse(500);
 		
-		camera = new Camera(0, 0, this.getWidth(), this.getHeight());
 		/////////////////////////////////////////////////////////////////////
 		// Loop variable and others initialized here.                      //
 		/////////////////////////////////////////////////////////////////////
