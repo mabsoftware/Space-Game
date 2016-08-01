@@ -3,6 +3,7 @@
  * Started 7/30/16.
  * Main method and main class.
  */
+
 package game;
 
 import acm.graphics.*;
@@ -16,6 +17,7 @@ import background.Star;
 import camera.Camera;
 import map.Map;
 import physics.GravityObject;
+import background.BlackBackground;
 
 public class SpaceGame extends GraphicsProgram 
 {
@@ -53,7 +55,6 @@ public class SpaceGame extends GraphicsProgram
 		// Loop variable and others initialized here.                      //
 		/////////////////////////////////////////////////////////////////////
 		running = true; // running boolean for the game loop.
-		gravityObjects = new GravityObject[100];
 		/////////////////////////////////////////////////////////////////////
 		// Players, AIs, Gravity Objects, and others initialized here.     //
 		/////////////////////////////////////////////////////////////////////
@@ -83,7 +84,6 @@ public class SpaceGame extends GraphicsProgram
 		this.addKeyListeners(); // add some key listeners.
 		
 		//stuff
-		this.draw();
 	}
 	
 	public void run()
@@ -100,6 +100,20 @@ public class SpaceGame extends GraphicsProgram
 			player.monitor();
 			player.move(this);
 			player.adjustForGravity(gravityObjects);
+			
+			//GravityObject.handleGravityObjectInteractions(gravityObjects);
+			
+			//this.add(new BlackBackground(this.getWidth(), this.getHeight()));
+		
+			background = new Background(120, this.getWidth(), this.getHeight());
+			
+			for (Star star: background.getBackground())
+			{
+				this.remove(star);
+				
+			}
+			
+		
 			
 			for (GravityObject g: gravityObjects)
 			{
@@ -123,7 +137,8 @@ public class SpaceGame extends GraphicsProgram
 	{
 		for (GravityObject obj : gravityObjects)
 		{
-			obj.setLocation(obj.getXUniverse() - this.getXUniverse(), obj.getYUniverse() - this.getYUniverse());	
+			if (obj != null)
+				obj.setLocation(obj.getXUniverse() - this.getXUniverse(), obj.getYUniverse() - this.getYUniverse());	
 		}
 	}
 	
@@ -167,19 +182,23 @@ public class SpaceGame extends GraphicsProgram
 	}
 	///////////////////////////////////////////////
 
-	public double getXUniverse() {
+	public double getXUniverse() 
+	{
 		return xUniverse;
 	}
 
-	public void setXUniverse(double xUniverse) {
+	public void setXUniverse(double xUniverse) 
+	{
 		this.xUniverse = xUniverse;
 	}
 
-	public double getYUniverse() {
+	public double getYUniverse() 
+	{
 		return yUniverse;
 	}
 
-	public void setYUniverse(double yUniverse) {
+	public void setYUniverse(double yUniverse) 
+	{
 		this.yUniverse = yUniverse;
 	}
 }
