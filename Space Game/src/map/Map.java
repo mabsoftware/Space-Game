@@ -10,7 +10,7 @@ public class Map
 	{
 		map1 = new double[100][8];
 		this.setRow(0, -100., -100., 200., 0., 0., 2., 500., 500.);
-		this.setRow(1, 300., 300., 50., 0., 0., 2., 900., 900.);
+		this.setRow(1, 300., 300., 50., 0., 0., 2., 1000., 900.);
 	}
 	
 	private void setRow(int row, double screenX, double screenY, double radius, double xVel, double yVel, double multiplier, double universeX, double universeY)
