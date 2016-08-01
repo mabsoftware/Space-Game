@@ -4,6 +4,8 @@ import acm.graphics.GPolygon;
 import physics.Vector;
 import java.awt.Color;
 import physics.GravityObject;
+import java.applet.*;
+import java.net.*;
 
 public class Player extends GPolygon
 {
