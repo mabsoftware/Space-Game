@@ -83,7 +83,7 @@ public class Player extends GImage
 	public void increaseSpeed()
 	{
 		myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
-		myVector.setYComponent(myVector.getYComponent() - Math.cos(Math.toRadians(angle)));	
+		myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));	
 	}
 	
 	public void adjustForGravity(GravityObject[] gObjects)
