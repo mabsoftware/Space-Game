@@ -21,6 +21,8 @@ public class Player extends GImage
 		
 		myVector = new Vector(xVel, yVel); // set initial player vector.
 		
+		this.setSize(20, 50); // set size of ship.
+		
 		left = false;
 		right = false;
 		speed = 0;

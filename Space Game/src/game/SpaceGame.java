@@ -46,7 +46,7 @@ public class SpaceGame extends GraphicsProgram
 		/////////////////////////////////////////////////////////////////////
 		// Players, AIs, Gravity Objects, and others initialized here.     //
 		/////////////////////////////////////////////////////////////////////
-		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
+		player = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
 		this.add(player); // add the player to the window.
 		background = new Background(120, this.getWidth(), this.getHeight());
 		for (Star star: background.getBackground())
