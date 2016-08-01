@@ -1,6 +1,6 @@
 package player;
 
-import acm.graphics.GImage;
+import acm.graphics.*;
 import physics.Vector;
 import physics.GravityObject;
 import game.SpaceGame;
@@ -75,9 +75,9 @@ public class Player extends GImage
 	
 	public void move(SpaceGame s)
 	{ 
-		s.setLocation((int)myVector.getXComponent(), (int)myVector.getYComponent());
-		this.setXUniverse(myVector.getXComponent());
-		this.setYUniverse(myVector.getYComponent()); 
+		//super.move(myVector.getXComponent(), myVector.getYComponent());
+		s.setXUniverse(s.getXUniverse() + myVector.getXComponent());
+		s.setYUniverse(s.getYUniverse() + myVector.getYComponent());
 	}
 	
 	public void increaseSpeed()
@@ -94,7 +94,7 @@ public class Player extends GImage
 			{
 				double scalar = g.getGravityScalar(this);
 				double distance = g.getDistance(this);
-				Vector temp = new Vector(g.getX() - this.getX(), g.getY() - this.getY());
+				Vector temp = new Vector(g.getXUniverse() - this.getXUniverse(), g.getYUniverse() - this.getYUniverse());
 				temp.multiplyByScalar(scalar / distance);
 				myVector.add(temp);
 			}
