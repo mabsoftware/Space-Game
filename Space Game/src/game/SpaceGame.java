@@ -1,6 +1,6 @@
 /* Space Game in Java
  * Started 7/30/16.
- * Main method and main class.
+ * Main method and main class
  */
 package game;
 
