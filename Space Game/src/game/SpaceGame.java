@@ -88,7 +88,7 @@ public class SpaceGame extends GraphicsProgram
 			// Monitor all objects here.                  //
 			////////////////////////////////////////////////
 			player.monitor();
-			player.move();
+			player.move(this);
 			player.adjustForGravity(gravityObjects);
 			
 			for (GravityObject g: gravityObjects)
