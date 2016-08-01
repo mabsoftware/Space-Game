@@ -8,6 +8,7 @@ import game.SpaceGame;
 public class Player extends GImage
 {
 	private Vector myVector;
+	//coment
 	
 	private boolean left;
 	private boolean right;
