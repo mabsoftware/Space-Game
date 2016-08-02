@@ -10,17 +10,8 @@ public class Laser extends GLine
 	private double myAngle;
 	private Laser laser;
 	
-	public Laser(double startX, double startY, double angle)
+	public Laser(Player p)
 	{
-		super(startX, startY, startX + (150 * Math.sin(angle)), startY + (150 * Math.cos(angle)));
-		myX = startX;
-		myY = startY;
-		myAngle = angle;
-	}
-	
-	public Laser moveLaser()
-	{
-		laser = new Laser(myX + (150 * Math.sin(myAngle)), myY + (150 * Math.cos(myAngle)), myAngle);
-		return laser;
+		super(p.getX() * Math.cos(p.getAngle()) - p.getY() * Math.sin(p.getAngle()), p.getX() * Math.sin(p.getAngle()) + p.getY() * Math.cos(p.getAngle()), p.getX() * Math.cos(p.getAngle()) - p.getY() * Math.sin(p.getAngle()) - p.getX(), p.getX() * Math.sin(p.getAngle()) + p.getY() * Math.cos(p.getAngle()) - p.getY());
 	}
 }

@@ -36,6 +36,7 @@ public class Player extends GPolygon
 		this.addPolarEdge(10, 210);
 		this.addPolarEdge(5, 300);
 		this.addPolarEdge(0, 0);
+		this.recenter();
 		
 		// Done drawing the polygon.
 		
@@ -62,6 +63,11 @@ public class Player extends GPolygon
 	public void rotateShip(double degrees)
 	{
 		this.rotate(degrees);
+	}
+	
+	public double getAngle()
+	{
+		return angle;
 	}
 
 	public void goLeft()
@@ -90,6 +96,10 @@ public class Player extends GPolygon
 		missileIndex++;
 	}
 
+	public void laser(SpaceGame game)
+	{
+		game.add(new Laser(this));
+	}
 	public void monitor()
 	{
 		if (left)

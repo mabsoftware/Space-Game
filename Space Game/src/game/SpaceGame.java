@@ -109,7 +109,7 @@ public class SpaceGame extends GraphicsProgram
 			
 			for (Star star: background.getBackground()) // Move the star background.
 			{
-				star.move(-player.getVector().getXComponent(), -player.getVector().getYComponent());
+				star.move(-player.getVector().getXComponent() / 4, -player.getVector().getYComponent() / 4);
 			}
 			enemies[0].action();
 				
@@ -178,7 +178,7 @@ public class SpaceGame extends GraphicsProgram
 		}
 		else if (k.getKeyChar() == ' ')
 		{
-			player.shoot();
+			player.laser(this);
 			player.decreaseSpeed();
 		}
 	}
