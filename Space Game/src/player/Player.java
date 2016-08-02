@@ -19,7 +19,7 @@ public class Player extends GPolygon
 	private boolean right;
 	private Projectile[] myProjectiles;
 	public int missileIndex;
-	private int health;
+	private double health;
 	private double angle;
 	private double xUniverse;
 	private double yUniverse;
@@ -54,7 +54,7 @@ public class Player extends GPolygon
 		
 		left = false;
 		right = false;
-		health = 100;
+		health = 1000.;
 	}
 
 	public Vector getVector()

@@ -22,6 +22,7 @@ public class Enemy extends GPolygon
 	private Projectile missile;
 	private Laser laser;
 	private int laserExists;
+	private double health;
 
 	public Enemy(double startX, double startY, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers)
 	{
@@ -60,6 +61,7 @@ public class Enemy extends GPolygon
 			type = 1;
 		}
 		laserExists = 0;
+		health = 100.;
 	}
 
 	public void action()
