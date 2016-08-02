@@ -39,7 +39,7 @@ public class Enemy extends GPolygon
 		myVector = new Vector(xVel, yVel);
 
 		angle = 0;
-		
+		//
 		for (int i = 0; i < otherPlayers.length; i++)
 		{
 			if (otherPlayers[i] != null)
