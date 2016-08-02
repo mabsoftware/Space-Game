@@ -154,10 +154,10 @@ public class SpaceGame extends GraphicsProgram
 	{
 		for (int i = 0; i < pointsPlanets.length; i++)
 		{
-
+			GravityObject obj = gravityObjects[pointsPlanets[i]];
 			double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
 			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
-			if (x + y <= obj.getMass())
+			if (x + y <= obj.getMass() * 2)
 			{
 				score.increaseScore(1);
 			}
@@ -177,14 +177,14 @@ public class SpaceGame extends GraphicsProgram
 	public void addGravityObject(String image,
 			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
 	{
-		gravityObjects[gravityIndex] = new GravityObject(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse);
+		gravityObjects[gravityIndex] = new GravityObject(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse, this);
 		gravityIndex++;
 	}
 
 	public void addPointsPlanet(String image,
 			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
 	{
-		gravityObjects[gravityIndex] = new PointsPlanet(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse);
+		gravityObjects[gravityIndex] = new PointsPlanet(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse, this);
 		gravityIndex++;
 	}
 
