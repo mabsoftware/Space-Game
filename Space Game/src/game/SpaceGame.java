@@ -21,7 +21,8 @@ import physics.GravityObject;
 public class SpaceGame extends GraphicsProgram 
 {
 	private boolean running; // game state.
-	private Player[] players;
+	private Player player;
+	private Player[] otherPlayers;
 	private Background background;
 	private GravityObject[] gravityObjects;
 	private int gravityIndex;
@@ -66,11 +67,10 @@ public class SpaceGame extends GraphicsProgram
 		// Variables and objects are initialized here.		
 		gravityIndex = 0;
 		running = true; // running boolean for the game loop.
-		players = new Player[1];
-		players[0] = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
-		this.add(players[0]); // add the player to the window.
+		player = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
+		this.add(player); // add the player to the window.
 		enemies = new Enemy[1];
-		enemies[0] = new Enemy(this.getWidth() / 3, this.getHeight() / 3, 0, 0, players);
+		enemies[0] = new Enemy(this.getWidth() / 3, this.getHeight() / 3, 0, 0, player, otherPlayers);
 		this.add(enemies[0]);
 		
 		// User input and output is initialized here.
@@ -85,9 +85,9 @@ public class SpaceGame extends GraphicsProgram
 			this.draw();
 			
 			// Monitor and move all objects here.
-			players[0].monitor();
-			players[0].move(this);
-			players[0].adjustForGravity(gravityObjects);
+			player.monitor();
+			player.move(this);
+			player.adjustForGravity(gravityObjects);
 			for (GravityObject g: gravityObjects)
 			{
 				if (g != null)
@@ -100,7 +100,7 @@ public class SpaceGame extends GraphicsProgram
 			
 			for (Star star: background.getBackground()) // Move the star background.
 			{
-				star.move(-players[0].getVector().getXComponent(), -players[0].getVector().getYComponent());
+				star.move(-player.getVector().getXComponent(), -player.getVector().getYComponent());
 			}
 				
 			// Clock tick
@@ -114,7 +114,7 @@ public class SpaceGame extends GraphicsProgram
 	{
 		for (GravityObject obj : gravityObjects)
 		{
-			players[0].getXUniverse();
+			player.getXUniverse();
 		}
 	}
 	
@@ -141,23 +141,23 @@ public class SpaceGame extends GraphicsProgram
 	{
 		if (k.getKeyChar() == 'a')
 		{
-			players[0].goLeft();
+			player.goLeft();
 		}
 		else if (k.getKeyChar() == 'd')
 		{
-			players[0].goRight();
+			player.goRight();
 		}
 		else if (k.getKeyChar() == 'w')
 		{
-			players[0].increaseSpeed();
+			player.increaseSpeed();
 		}
 		else if (k.getKeyChar() == 's')
 		{
-			players[0].decreaseSpeed();
+			player.decreaseSpeed();
 		}
 		else if (k.getKeyChar() == ' ')
 		{
-			players[0].shoot();
+			player.shoot();
 		}
 	}
 	
@@ -165,11 +165,11 @@ public class SpaceGame extends GraphicsProgram
 	{
 		if (k.getKeyChar() == 'a')
 		{
-			players[0].stopMovingLeft();
+			player.stopMovingLeft();
 		}
 		else if (k.getKeyChar() == 'd')
 		{
-			players[0].stopMovingRight();
+			player.stopMovingRight();
 		}
 	}
 
