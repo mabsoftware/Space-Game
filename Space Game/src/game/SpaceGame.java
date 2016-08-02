@@ -98,14 +98,9 @@ public class SpaceGame extends GraphicsProgram
 			
 			//GravityObject.handleGravityObjectInteractions(gravityObjects);
 			
-			//this.add(new BlackBackground(this.getWidth(), this.getHeight()));
-		
-			//background = new Background(120, this.getWidth(), this.getHeight());
-			
 			for (Star star: background.getBackground()) // Move the star background.
 			{
 				star.move(-players[0].getVector().getXComponent(), -players[0].getVector().getYComponent());
-				
 			}
 				
 			// Clock tick
@@ -113,8 +108,19 @@ public class SpaceGame extends GraphicsProgram
 		}
 	}
 	
+	/*
+	// Handle collisions
+	public void handleCollisions()
+	{
+		for (GravityObject obj : gravityObjects)
+		{
+			
+		}
+	}
+	*/
 	
-	public void draw() // Redraw elements if necessary
+	// Sets screen coordinates of all objects based on Universe coordinates
+	public void draw() 
 	{
 		for (GravityObject obj : gravityObjects)
 		{
@@ -164,21 +170,19 @@ public class SpaceGame extends GraphicsProgram
 		}
 	}
 
+	// Getters and Setters for Universe coordinates
 	public double getXUniverse() 
 	{
 		return xUniverse;
 	}
-
 	public void setXUniverse(double xUniverse) 
 	{
 		this.xUniverse = xUniverse;
 	}
-
 	public double getYUniverse() 
 	{
 		return yUniverse;
 	}
-
 	public void setYUniverse(double yUniverse) 
 	{
 		this.yUniverse = yUniverse;
