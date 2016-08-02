@@ -21,6 +21,7 @@ import physics.GravityObject;
 
 public class SpaceGame extends GraphicsProgram 
 {
+	//Defining all the variables that will be nesesary in this class
 	private boolean running; // game state.
 	private Player player;
 	private Player[] otherPlayers;
