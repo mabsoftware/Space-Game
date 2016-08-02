@@ -2,6 +2,7 @@
  * Last edited 8 / 01 / 16.
  * Extremely Important Class.
  */
+
 package player;
 
 import acm.graphics.*;
@@ -18,7 +19,7 @@ public class Player extends GPolygon
 	private boolean right;
 	private Projectile[] myProjectiles;
 	public int missileIndex;
-
+	private int health;
 	private double angle;
 	private double xUniverse;
 	private double yUniverse;
@@ -28,7 +29,7 @@ public class Player extends GPolygon
 		super(startX, startY); // create player GImage.
 		setXUniverse(startX + 500);
 		setYUniverse(startY + 500);
-		//
+
 		// Draw the polygon here.
 		this.addPolarEdge(-20, 0);
 		this.addPolarEdge(5, 60);
@@ -53,6 +54,7 @@ public class Player extends GPolygon
 		
 		left = false;
 		right = false;
+		health = 100;
 	}
 
 	public Vector getVector()
