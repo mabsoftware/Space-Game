@@ -43,13 +43,18 @@ public class SpaceGame extends GraphicsProgram
 		this.setSize(320 * 3, 240 * 3);
 		this.setTitle("Space Game"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
-		this.setXUniverse(1000);
-		this.setYUniverse(1000);
+		this.setXUniverse(500);
+		this.setYUniverse(500);
 		background = new Background(10000, 10000, 10000);
 		for (Star star: background.getBackground())
 		{
 			this.add(star);
 		}
+		
+		//////////////////////////////////////////////////////////
+		// Just initializing otherPlayers to test.               //
+		//////////////////////////////////////////////////////////
+		otherPlayers = new Player[5];
 		
 		// Planets and black holes initialized here
 		gravityObjects = new GravityObject[100];
@@ -67,7 +72,7 @@ public class SpaceGame extends GraphicsProgram
 		// Variables and objects are initialized here.		
 		gravityIndex = 0;
 		running = true; // running boolean for the game loop.
-		player = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
+		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
 		this.add(player); // add the player to the window.
 		enemies = new Enemy[1];
 		enemies[0] = new Enemy(this.getWidth() / 3, this.getHeight() / 3, 0, 0, player, otherPlayers);

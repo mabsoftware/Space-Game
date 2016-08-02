@@ -14,7 +14,7 @@ public class GravityObject extends GImage
 
 	public GravityObject(String image, double radius, double xVel, double yVel, double multiplier, double xu, double yu)
 	{
-		super(image, xu-1000, xu-1000);
+		super(image, xu-500, xu-500);
 		setXUniverse(xu);
 		setYUniverse(yu);
 

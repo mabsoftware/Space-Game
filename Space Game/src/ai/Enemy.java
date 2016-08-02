@@ -41,7 +41,10 @@ public class Enemy extends GPolygon
 		
 		for (int i = 0; i < otherPlayers.length; i++)
 		{
-			myPlayers.add(otherPlayers[i]);
+			if (otherPlayers[i] != null)
+			{
+				myPlayers.add(otherPlayers[i]);
+			}
 		}
 		myPlayers.add(thisPlayer);
 		target = myPlayers.get(0);

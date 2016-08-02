@@ -9,7 +9,7 @@ import physics.Vector;
 import physics.GravityObject;
 import game.SpaceGame;
 
-public class Player extends GImage
+public class Player extends GPolygon
 {
 	private Vector myVector;
 
@@ -22,12 +22,25 @@ public class Player extends GImage
 	private double xUniverse;
 	private double yUniverse;
 
-	public Player(String s, double startX, double startY, double xVel, double yVel)
+	public Player(double startX, double startY, double xVel, double yVel)
 	{
-		super(s, startX, startY); // create player GImage.
+		super(startX, startY); // create player GImage.
 		setXUniverse(startX + 500);
 		setYUniverse(startY + 500);
 
+		// Draw the polygon here.
+		this.addEdge(0, -10);
+		this.addEdge(5, -2);
+		this.addEdge(2,  5);
+		this.addEdge(-2,  5);
+		this.addEdge(-5, -2);
+		
+		// Done drawing the polygon.
+		
+		this.setVisible(true);
+		
+		myProjectiles = new Projectile[100]; // list
+		
 		myVector = new Vector(xVel, yVel); // set initial player vector.
 
 		missileIndex = 0;
@@ -43,7 +56,7 @@ public class Player extends GImage
 
 	public void rotateShip(double degrees)
 	{
-		this.movePolar(0, degrees);
+		this.rotate(degrees);
 	}
 
 	public void goLeft()
@@ -96,7 +109,10 @@ public class Player extends GImage
 		
 		for (Projectile p : myProjectiles)
 		{
-			p.move(p.getVector().getXComponent(), p.getVector().getYComponent());
+			if (p != null)
+			{
+				p.move(p.getVector().getXComponent(), p.getVector().getYComponent());
+			}
 		}
 	}
 
