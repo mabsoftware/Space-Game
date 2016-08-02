@@ -9,6 +9,7 @@ package game;
 import acm.graphics.*;
 import acm.program.GraphicsProgram;
 import ai.Enemy;
+import player.Laser;
 import player.Player;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
@@ -30,6 +31,8 @@ public class SpaceGame extends GraphicsProgram
 	private double xUniverse;
 	private double yUniverse;
 	private Enemy[] enemies;
+	private Laser laser;
+	private Score score;
 	
 	public static void main(String args[])
 	{
@@ -50,6 +53,8 @@ public class SpaceGame extends GraphicsProgram
 		{
 			this.add(star);
 		}
+		score = new Score(10, 40, this);
+		add(score);
 		
 		//////////////////////////////////////////////////////////
 		// Just initializing otherPlayers to test.               //
@@ -77,7 +82,6 @@ public class SpaceGame extends GraphicsProgram
 		enemies = new Enemy[1];
 		enemies[0] = new Enemy(this.getWidth() / 3, this.getHeight() / 3, 0, 0, player, otherPlayers);
 		this.add(enemies[0]);
-		
 		// User input and output is initialized here.
 		this.addKeyListeners();
 	}
@@ -108,6 +112,7 @@ public class SpaceGame extends GraphicsProgram
 			{
 				star.move(-player.getVector().getXComponent() / 4, -player.getVector().getYComponent() / 4);
 			}
+			enemies[0].action();
 				
 			// Clock tick
 			pause(100);
@@ -135,7 +140,6 @@ public class SpaceGame extends GraphicsProgram
 			
 		}
 	}
-	
 	
 	// Sets screen coordinates of all objects based on Universe coordinates
 	public void draw() 
