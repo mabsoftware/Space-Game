@@ -36,6 +36,7 @@ public class Player extends GPolygon
 		this.addPolarEdge(10, 210);
 		this.addPolarEdge(5, 300);
 		this.addPolarEdge(0, 0);
+		this.recenter();
 		
 		// Done drawing the polygon.
 		
