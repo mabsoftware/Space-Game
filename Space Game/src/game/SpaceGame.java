@@ -112,10 +112,10 @@ public class SpaceGame extends GraphicsProgram
 			// Clock tick
 			pause(100);
 		}
-		GLabel gameOver = new GLabel("Game Over. You blew up.", getWidth()/2, getHeight()/2);
-		gameOver.setLocation(getWidth()/2 - gameOver.getWidth()/2, getHeight()/2);
-		gameOver.setColor(Color.CYAN);
+		GLabel gameOver = new GLabel("Game Over. You blew up.", getWidth() / 2, getHeight() / 2);
 		gameOver.setFont("fantasy-bold-48");
+		gameOver.setLocation(this.getWidth() / 2 - gameOver.getWidth() / 2, getHeight() / 2);
+		gameOver.setColor(Color.CYAN);
 		add(gameOver);
 	}
 	
