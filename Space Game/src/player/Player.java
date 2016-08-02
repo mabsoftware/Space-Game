@@ -27,7 +27,7 @@ public class Player extends GPolygon
 		super(startX, startY); // create player GImage.
 		setXUniverse(startX + 500);
 		setYUniverse(startY + 500);
-//
+		//
 		// Draw the polygon here.
 		this.addEdge(0, -10);
 		this.addEdge(5, -2);
