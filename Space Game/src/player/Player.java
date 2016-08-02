@@ -138,7 +138,7 @@ public class Player extends GPolygon
 		{
 			myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
 			myVector.setYComponent(myVector.getYComponent() - Math.cos(Math.toRadians(angle)));
-		}
+		} // Player Speed Control.
 	}
 
 	public void decreaseSpeed()
