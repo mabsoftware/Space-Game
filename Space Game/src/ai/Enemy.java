@@ -2,6 +2,9 @@ package ai;
 
 import acm.graphics.GPolygon;
 import java.awt.Color;
+import java.util.ArrayList;
+
+import java.util.List;
 import player.Laser;
 import player.Player;
 import player.Projectile;
@@ -12,7 +15,7 @@ public class Enemy extends GPolygon
 
 	private double distance;
 	private Player target;
-	private Player[] myPlayers;
+	private List<Player> myPlayers;
 	private double angle;
 	private int type;
 	private Vector myVector;
@@ -29,17 +32,19 @@ public class Enemy extends GPolygon
 		this.setFillColor(Color.YELLOW);
 		this.setColor(Color.YELLOW);
 		this.setFilled(true);
+		
+		myPlayers = new ArrayList<Player>();
 
 		myVector = new Vector(xVel, yVel);
 
 		angle = 0;
-		myPlayers = new Player[otherPlayers.length + 1];
+		
 		for (int i = 0; i < otherPlayers.length; i++)
 		{
-			myPlayers[i] = otherPlayers[i];
+			myPlayers.add(otherPlayers[i]);
 		}
-		myPlayers[otherPlayers.length] = thisPlayer;
-		target = myPlayers[0];
+		myPlayers.add(thisPlayer);
+		target = myPlayers.get(0);
 		distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
 		if ((int) (Math.random() * 4) == 0)
 		{
@@ -67,11 +72,11 @@ public class Enemy extends GPolygon
 
 	private void findTarget()
 	{
-		for (int i = 0; i < myPlayers.length; i++)
+		for (int i = 0; i < myPlayers.size(); i++)
 		{
 			if (Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2)) < distance)
 			{
-				target = myPlayers[i];
+				target = myPlayers.get(i);
 				distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
 			}
 		}	
