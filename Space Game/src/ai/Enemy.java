@@ -17,11 +17,11 @@ public class Enemy extends GPolygon
 	private Player target;
 	private List<Player> myPlayers;
 	private double angle;
-	private int type;
+//	private int type;
 	private Vector myVector;
-	private Projectile missile;
-	private Laser laser;
-	private int laserExists;
+//	private Projectile missile;
+//	private Laser laser;
+//	private int laserExists;
 	private double health;
 
 	public Enemy(double startX, double startY, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers)
@@ -51,16 +51,16 @@ public class Enemy extends GPolygon
 		myPlayers.add(thisPlayer);
 		target = myPlayers.get(0);
 		distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
-		if ((int) (Math.random() * 4) == 0)
-		{
+//		if ((int) (Math.random() * 4) == 0)
+//		{
 //			type = 0;
-			type = 1;
-		}
-		else
-		{
-			type = 1;
-		}
-		laserExists = 0;
+//			type = 1;
+//		}
+//		else
+//		{
+//			type = 1;
+//		}
+//		laserExists = 0;
 		health = 100.;
 	}
 
