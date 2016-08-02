@@ -54,7 +54,7 @@ public class Player extends GPolygon
 		
 		left = false;
 		right = false;
-		health = 100.;
+		health = 1000.;
 	}
 
 	public Vector getVector()
