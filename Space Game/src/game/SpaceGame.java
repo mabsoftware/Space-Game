@@ -11,14 +11,14 @@ import acm.program.GraphicsProgram;
 import ai.Enemy;
 import player.Laser;
 import player.Player;
+import player.Projectile;
+
 import java.awt.event.KeyEvent;
-import java.util.Iterator;
 import java.awt.Color;
 import background.Background;
 import background.Star;
 import map.Map;
 import physics.GravityObject;
-import physics.PointsPlanet;
 
 public class SpaceGame extends GraphicsProgram 
 {
@@ -35,7 +35,6 @@ public class SpaceGame extends GraphicsProgram
 	private Enemy[] enemies;
 	private Laser laser;
 	private Score score;
-	private int[] pointsPlanets;
 
 	public static void main(String args[])
 	{
@@ -70,6 +69,7 @@ public class SpaceGame extends GraphicsProgram
 		gravityIndex = 0;
 		map = new Map();
 		map.setMap(this);
+		
 		for (GravityObject g: gravityObjects)
 		{
 			if (g != null)
@@ -109,7 +109,6 @@ public class SpaceGame extends GraphicsProgram
 				}
 			}
 			this.handleCollisions();
-			orbitScore();
 
 			//GravityObject.handleGravityObjectInteractions(gravityObjects);
 
@@ -118,6 +117,19 @@ public class SpaceGame extends GraphicsProgram
 				star.move(-player.getVector().getXComponent() / 4, -player.getVector().getYComponent() / 4);
 			}
 			enemies[0].action();
+			
+			System.out.println(player.getProjectiles());
+			
+			for (Projectile p : player.getProjectiles())
+			{
+				System.out.println(p);
+				if (p != null)
+				{
+					this.add(p);
+					p.adjustForGravity(gravityObjects);
+					p.move();
+				}
+			}
 
 			// Clock tick
 			pause(15);
@@ -132,35 +144,21 @@ public class SpaceGame extends GraphicsProgram
 	{
 		for (GravityObject obj : gravityObjects)
 		{
-			double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
-			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
+			double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth()/2)), 2);
+			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight()/2)), 2);
 			if (x + y <= obj.getMass())
 			{
 				running = false;
 				GImage b = new GImage("assets/images/explosion.png", 0, 0);
-				b.setSize(player.getWidth() * 2, player.getHeight() * 2);
-				b.setLocation(getWidth() / 2 - b.getWidth() / 2, getHeight() / 2 - b.getHeight() / 2);
+				b.setSize(player.getWidth()*2, player.getHeight()*2);
+				b.setLocation(getWidth()/2 - b.getWidth()/2, getHeight()/2 - b.getHeight()/2);
 				b.sendToFront();
 				add(b);
 				return;
-				
+				// 
 			}
 
 
-		}
-	}
-
-	public void orbitScore()
-	{
-		for (int i = 0; i < pointsPlanets.length; i++)
-		{
-			GravityObject obj = gravityObjects[pointsPlanets[i]];
-			double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
-			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
-			if (x + y <= obj.getMass() * 2)
-			{
-				score.increaseScore(1);
-			}
 		}
 	}
 
@@ -177,14 +175,7 @@ public class SpaceGame extends GraphicsProgram
 	public void addGravityObject(String image,
 			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
 	{
-		gravityObjects[gravityIndex] = new GravityObject(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse, this);
-		gravityIndex++;
-	}
-
-	public void addPointsPlanet(String image,
-			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
-	{
-		gravityObjects[gravityIndex] = new PointsPlanet(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse, this);
+		gravityObjects[gravityIndex] = new GravityObject(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse);
 		gravityIndex++;
 	}
 
@@ -209,7 +200,8 @@ public class SpaceGame extends GraphicsProgram
 		}
 		else if (k.getKeyChar() == ' ')
 		{
-			add(new Laser(player));
+			player.shoot(this);
+			player.decreaseSpeed();
 		}
 	}
 
@@ -225,11 +217,6 @@ public class SpaceGame extends GraphicsProgram
 		}
 	}
 
-	public int[] getPointsPlanets()
-	{
-		return pointsPlanets;
-	}
-	
 	// Getters and Setters for Universe coordinates
 	public double getXUniverse() 
 	{
