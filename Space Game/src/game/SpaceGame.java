@@ -137,6 +137,7 @@ public class SpaceGame extends GraphicsProgram
 				b.setLocation(getWidth()/2 - b.getWidth()/2, getHeight()/2 - b.getHeight()/2);
 				b.sendToFront();
 				add(b);
+				return;
 				// 
 			}
 
