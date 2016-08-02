@@ -1,5 +1,5 @@
 package ai;
-//
+
 import acm.graphics.GPolygon;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -101,7 +101,6 @@ public class Enemy extends GPolygon
 
 	private void setAngle(double newAngle)
 	{
-		//Rotating the ememy ship to face the player's ship
 		double rotateAngle = newAngle - angle;
 		rotate(rotateAngle);
 		angle = newAngle;
