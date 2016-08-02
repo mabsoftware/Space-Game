@@ -67,7 +67,7 @@ public class Enemy extends GPolygon
 		followTarget();
 		if (distance < 300)
 		{
-			fire();
+			//fire();
 		}
 		else		
 		{
@@ -119,6 +119,7 @@ public class Enemy extends GPolygon
 		move(myVector.getXComponent(), myVector.getYComponent());
 	}
 	
+	/*
 	private void fire()
 	{
 		if (type == 0)
@@ -139,6 +140,7 @@ public class Enemy extends GPolygon
 			}
 		}
 	}
+	*/
 	
 }
 
