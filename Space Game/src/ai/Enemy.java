@@ -52,7 +52,8 @@ public class Enemy extends GPolygon
 		distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
 		if ((int) (Math.random() * 4) == 0)
 		{
-			type = 0;
+//			type = 0;
+			type = 1;
 		}
 		else
 		{
@@ -65,7 +66,7 @@ public class Enemy extends GPolygon
 	{
 		findTarget();
 		followTarget();
-		if (distance < 300)
+		if (distance < 3000)
 		{
 			fire();
 		}
