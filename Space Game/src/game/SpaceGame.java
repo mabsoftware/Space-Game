@@ -37,42 +37,24 @@ public class SpaceGame extends GraphicsProgram
 	
 	public void init()
 	{
-		/////////////////////////////////////////////////////////////////////
-		// The window and its attributes are initialized here.             //
-		/////////////////////////////////////////////////////////////////////
+		// The window and background their attributes are initialized here.
+		
 		this.setSize(320 * 3, 240 * 3);
 		this.setTitle("Space Game"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
-		gravityIndex = 0;
-		map = new Map();
 		this.setXUniverse(500);
 		this.setYUniverse(500);
-		
-		/////////////////////////////////////////////////////////////////////
-		// Loop variable and others initialized here.                      //
-		/////////////////////////////////////////////////////////////////////
-		running = true; // running boolean for the game loop.
-		/////////////////////////////////////////////////////////////////////
-		// Players, AIs, Gravity Objects, and others initialized here.     //
-		/////////////////////////////////////////////////////////////////////
-		players = new Player[1];
-		enemies = new Enemy[1];
-		players[0] = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
-		this.add(players[0]); // add the player to the window.
 		background = new Background(10000, 10000, 10000);
 		for (Star star: background.getBackground())
 		{
 			this.add(star);
 		}
 		
+		// Planets and black holes initialized here
 		gravityObjects = new GravityObject[100];
 		gravityIndex = 0;
 		map = new Map();
 		map.setMap(this);
-		
-		enemies[0] = new Enemy(this.getWidth() / 3, this.getHeight() / 3, players);
-		this.add(enemies[0]);
-		
 		for (GravityObject g: gravityObjects)
 		{
 			if (g != null)
@@ -80,43 +62,32 @@ public class SpaceGame extends GraphicsProgram
 				this.add(g);
 			}
 		}
-		/////////////////////////////////////////////////////////////////////
-		// User input and output is initialized here.                      //
-		/////////////////////////////////////////////////////////////////////
-		this.addKeyListeners(); // add some key listeners.
 		
-		//stuff
+		// Variables and objects are initialized here.		
+		gravityIndex = 0;
+		running = true; // running boolean for the game loop.
+		players = new Player[1];
+		players[0] = new Player("assets/images/player.png", this.getWidth() / 2, this.getHeight() / 2, 0, 0);
+		this.add(players[0]); // add the player to the window.
+		enemies = new Enemy[1];
+		enemies[0] = new Enemy(this.getWidth() / 3, this.getHeight() / 3, 0, 0, players);
+		this.add(enemies[0]);
+		
+		// User input and output is initialized here.
+		this.addKeyListeners();
 	}
 	
 	public void run()
 	{
-		//////////////////////////////////////////////////////////////////////
-		// Game loop is here.                                               //
-		//////////////////////////////////////////////////////////////////////
+		// Game loop
 		while (running)
 		{
 			this.draw();
-			////////////////////////////////////////////////
-			// Monitor all objects here.                  //
-			////////////////////////////////////////////////
+			
+			// Monitor and move all objects here.
 			players[0].monitor();
 			players[0].move(this);
 			players[0].adjustForGravity(gravityObjects);
-			
-			//GravityObject.handleGravityObjectInteractions(gravityObjects);
-			
-			//this.add(new BlackBackground(this.getWidth(), this.getHeight()));
-		
-			//background = new Background(120, this.getWidth(), this.getHeight());
-			
-			for (Star star: background.getBackground())
-			{
-				star.move(-players[0].getVector().getXComponent(), -players[0].getVector().getYComponent());
-				
-			} // now you can see yourself moving against a star background.
-			
-		
-			
 			for (GravityObject g: gravityObjects)
 			{
 				if (g != null)
@@ -125,17 +96,25 @@ public class SpaceGame extends GraphicsProgram
 				}
 			}
 			
-			///////////////////////
-			// Clock tick here. ///
-			///////////////////////
+			//GravityObject.handleGravityObjectInteractions(gravityObjects);
+			
+			//this.add(new BlackBackground(this.getWidth(), this.getHeight()));
+		
+			//background = new Background(120, this.getWidth(), this.getHeight());
+			
+			for (Star star: background.getBackground()) // Move the star background.
+			{
+				star.move(-players[0].getVector().getXComponent(), -players[0].getVector().getYComponent());
+				
+			}
+				
+			// Clock tick
 			pause(100);
-		} // game loop.
+		}
 	}
 	
-	//////////////////////////////////////////////
-	// Decides whether to "draw" each element   //
-	//////////////////////////////////////////////
-	public void draw()
+	
+	public void draw() // Redraw elements if necessary
 	{
 		for (GravityObject obj : gravityObjects)
 		{
@@ -152,9 +131,7 @@ public class SpaceGame extends GraphicsProgram
 		gravityIndex++;
 	}
 	
-	//////////////////////////////////////////////
-	// All user input is handled here.          //
-	//////////////////////////////////////////////
+	// All user input is handled here.
 	public void keyPressed(KeyEvent k)
 	{
 		if (k.getKeyChar() == 'a')
@@ -186,7 +163,6 @@ public class SpaceGame extends GraphicsProgram
 			players[0].stopMovingRight();
 		}
 	}
-	///////////////////////////////////////////////
 
 	public double getXUniverse() 
 	{
