@@ -16,6 +16,7 @@ public class Player extends GImage
 	private boolean left;
 	private boolean right;
 	private Projectile[] myProjectiles;
+	public int missileIndex;
 
 	private double angle;
 	private double xUniverse;
@@ -29,6 +30,8 @@ public class Player extends GImage
 
 		myVector = new Vector(xVel, yVel); // set initial player vector.
 
+		missileIndex = 0;
+		
 		left = false;
 		right = false;
 	}
@@ -62,6 +65,12 @@ public class Player extends GImage
 	{
 		right = false;
 	}
+	
+	public void shoot()
+	{
+		myProjectiles[missileIndex] = new Projectile(this);
+		missileIndex++;
+	}
 
 	public void monitor()
 	{
@@ -84,6 +93,11 @@ public class Player extends GImage
 		s.setYUniverse(s.getYUniverse() + myVector.getYComponent());
 		setXUniverse(getXUniverse() + myVector.getXComponent());
 		setYUniverse(getYUniverse() + myVector.getYComponent());
+		
+		for (Projectile p : myProjectiles)
+		{
+			p.move(p.getVector().getXComponent(), p.getVector().getYComponent());
+		}
 	}
 
 	public void increaseSpeed()
