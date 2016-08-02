@@ -118,6 +118,7 @@ public class SpaceGame extends GraphicsProgram
 			pause(100);
 		}
 		score.gameOverMessage();
+		score.sendToFront();
 	}
 
 
