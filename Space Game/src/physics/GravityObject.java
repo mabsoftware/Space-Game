@@ -20,7 +20,7 @@ public class GravityObject extends GImage
 
 		myVector = new Vector(xVel, yVel); // set GravityObject's vector.
 
-		myMass = radius * radius; // Mass is proportional to area
+		myMass = Math.pow(radius, 2); // Mass is proportional to area
 
 		this.setSize(radius * 2, radius * 2);
 
@@ -35,7 +35,7 @@ public class GravityObject extends GImage
 	public double getGravityScalar(Player p) // Force of gravity
 	{
 		double d = Math.sqrt(Math.pow((this.getX() - p.getX()), 2) + Math.pow((this.getY() - p.getY()), 2));
-		return (myMultiplier * this.getMass() / Math.pow(d, 2) / 24);
+		return (myMultiplier * this.getMass() / Math.pow(d, 2) / 12);
 	}
 
 	public Vector getVector()
