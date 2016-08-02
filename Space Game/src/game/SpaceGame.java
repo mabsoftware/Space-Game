@@ -53,7 +53,8 @@ public class SpaceGame extends GraphicsProgram
 		{
 			this.add(star);
 		}
-		score = new Score(10, 10, this);
+		score = new Score(10, 40, this);
+		add(score);
 		
 		//////////////////////////////////////////////////////////
 		// Just initializing otherPlayers to test.               //
