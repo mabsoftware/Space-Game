@@ -193,8 +193,7 @@ public class SpaceGame extends GraphicsProgram
 		}
 		else if (k.getKeyChar() == ' ')
 		{
-			player.laser(this);
-			player.decreaseSpeed();
+			add(new Laser(player));
 		}
 	}
 
