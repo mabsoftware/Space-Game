@@ -106,13 +106,13 @@ public class Player extends GPolygon
 	{
 		if (left)
 		{
-			this.rotate(5);
-			angle -= 5;
+			this.rotate(2);
+			angle -= 2;
 		}
 		else if (right)
 		{
-			this.rotate(-5);
-			angle += 5;
+			this.rotate(-2);
+			angle += 2;
 		}
 	} // monitor user - I know the angles look backwards, but the rotate function is different.
 

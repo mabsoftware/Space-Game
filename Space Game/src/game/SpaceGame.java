@@ -115,7 +115,7 @@ public class SpaceGame extends GraphicsProgram
 			enemies[0].action();
 
 			// Clock tick
-			pause(100);
+			pause(15);
 		}
 		score.gameOverMessage();
 		score.sendToFront();
