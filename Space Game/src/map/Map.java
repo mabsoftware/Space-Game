@@ -51,7 +51,7 @@ public class Map
 			}
 			else if (x == 3)
 			{
-				s = "assets/images.gem.png"
+				s = "assets/images/gem.png"
 				game.addPointsPlanet(s, map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5]);
 			}
 		}
