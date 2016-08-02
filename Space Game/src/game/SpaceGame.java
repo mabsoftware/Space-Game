@@ -1,4 +1,4 @@
-
+////
 /* Space Game in Java
  * Started 7/30/16.
  * Main method and main class
@@ -129,7 +129,7 @@ public class SpaceGame extends GraphicsProgram
 		}
 	}
 	
-	public void addGravityObject(String image, double startX, double startY, 
+	public void addGravityObject(String image,
 			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
 	{
 		gravityObjects[gravityIndex] = new GravityObject(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse);
@@ -154,6 +154,10 @@ public class SpaceGame extends GraphicsProgram
 		else if (k.getKeyChar() == 's')
 		{
 			players[0].decreaseSpeed();
+		}
+		else if (k.getKeyChar() == ' ')
+		{
+			players[0].shoot();
 		}
 	}
 	
