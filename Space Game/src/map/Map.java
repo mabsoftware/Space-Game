@@ -1,6 +1,6 @@
 package map;
 import game.SpaceGame;
-
+//
 public class Map
 {
 	
