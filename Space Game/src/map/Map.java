@@ -32,12 +32,11 @@ public class Map
 	{	
 		for (int i = 0; i < this.map1.length; i++)
 		{
-			int x = (int)(Math.random() * 4);
+			int x = (int) (Math.random() * 3);
 			String s = "assets/images/LargePlanet.png";
 			if (x == 0) s = "assets/images/LargePlanet.png";
 			else if (x == 1) s = "assets/images/mars.png";
 			else if (x == 2) s = "assets/images/uranus.png";
-			else if (x == 3) s = "assets /images/saturn.png";
 			game.addGravityObject(s, map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5]);
 		}
 		
