@@ -30,11 +30,12 @@ public class Player extends GPolygon
 		setYUniverse(startY + 500);
 		//
 		// Draw the polygon here.
-		this.addPolarEdge(50, 0);
-		this.addPolarEdge(10, 60);
+		this.addPolarEdge(-20, 0);
+		this.addPolarEdge(5, 60);
 		this.addPolarEdge(10, 150);
 		this.addPolarEdge(10, 210);
-		this.addPolarEdge(10, 300);
+		this.addPolarEdge(5, 300);
+		this.addPolarEdge(0, 0);
 		
 		// Done drawing the polygon.
 		
