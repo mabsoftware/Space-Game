@@ -19,7 +19,7 @@ public class Enemy extends GPolygon
 	private Projectile missile;
 	private Laser laser;
 
-	public Enemy(double startX, double startY, double xVel, double yVel, Player[] players)
+	public Enemy(double startX, double startY, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers)
 	{
 		super(startX, startY);
 
@@ -33,7 +33,12 @@ public class Enemy extends GPolygon
 		myVector = new Vector(xVel, yVel);
 
 		angle = 0;
-		myPlayers = players;
+		myPlayers = new Player[otherPlayers.length + 1];
+		for (int i = 0; i < otherPlayers.length; i++)
+		{
+			myPlayers[i] = otherPlayers[i];
+		}
+		myPlayers[otherPlayers.length] = thisPlayer;
 		target = myPlayers[0];
 		distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
 		if ((int) (Math.random() * 4) == 0)
