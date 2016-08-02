@@ -20,9 +20,9 @@ public class Score extends GLabel
 		myGame = game;
 	}
 
-	public void increaseScore() // Increase the score by one point
+	public void increaseScore(int value) // Increase the score by one point
 	{
-		points++;
+		points += value;
 		super.setLabel("Score: " + points);
 	}
 
