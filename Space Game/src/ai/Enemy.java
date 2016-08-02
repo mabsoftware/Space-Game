@@ -23,6 +23,7 @@ public class Enemy extends GPolygon
 //	private Laser laser;
 //	private int laserExists;
 	private double health;
+	private int value;
 
 	public Enemy(double startX, double startY, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers)
 	{
@@ -34,13 +35,11 @@ public class Enemy extends GPolygon
 		this.setFillColor(Color.YELLOW);
 		this.setColor(Color.YELLOW);
 		this.setFilled(true);
-		
 		myPlayers = new ArrayList<Player>();
-
 		myVector = new Vector(xVel, yVel);
-
 		angle = 0;
-		//
+		value = (int) (Math.random() * 51) + 75;
+		
 		for (int i = 0; i < otherPlayers.length; i++)
 		{
 			if (otherPlayers[i] != null)
