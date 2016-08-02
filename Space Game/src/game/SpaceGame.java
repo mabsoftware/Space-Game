@@ -153,15 +153,12 @@ public class SpaceGame extends GraphicsProgram
 		}
 		else if (k.getKeyChar() == 's')
 		{
-<<<<<<< HEAD
 			player.decreaseSpeed();
 		}
 		else if (k.getKeyChar() == ' ')
 		{
 			player.shoot();
-=======
-			players[0].decreaseSpeed();
->>>>>>> branch 'master' of https://github.com/mabsoftware/Space-Game
+			player.decreaseSpeed();
 		}
 	}
 	
