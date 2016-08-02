@@ -2,7 +2,6 @@
  * Last edited 8 / 01 / 16.
  * Extremely Important Class.
  */
-
 package player;
 
 import acm.graphics.*;
@@ -135,8 +134,11 @@ public class Player extends GPolygon
 
 	public void increaseSpeed()
 	{
-		myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
-		myVector.setYComponent(myVector.getYComponent() - Math.cos(Math.toRadians(angle)));	
+		if (myVector.getXComponent() < 15 && myVector.getYComponent() < 15)
+		{
+			myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
+			myVector.setYComponent(myVector.getYComponent() - Math.cos(Math.toRadians(angle)));
+		} // Player Speed Control.
 	}
 
 	public void decreaseSpeed()
