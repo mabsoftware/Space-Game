@@ -21,6 +21,7 @@ public class Enemy extends GPolygon
 	private Vector myVector;
 	private Projectile missile;
 	private Laser laser;
+	private int laserExists;
 
 	public Enemy(double startX, double startY, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers)
 	{
@@ -54,6 +55,7 @@ public class Enemy extends GPolygon
 		{
 			type = 1;
 		}
+		laserExists = 0;
 	}
 
 	public void action()
@@ -122,7 +124,16 @@ public class Enemy extends GPolygon
 		}
 		else
 		{
-//			laser = new Laser();
+			if (laserExists == 0)
+			{
+				laser = new Laser(getX(), getY(), angle);
+				laserExists = 4;
+			}
+			else
+			{
+				laser.moveLaser();
+				laserExists--;
+			}
 		}
 	}
 	
