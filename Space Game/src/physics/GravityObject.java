@@ -12,9 +12,9 @@ public class GravityObject extends GImage
 	private double xUniverse; // Coordinates in entire map
 	private double yUniverse;
 
-	public GravityObject(String image, double startX, double startY, double radius, double xVel, double yVel, double multiplier, double xu, double yu)
+	public GravityObject(String image, double radius, double xVel, double yVel, double multiplier, double xu, double yu)
 	{
-		super(image, startX, startY);
+		super(image, xu-1000, xu-1000);
 		setXUniverse(xu);
 		setYUniverse(yu);
 
