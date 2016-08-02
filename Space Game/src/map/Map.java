@@ -11,7 +11,7 @@ public class Map
 		map1 = new double[100][6];
 		this.setRow(0, 100, 0, 0, 2, 600, 600);
 		//this.setRow(1, 50, 0, 0, 2, 1000, 1);
-	}
+	} //
 	
 	private void setRow(int row, double radius, double xVel, double yVel, double multiplier, double universeX, double universeY)
 	{
