@@ -38,7 +38,7 @@ public class Score extends GLabel
 		
 		setColor(Color.CYAN);
 		super.setLabel("Game Over... Score: " + points);
-		setLocation(myGame.getWidth() / 2 - getWidth() / 2, myGame.getHeight() / 2);
+		setLocation(myGame.getWidth() / 2 - getWidth() / 2, myGame.getHeight() / 4);
 	}
 
 }
