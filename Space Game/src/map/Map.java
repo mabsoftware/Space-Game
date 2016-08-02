@@ -9,7 +9,7 @@ public class Map
 	public Map()
 	{
 		map1 = new double[100][6];
-		//this.setRow(0, 100, 5, 5, 2, 600, 600);
+		//this.setRow(0, 100, 5, 5, 2, 600, 600);//
 		for (int i = 0; i < map1.length; i++)
 		{
 			this.setRow(i, Math.random() * 200, Math.random() * 5, Math.random() * 5, Math.random() * 2 + 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
