@@ -1,27 +1,32 @@
+/* Add Documentation Here.
+ *
+ * 
+ * 
+ */
+
 package physics;
 
+import player.Projectile;
 import acm.graphics.GImage;
-import game.SpaceGame;
 import physics.Vector;
 import player.Player;
 
 public class GravityObject extends GImage
 {
 	private Vector myVector; // gravity objects move too.
-	private double myMass; //Mass of the plants that will be in the game
+	private double myMass;
 	private double myMultiplier; // Multiplier on strength of gravitational force. Black holes have a multiplier of 100.
 	private double xUniverse; // Coordinates in entire map
 	private double yUniverse;
-	protected SpaceGame myGame;
 
-	public GravityObject(String image, double radius, double xVel, double yVel, double multiplier, double xu, double yu, SpaceGame game)
+	public GravityObject(String image, double radius, double xVel, double yVel, double multiplier, double xu, double yu)
 	{
 		super(image, xu - 500, xu - 500);
 		setXUniverse(xu);
 		setYUniverse(yu);
 
 		myVector = new Vector(xVel, yVel); // set GravityObject's vector.
-		myGame = game;
+
 		myMass = Math.pow(radius, 2); // Mass is proportional to area
 
 		this.setSize(radius * 2, radius * 2);
@@ -35,6 +40,12 @@ public class GravityObject extends GImage
 	}
 
 	public double getGravityScalar(Player p) // Force of gravity
+	{
+		double d = Math.sqrt(Math.pow((this.getX() - p.getX()), 2) + Math.pow((this.getY() - p.getY()), 2));
+		return (myMultiplier * this.getMass() / Math.pow(d, 2) / 12);
+	}
+	
+	public double getGravityScalar(Projectile p) // Force of gravity
 	{
 		double d = Math.sqrt(Math.pow((this.getX() - p.getX()), 2) + Math.pow((this.getY() - p.getY()), 2));
 		return (myMultiplier * this.getMass() / Math.pow(d, 2) / 12);
@@ -74,6 +85,11 @@ public class GravityObject extends GImage
 	} // to monitor gravity objects.
 
 	public double getDistance(Player p) // The distance from a player 
+	{
+		return Math.sqrt(Math.pow(p.getX() - this.getX(), 2) + Math.pow(p.getY() - this.getY(), 2));
+	}
+	
+	public double getDistance(Projectile p) // The distance from a player 
 	{
 		return Math.sqrt(Math.pow(p.getX() - this.getX(), 2) + Math.pow(p.getY() - this.getY(), 2));
 	}
