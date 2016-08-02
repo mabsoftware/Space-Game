@@ -33,16 +33,16 @@ public class SpaceGame extends GraphicsProgram
 	private Enemy[] enemies;
 	private Laser laser;
 	private Score score;
-	
+
 	public static void main(String args[])
 	{
 		new SpaceGame().start(); // run the application.
 	}
-	
+
 	public void init()
 	{
 		// The window and background their attributes are initialized here.
-		
+
 		this.setSize(320 * 3, 240 * 3);
 		this.setTitle("Space Game"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
@@ -55,12 +55,12 @@ public class SpaceGame extends GraphicsProgram
 		}
 		score = new Score(10, 40, this);
 		add(score);
-		
+
 		//////////////////////////////////////////////////////////
 		// Just initializing otherPlayers to test.               //
 		//////////////////////////////////////////////////////////
 		otherPlayers = new Player[5];
-		
+
 		// Planets and black holes initialized here
 		gravityObjects = new GravityObject[100];
 		gravityIndex = 0;
@@ -73,7 +73,7 @@ public class SpaceGame extends GraphicsProgram
 				this.add(g);
 			}
 		}
-		
+
 		// Variables and objects are initialized here.		
 		gravityIndex = 0;
 		running = true; // running boolean for the game loop.
@@ -85,14 +85,14 @@ public class SpaceGame extends GraphicsProgram
 		// User input and output is initialized here.
 		this.addKeyListeners();
 	}
-	
+
 	public void run()
 	{
 		// Game loop
 		while (running)
 		{
 			this.draw();
-			
+
 			// Monitor and move all objects here.
 			player.monitor();
 			player.move(this);
@@ -105,26 +105,22 @@ public class SpaceGame extends GraphicsProgram
 				}
 			}
 			this.handleCollisions();
-			
+
 			//GravityObject.handleGravityObjectInteractions(gravityObjects);
-			
+
 			for (Star star: background.getBackground()) // Move the star background.
 			{
 				star.move(-player.getVector().getXComponent() / 4, -player.getVector().getYComponent() / 4);
 			}
 			enemies[0].action();
-				
+
 			// Clock tick
 			pause(100);
 		}
-		GLabel gameOver = new GLabel("Game Over. You blew up.", getWidth() / 2, getHeight() / 2);
-		gameOver.setFont("fantasy-bold-48");
-		gameOver.setLocation(this.getWidth() / 2 - gameOver.getWidth() / 2, getHeight() / 2);
-		gameOver.setColor(Color.CYAN);
-		add(gameOver);
+		score.gameOverMessage();
 	}
-	
-	
+
+
 	// Handle collisions
 	public void handleCollisions()
 	{
@@ -137,10 +133,10 @@ public class SpaceGame extends GraphicsProgram
 				running = false;
 			}
 
-			
+
 		}
 	}
-	
+
 	// Sets screen coordinates of all objects based on Universe coordinates
 	public void draw() 
 	{
@@ -150,14 +146,14 @@ public class SpaceGame extends GraphicsProgram
 				obj.setLocation(obj.getXUniverse() - this.getXUniverse(), obj.getYUniverse() - this.getYUniverse());	
 		}
 	}
-	
+
 	public void addGravityObject(String image,
 			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
 	{
 		gravityObjects[gravityIndex] = new GravityObject(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse);
 		gravityIndex++;
 	}
-	
+
 	// All user input is handled here.
 	public void keyPressed(KeyEvent k)
 	{
@@ -183,7 +179,7 @@ public class SpaceGame extends GraphicsProgram
 			player.decreaseSpeed();
 		}
 	}
-	
+
 	public void keyReleased(KeyEvent k)
 	{
 		if (k.getKeyChar() == 'a')
