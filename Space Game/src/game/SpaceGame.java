@@ -42,8 +42,8 @@ public class SpaceGame extends GraphicsProgram
 		this.setSize(320 * 3, 240 * 3);
 		this.setTitle("Space Game"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
-		this.setXUniverse(500);
-		this.setYUniverse(500);
+		this.setXUniverse(1000);
+		this.setYUniverse(1000);
 		background = new Background(10000, 10000, 10000);
 		for (Star star: background.getBackground())
 		{
@@ -108,16 +108,16 @@ public class SpaceGame extends GraphicsProgram
 		}
 	}
 	
-	/*
+	
 	// Handle collisions
 	public void handleCollisions()
 	{
 		for (GravityObject obj : gravityObjects)
 		{
-			
+			players[0].getXUniverse();
 		}
 	}
-	*/
+	
 	
 	// Sets screen coordinates of all objects based on Universe coordinates
 	public void draw() 
