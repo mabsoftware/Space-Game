@@ -18,6 +18,7 @@ import background.Background;
 import background.Star;
 import map.Map;
 import physics.GravityObject;
+import physics.PointsPlanet;
 
 public class SpaceGame extends GraphicsProgram 
 {
@@ -164,6 +165,13 @@ public class SpaceGame extends GraphicsProgram
 		gravityIndex++;
 	}
 
+	public void addPointsPlanet(String image,
+			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
+	{
+		gravityObjects[gravityIndex] = new PointsPlanet(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse);
+		gravityIndex++;
+	}
+	
 	// All user input is handled here.
 	public void keyPressed(KeyEvent k)
 	{
