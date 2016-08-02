@@ -129,7 +129,7 @@ public class SpaceGame extends GraphicsProgram
 					p.adjustForGravity(gravityObjects);
 					p.move();
 				}
-			}
+			} // Handle Projectiles.
 
 			// Clock tick
 			pause(15);
