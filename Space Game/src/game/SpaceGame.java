@@ -1,4 +1,4 @@
-////
+
 /* Space Game in Java
  * Started 7/30/16.
  * Main method and main class
@@ -154,10 +154,6 @@ public class SpaceGame extends GraphicsProgram
 		else if (k.getKeyChar() == 's')
 		{
 			players[0].decreaseSpeed();
-		}
-		else if (k.getKeyChar() == ' ')
-		{
-			players[0].shoot();
 		}
 	}
 	
