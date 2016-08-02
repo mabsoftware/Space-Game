@@ -32,6 +32,7 @@ public class SpaceGame extends GraphicsProgram
 	private double yUniverse;
 	private Enemy[] enemies;
 	private Laser laser;
+	private Score score;
 	
 	public static void main(String args[])
 	{
@@ -52,6 +53,7 @@ public class SpaceGame extends GraphicsProgram
 		{
 			this.add(star);
 		}
+		score = new Score(10, 10, this);
 		
 		//////////////////////////////////////////////////////////
 		// Just initializing otherPlayers to test.               //
