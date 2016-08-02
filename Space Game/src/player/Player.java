@@ -40,6 +40,8 @@ public class Player extends GPolygon
 		
 		// Done drawing the polygon.
 		
+		myProjectiles = new Projectile[100];
+		
 		this.setColor(Color.RED);
 		this.setFillColor(Color.RED);
 		this.setFilled(true);
@@ -91,7 +93,7 @@ public class Player extends GPolygon
 		right = false;
 	}
 	
-	public void shoot()
+	public void shoot(SpaceGame game)
 	{
 		myProjectiles[missileIndex] = new Projectile(this);
 		missileIndex++;
@@ -115,6 +117,11 @@ public class Player extends GPolygon
 		}
 	} // monitor user - I know the angles look backwards, but the rotate function is different.
 
+	public Projectile[] getProjectiles()
+	{
+		return myProjectiles;
+	}
+	
 	public void move(SpaceGame s)
 	{ 
 		//super.move(myVector.getXComponent(), myVector.getYComponent());
