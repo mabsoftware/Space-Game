@@ -18,6 +18,7 @@ public class Score extends GLabel
 		super.setFont(score);
 		points = 0;
 		myGame = game;
+		sendToFront();
 	}
 
 	public void increaseScore(int value) // Increase the score by one point
