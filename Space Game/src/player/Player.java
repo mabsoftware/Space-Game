@@ -63,6 +63,11 @@ public class Player extends GPolygon
 	{
 		this.rotate(degrees);
 	}
+	
+	public double getAngle()
+	{
+		return angle;
+	}
 
 	public void goLeft()
 	{
@@ -90,6 +95,10 @@ public class Player extends GPolygon
 		missileIndex++;
 	}
 
+	public void laser(SpaceGame game)
+	{
+		game.add(new Laser(this));
+	}
 	public void monitor()
 	{
 		if (left)
