@@ -46,6 +46,7 @@ public class SpaceGame extends GraphicsProgram
 		this.setSize(320 * 3, 240 * 3);
 		this.setTitle("Space Game"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
+		//setting the size of the universe/map
 		this.setXUniverse(500);
 		this.setYUniverse(500);
 		background = new Background(10000, 10000, 10000);
