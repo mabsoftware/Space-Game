@@ -8,6 +8,7 @@ import acm.graphics.*;
 import physics.Vector;
 import physics.GravityObject;
 import game.SpaceGame;
+import java.awt.Color;
 
 public class Player extends GPolygon
 {
@@ -37,6 +38,9 @@ public class Player extends GPolygon
 		
 		// Done drawing the polygon.
 		
+		this.setColor(Color.RED);
+		this.setFillColor(Color.RED);
+		this.setFilled(true);
 		this.setVisible(true);
 		
 		myProjectiles = new Projectile[100]; // list
@@ -89,12 +93,12 @@ public class Player extends GPolygon
 	{
 		if (left)
 		{
-			this.movePolar(0, 5);
+			this.rotate(5);
 			angle -= 5;
 		}
 		else if (right)
 		{
-			this.movePolar(0, -5);
+			this.rotate(-5);
 			angle += 5;
 		}
 	} // monitor user - I know the angles look backwards, but the rotate function is different.
