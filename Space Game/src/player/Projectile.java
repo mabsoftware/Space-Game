@@ -6,15 +6,15 @@ import physics.Vector;
 
 public class Projectile extends GImage
 {
-	private final double missleSpeed = 5;
+	private final double MISSILESPEED = 5;
 	private Vector myVector;
 
-	public Projectile(Image image, double startX, double startY, Player p)
+	public Projectile(Player p)
 	{
-		super(image, startX, startY); // create a GImage.
+		super("assets/images/missile.png", p.getX() / 2, p.getY()); // create a GImage.
 
-		myVector = p.getVector();
-		myVector.multiplyByScalar(missleSpeed); // player's vector + missle's speed ( a scalar ).
+		myVector = new Vector(p.getVector().getXComponent(), p.getVector().getYComponent());
+		myVector.multiplyByScalar(MISSILESPEED); // player's vector + missle's speed ( a scalar ).
 	}
 
 	public Vector getVector()
