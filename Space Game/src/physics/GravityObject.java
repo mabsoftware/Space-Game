@@ -7,7 +7,7 @@ import player.Player;
 public class GravityObject extends GImage
 {
 	private Vector myVector; // gravity objects move too.
-	private double myMass;
+	private double myMass; //Mass of the plants that will be in the game
 	private double myMultiplier; // Multiplier on strength of gravitational force. Black holes have a multiplier of 100.
 	private double xUniverse; // Coordinates in entire map
 	private double yUniverse;
