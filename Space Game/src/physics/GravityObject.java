@@ -1,6 +1,7 @@
 package physics;
-//
+
 import acm.graphics.GImage;
+import game.SpaceGame;
 import physics.Vector;
 import player.Player;
 
@@ -11,15 +12,16 @@ public class GravityObject extends GImage
 	private double myMultiplier; // Multiplier on strength of gravitational force. Black holes have a multiplier of 100.
 	private double xUniverse; // Coordinates in entire map
 	private double yUniverse;
+	protected SpaceGame myGame;
 
-	public GravityObject(String image, double radius, double xVel, double yVel, double multiplier, double xu, double yu)
+	public GravityObject(String image, double radius, double xVel, double yVel, double multiplier, double xu, double yu, SpaceGame game)
 	{
 		super(image, xu - 500, xu - 500);
 		setXUniverse(xu);
 		setYUniverse(yu);
 
 		myVector = new Vector(xVel, yVel); // set GravityObject's vector.
-
+		myGame = game;
 		myMass = Math.pow(radius, 2); // Mass is proportional to area
 
 		this.setSize(radius * 2, radius * 2);

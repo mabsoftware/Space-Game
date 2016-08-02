@@ -35,6 +35,7 @@ public class SpaceGame extends GraphicsProgram
 	private Enemy[] enemies;
 	private Laser laser;
 	private Score score;
+	private int[] pointsPlanets;
 
 	public static void main(String args[])
 	{
@@ -108,6 +109,7 @@ public class SpaceGame extends GraphicsProgram
 				}
 			}
 			this.handleCollisions();
+			orbitScore();
 
 			//GravityObject.handleGravityObjectInteractions(gravityObjects);
 
@@ -130,21 +132,35 @@ public class SpaceGame extends GraphicsProgram
 	{
 		for (GravityObject obj : gravityObjects)
 		{
-			double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth()/2)), 2);
-			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight()/2)), 2);
+			double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
+			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
 			if (x + y <= obj.getMass())
 			{
 				running = false;
 				GImage b = new GImage("assets/images/explosion.png", 0, 0);
-				b.setSize(player.getWidth()*2, player.getHeight()*2);
-				b.setLocation(getWidth()/2 - b.getWidth()/2, getHeight()/2 - b.getHeight()/2);
+				b.setSize(player.getWidth() * 2, player.getHeight() * 2);
+				b.setLocation(getWidth() / 2 - b.getWidth() / 2, getHeight() / 2 - b.getHeight() / 2);
 				b.sendToFront();
 				add(b);
 				return;
-				// 
+				
 			}
 
 
+		}
+	}
+
+	public void orbitScore()
+	{
+		for (int i = 0; i < pointsPlanets.length; i++)
+		{
+
+			double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
+			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
+			if (x + y <= obj.getMass())
+			{
+				score.increaseScore(1);
+			}
 		}
 	}
 
@@ -171,7 +187,7 @@ public class SpaceGame extends GraphicsProgram
 		gravityObjects[gravityIndex] = new PointsPlanet(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse);
 		gravityIndex++;
 	}
-	
+
 	// All user input is handled here.
 	public void keyPressed(KeyEvent k)
 	{
@@ -209,6 +225,11 @@ public class SpaceGame extends GraphicsProgram
 		}
 	}
 
+	public int[] getPointsPlanets()
+	{
+		return pointsPlanets;
+	}
+	
 	// Getters and Setters for Universe coordinates
 	public double getXUniverse() 
 	{
