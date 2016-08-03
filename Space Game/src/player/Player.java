@@ -26,11 +26,11 @@ public class Player extends GPolygon
 	private double xUniverse;
 	private double yUniverse;
 
-	public Player(double startX, double startY, double xVel, double yVel)
+	public Player(double startX, double startY, double xVel, double yVel, SpaceGame game)
 	{
 		super(startX, startY); // create player GImage.
-		setXUniverse(startX + 500);
-		setYUniverse(startY + 500);
+		setXUniverse(startX + game.getXUniverse());
+		setYUniverse(startY + game.getYUniverse());
 
 		// Draw the polygon here.
 		this.addVertex(0, -3);
@@ -39,6 +39,8 @@ public class Player extends GPolygon
 		this.addVertex(-1,  2);
 		this.addVertex(-2,  1);
 		this.scale(5);
+		
+		this.recenter();
 		
 		myHeight = -3 * 5;
 		
