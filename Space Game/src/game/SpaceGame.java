@@ -163,7 +163,7 @@ public class SpaceGame extends GraphicsProgram
 					b.setLocation(this.getXUniverse() + this.getWidth()/2, this.getYUniverse() + this.getHeight()/2);
 					b.sendToFront();
 					add(b);
-					return;
+					return; //game over
 				}
 			}
 		}
