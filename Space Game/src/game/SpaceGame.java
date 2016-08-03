@@ -44,7 +44,7 @@ public class SpaceGame extends GraphicsProgram
 	{
 		// The window and background their attributes are initialized here.
 
-		this.setSize(10000, 10000);
+		this.setSize(320*3, 240*3);
 		this.setTitle("Space Game"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
 		//setting the size of the universe/map
@@ -73,7 +73,7 @@ public class SpaceGame extends GraphicsProgram
 			this.add(enemies[i]);
 		}*/
 		enemies = new Enemy[1];
-		enemies[0] = new Enemy(600, 600, 0, 0, player, otherPlayers);
+		enemies[0] = new Enemy(600, 600, 0, 0, player, otherPlayers, this);
 		this.add(enemies[0]);
 
 		// Planets and black holes initialized here
