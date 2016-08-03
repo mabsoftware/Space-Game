@@ -160,10 +160,10 @@ public class SpaceGame extends GraphicsProgram
 					running = false;
 					GImage b = new GImage("assets/images/explosion.png", 0, 0);
 					b.setSize(player.getWidth() * 2, player.getHeight() * 2);
-					b.setLocation(getWidth() / 2 - b.getWidth() / 2, getHeight() / 2 - b.getHeight() / 2);
+					b.setLocation(this.getXUniverse() + this.getWidth()/2, this.getYUniverse() + this.getHeight()/2);
 					b.sendToFront();
 					add(b);
-					return;
+					return; //game over
 				}
 			}
 		}

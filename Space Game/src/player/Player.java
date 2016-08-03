@@ -100,10 +100,6 @@ public class Player extends GPolygon
 		myProjectiles.add(new Projectile(this));
 	}
 
-	public void laser(SpaceGame game)
-	{
-		game.add(new Laser(this));
-	}
 	public void monitor()
 	{
 		if (left)
