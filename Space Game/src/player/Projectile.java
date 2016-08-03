@@ -4,6 +4,7 @@
  */
 package player;
 
+import acm.graphics.GMath;
 import acm.graphics.GPolygon;
 import ai.Enemy;
 import game.Score;
@@ -37,7 +38,7 @@ public class Projectile extends GPolygon
 		this.setColor(Color.YELLOW);
 		this.setFilled(true);
 
-		myVector = new Vector(player.getHeight() * Math.cos(player.getAngle()), player.getHeight() * Math.sin(player.getAngle()));
+		myVector = new Vector(player.getHeight() * GMath.cosDegrees(player.getAngle() + 90), player.getHeight() * GMath.sinDegrees(player.getAngle() + 90));
 		myVector.multiplyByScalar(MISSILESPEED); // player's vector + missle's speed ( a scalar ).
 
 		myScore = score;
