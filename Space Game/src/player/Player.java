@@ -18,11 +18,11 @@ public class Player extends GPolygon
 
 	private boolean left;
 	private boolean right;
-	//private Projectile[] myProjectiles;
 	private List<Projectile> myProjectiles;
 	public int missileIndex;
 	private double health;
 	private double angle;
+	private double myHeight;
 	private double xUniverse;
 	private double yUniverse;
 
@@ -39,6 +39,8 @@ public class Player extends GPolygon
 		this.addVertex(-1,  2);
 		this.addVertex(-2,  1);
 		this.scale(5);
+		
+		myHeight = -3 * 5;
 		
 		// Done drawing the polygon.
 		
@@ -169,6 +171,11 @@ public class Player extends GPolygon
 				myVector.add(temp);
 			}
 		}
+	}
+	
+	public double getHeight()
+	{
+		return myHeight;
 	}
 
 	public double getXUniverse()

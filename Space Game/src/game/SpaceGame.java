@@ -10,9 +10,7 @@ import acm.graphics.*;
 import physics.PointsPlanet;
 import acm.program.GraphicsProgram;
 import ai.Enemy;
-import player.Laser;
 import player.Player;
-import player.Projectile;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.awt.Color;
@@ -34,7 +32,6 @@ public class SpaceGame extends GraphicsProgram
 	private double xUniverse;
 	private double yUniverse;
 	private Enemy[] enemies;
-	private Laser laser;
 	private Score score;
 	private ArrayList<Integer> pointsPlanets;
 
@@ -60,17 +57,24 @@ public class SpaceGame extends GraphicsProgram
 		}
 		score = new Score(10, 40, this);
 		add(score);
+		
+		// Initialize player
+		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
+		this.add(player); // add the player to the window.
 
 		//////////////////////////////////////////////////////////
 		// Just initializing otherPlayers to test.              //
 		//////////////////////////////////////////////////////////
 		otherPlayers = new Player[5];
-		enemies = new Enemy[500];
+		/*enemies = new Enemy[500];
 		for (int i = 0; i < enemies.length; i++)
 		{
-			enemies[0] = new Enemy((int) (Math.random() * 10000), (int) (Math.random() * 10000), 0, 0, player, otherPlayers);
-			this.add(enemies[0]);
-		}
+			enemies[i] = new Enemy((int) (Math.random() * 10000), (int) (Math.random() * 10000), 0, 0, player, otherPlayers);
+			this.add(enemies[i]);
+		}*/
+		enemies = new Enemy[1];
+		enemies[0] = new Enemy(600, 600, 0, 0, player, otherPlayers);
+		this.add(enemies[0]);
 
 		// Planets and black holes initialized here
 		gravityObjects = new GravityObject[500];
@@ -89,8 +93,7 @@ public class SpaceGame extends GraphicsProgram
 		// Variables and objects are initialized here.		
 		gravityIndex = 0;
 		running = true; // running boolean for the game loop.
-		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
-		this.add(player); // add the player to the window.
+		
 		// User input and output is initialized here.
 		this.addKeyListeners();
 	}
@@ -121,15 +124,15 @@ public class SpaceGame extends GraphicsProgram
 			{
 				star.move(-player.getVector().getXComponent() / 4, -player.getVector().getYComponent() / 4);
 			}
-//			enemies[0].action();
+			enemies[0].action();
 
-			for (Projectile p : player.getProjectiles())
+			for (int i = 0; i < player.getProjectiles().size(); i++)
 			{
-				if (p != null)
+				if (player.getProjectiles().get(i) != null)
 				{
-					this.add(p);
-					p.adjustForGravity(gravityObjects);
-					p.move();
+					this.add(player.getProjectiles().get(i));
+					player.getProjectiles().get(i).adjustForGravity(gravityObjects);
+					player.getProjectiles().get(i).move();
 				}
 			} // Handle Projectiles.
 
@@ -189,6 +192,11 @@ public class SpaceGame extends GraphicsProgram
 		{
 			if (obj != null)
 				obj.setLocation(obj.getXUniverse() - this.getXUniverse(), obj.getYUniverse() - this.getYUniverse());	
+		}
+		for (Enemy e : enemies)
+		{
+			if (e != null)
+				e.setLocation(e.getXUniverse() - this.getXUniverse(), e.getYUniverse() - this.getYUniverse());
 		}
 	}
 

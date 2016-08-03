@@ -19,17 +19,18 @@ public class Projectile extends GPolygon
 	{
 		super(p.getX(), p.getY()); // create a Polygon.
 		
-		this.addPolarEdge(5, 0);
-		this.addPolarEdge(3, 120);
-		this.addPolarEdge(3, 240);
+		this.addVertex(-5, 0);
+		this.addVertex(3, 3);
+		this.addVertex(-3, 3);
 		
 		this.rotate(p.getAngle());
 		
-		this.setFillColor(Color.YELLOW);
+		this.setFillColor(Color.RED);
 		this.setColor(Color.YELLOW);
 		this.setFilled(true);
 
-		myVector = new Vector(p.getVector().getXComponent(), p.getVector().getYComponent());
+		myVector = new Vector(p.getHeight() * Math.cos(p.getAngle()), p.getHeight() * Math.sin(p.getAngle()));
+		System.out.println(myVector.getXComponent() + " | " + myVector.getYComponent());
 		myVector.multiplyByScalar(MISSILESPEED); // player's vector + missle's speed ( a scalar ).
 	}
 

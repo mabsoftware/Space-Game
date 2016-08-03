@@ -27,9 +27,13 @@ public class Enemy extends GPolygon
 	private double xUniverse;
 	private double yUniverse;
 
-	public Enemy(double xUniverse, double yUniverse, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers)
+	public Enemy(double xu, double yu, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers)
 	{
-		super(xUniverse - 500, yUniverse - 500);
+		super(xu - 500, yu - 500);
+		setXUniverse(xu);
+		setYUniverse(yu);
+		
+		target = thisPlayer;
 
 		this.addEdge(0, -10);
 		this.addEdge(-8, 5);
@@ -42,16 +46,16 @@ public class Enemy extends GPolygon
 		angle = 0;
 		value = (int) (Math.random() * 51) + 75;
 		
-		for (int i = 0; i < otherPlayers.length; i++)
+		/*for (int i = 0; i < otherPlayers.length; i++)
 		{
 			if (otherPlayers[i] != null)
 			{
 				myPlayers.add(otherPlayers[i]);
 			}
-		}
-		myPlayers.add(thisPlayer);
-		//target = myPlayers.get(0);
-		//distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
+		}*/
+		myPlayers.add(0, thisPlayer);
+		target = thisPlayer;
+		distance = Math.sqrt(Math.pow(this.getXUniverse() - target.getXUniverse(), 2) + Math.pow(this.getYUniverse() - target.getYUniverse(), 2));
 //		if ((int) (Math.random() * 4) == 0)
 //		{
 //			type = 0;
@@ -67,33 +71,34 @@ public class Enemy extends GPolygon
 
 	public void action()
 	{
-		findTarget();
-		followTarget();
-		if (distance < 3000)
+		//this.findTarget();
+		this.followTarget();
+		this.move();
+		/*if (distance < 3000)
 		{
 			//fire();
 		}
 		else		
 		{
-			move();
-		}
+			this.move();
+		}*/
 	}
 
 	private void findTarget()
 	{
 		for (int i = 0; i < myPlayers.size(); i++)
 		{
-			if (Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2)) < distance)
+			if (Math.sqrt(Math.pow(this.getXUniverse() - target.getXUniverse(), 2) + Math.pow(this.getYUniverse() - target.getYUniverse(), 2)) < distance)
 			{
 				target = myPlayers.get(i);
-				distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
+				distance = Math.sqrt(Math.pow(this.getXUniverse() - target.getXUniverse(), 2) + Math.pow(this.getYUniverse() - target.getYUniverse(), 2));
 			}
 		}	
 	}
 
 	private void followTarget()
 	{
-		angle = Math.atan2(Math.abs(target.getYUniverse() - this.getY()), Math.abs(target.getXUniverse() - this.getY()));
+		double angle = Math.atan2(Math.abs(target.getYUniverse() - this.getYUniverse()), Math.abs(target.getXUniverse() - this.getYUniverse()));
 		if (angle < 0)
 		{
 			angle += 180;
@@ -120,8 +125,8 @@ public class Enemy extends GPolygon
 	{
 		myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
 		myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
-		setXUniverse(myVector.getXComponent());
-		setYUniverse(myVector.getYComponent());
+		this.setXUniverse(this.getXUniverse() + myVector.getXComponent()/2);
+		this.setYUniverse(this.getYUniverse() + myVector.getYComponent()/2);
 		
 	}
 	

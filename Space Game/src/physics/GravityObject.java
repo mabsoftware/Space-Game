@@ -30,7 +30,7 @@ public class GravityObject extends GImage
 		myVector = new Vector(xVel, yVel); // set GravityObject's vector.
 
 		myMass = Math.pow(radius, 2); // Mass is proportional to area
-		gravityMass = radius * (radius/2);
+		gravityMass = radius * (radius / 2);
 		
 		this.setSize(radius * 2, radius * 2);
 
@@ -51,13 +51,13 @@ public class GravityObject extends GImage
 	{
 		double d = Math.pow((this.getXUniverse() + this.getWidth() / 2 - p.getXUniverse()), 2) +
 				Math.pow((this.getYUniverse() + this.getHeight() / 2 - p.getYUniverse()), 2);
-		return (myMultiplier * this.gravityMass() / d) / 2;
+		return (myMultiplier * this.gravityMass() / d) / 12;
 	}
 	
 	public double getGravityScalar(Projectile p) // Force of gravity
 	{
 		double d = Math.sqrt(Math.pow((this.getXUniverse() + this.getWidth() / 2 - p.getX()), 2) + Math.pow((this.getYUniverse() + this.getHeight() / 2 - p.getY()), 2));
-		return (myMultiplier * this.getMass() / Math.pow(d, 2)) / 2;
+		return (myMultiplier * this.getMass() / Math.pow(d, 2)) / 12;
 	}
 
 	public Vector getVector()
@@ -118,5 +118,4 @@ public class GravityObject extends GImage
 	public void setXUniverse(double xUniverse) {
 		this.xUniverse = xUniverse;
 	}
-
 }
