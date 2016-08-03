@@ -60,6 +60,10 @@ public class SpaceGame extends GraphicsProgram
 		}
 		score = new Score(10, 40, this);
 		add(score);
+		
+		// Initialize player
+		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
+		this.add(player); // add the player to the window.
 
 		//////////////////////////////////////////////////////////
 		// Just initializing otherPlayers to test.              //
@@ -92,8 +96,7 @@ public class SpaceGame extends GraphicsProgram
 		// Variables and objects are initialized here.		
 		gravityIndex = 0;
 		running = true; // running boolean for the game loop.
-		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
-		this.add(player); // add the player to the window.
+		
 		// User input and output is initialized here.
 		this.addKeyListeners();
 	}
