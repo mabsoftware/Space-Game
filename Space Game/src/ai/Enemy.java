@@ -122,6 +122,7 @@ public class Enemy extends GPolygon
 		myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
 		setXUniverse(myVector.getXComponent());
 		setYUniverse(myVector.getYComponent());
+		//
 	}
 	
 	/*
