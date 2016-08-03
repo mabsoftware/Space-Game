@@ -71,7 +71,7 @@ public class Projectile extends GPolygon
 		{
 			myPlayer.reduceHealth(myDamage);
 		}
-		
+		/*
 		for (int i = 0; i < myEnemies.length; i++)
 		{
 			if (myEnemies[i].contains(getLocation()))
@@ -79,6 +79,6 @@ public class Projectile extends GPolygon
 				myEnemies[i].reduceHealth(myDamage, score);
 			}
 		}
-		
+		*/
 	}
 }
