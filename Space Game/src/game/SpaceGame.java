@@ -14,8 +14,7 @@ import player.Player;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.awt.Color;
-import background.Background;
-import background.Star;
+import background.*;
 import map.Map;
 import physics.GravityObject;
 
@@ -135,7 +134,7 @@ public class SpaceGame extends GraphicsProgram
 					player.getProjectiles().get(i).adjustForGravity(gravityObjects);
 					player.getProjectiles().get(i).move();
 				}
-			} // Handle Projectiles.
+			} // Handle Projectiles
 			this.handleCollisions();
 
 			// Clock tick
@@ -155,7 +154,6 @@ public class SpaceGame extends GraphicsProgram
 			{
 				double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
 				double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
-				System.out.println(player.getXUniverse() + ", " + player.getYUniverse() + "  |  " + obj.getXUniverse() + ", " + obj.getYUniverse());
 				if (x + y <= obj.getMass())
 				{
 					running = false;
