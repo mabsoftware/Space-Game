@@ -27,7 +27,7 @@ public class Enemy extends GPolygon
 	private double yUniverse;
 	private final double SPEED;
 
-	public Enemy(double xu, double yu, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers, SpaceGame game)
+	public Enemy(double xu, double yu, double xVel, double yVel, Player thisPlayer, SpaceGame game)
 	{
 		super(xu - game.getXUniverse(), yu - game.getYUniverse());
 		setXUniverse(xu);
@@ -73,17 +73,8 @@ public class Enemy extends GPolygon
 
 	public void action()
 	{
-		//this.findTarget();
-		this.followTarget();
+		this.attackPlayer();
 		this.move();
-		/*if (distance < 3000)
-		{
-			//fire();
-		}
-		else		
-		{
-			this.move();
-		}*/
 	}
 
 	private void findTarget()
@@ -143,28 +134,6 @@ public class Enemy extends GPolygon
 		this.rotate(Math.atan((target.getX() - this.getX()) / (target.getY() - this.getY())));
 	} // function written to make AI intelligent.
 	
-	/*
-	private void fire()
-	{
-		if (type == 0)
-		{
-//			missile = new Projectile();
-		}
-		else
-		{
-			if (laserExists == 0)
-			{
-				laser = new Laser(getX(), getY(), angle);
-				laserExists = 4;
-			}
-			else
-			{
-				laser.moveLaser();
-				laserExists--;
-			}
-		}
-	}
-	*/
 	
 	public double getXUniverse() 
 	{
