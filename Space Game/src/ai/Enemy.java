@@ -20,15 +20,12 @@ public class Enemy extends GPolygon
 	private Player target;
 	private List<Player> myPlayers;
 	private double angle;
-//	private int type;
 	private Vector myVector;
-//	private Projectile missile;
-//	private Laser laser;
-//	private int laserExists;
 	private double health;
 	private int value;
 	private double xUniverse;
 	private double yUniverse;
+	private final double SPEED;
 
 	public Enemy(double xu, double yu, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers, SpaceGame game)
 	{
@@ -37,12 +34,14 @@ public class Enemy extends GPolygon
 		setYUniverse(yu);
 		
 		target = thisPlayer;
+		
+		SPEED = 5;
 
 		this.addEdge(0, -10);
 		this.addEdge(-8, 5);
 		this.addEdge(8, 5);
 		this.setFillColor(Color.YELLOW);
-		this.setColor(Color.YELLOW);
+		this.setColor(Color.GREEN);
 		this.setFilled(true);
 		myPlayers = new ArrayList<Player>();
 		myVector = new Vector(xVel, yVel);
@@ -135,14 +134,14 @@ public class Enemy extends GPolygon
 	
 	public void attackPlayer()
 	{
-		double s = Math.random() * 0.5 + (1.0 - 0.5);
-		double x = target.getVector().getXComponent() - (Math.random() * 5 - 3);
-		double y = target.getVector().getYComponent() - (Math.random() * 5 - 3);
-		
-		myVector.setXComponent(x);
-		myVector.setYComponent(y);
+		double d = Math.sqrt(Math.pow(target.getX() - this.getX(), 2) + Math.pow(target.getY() - this.getY(), 2));
+		double s = (Math.random() * 3 - 2 + SPEED) / d;
+		myVector.setXComponent(target.getX() - this.getX());
+		myVector.setYComponent(target.getY() - this.getY());
 		myVector.multiplyByScalar(s);
-	}
+		
+		this.rotate(Math.atan((target.getX() - this.getX()) / (target.getY() - this.getY())));
+	} // function written to make AI intelligent.
 	
 	/*
 	private void fire()
