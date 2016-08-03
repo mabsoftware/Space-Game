@@ -14,7 +14,7 @@ import physics.GravityObject; // import Gravity object class.
 
 public class Projectile extends GPolygon
 {
-	private final double MISSILESPEED = 1.5;
+	private final double MISSILESPEED = .5;
 
 	private Vector myVector;
 	private Enemy[] myEnemies;
