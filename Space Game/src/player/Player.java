@@ -27,7 +27,6 @@ public class Player extends GPolygon
 	private double myHeight;
 	private double xUniverse;
 	private double yUniverse;
-	private Score myScore;
 	private SpaceGame myGame;
 
 	public Player(double startX, double startY, double xVel, double yVel, SpaceGame game, Score score)
@@ -105,7 +104,7 @@ public class Player extends GPolygon
 	
 	public void shoot(Score score, Enemy[] enemies)
 	{
-		myProjectiles.add(new Projectile(this, score));
+		myProjectiles.add(new Projectile(this));
 	}
 
 	public void monitor()
