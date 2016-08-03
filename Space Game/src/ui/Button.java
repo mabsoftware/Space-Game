@@ -21,5 +21,5 @@ public class Button extends GRect
 			return true;
 		}
 		return false;
-	}
+	} // is the button clicked?
 }
