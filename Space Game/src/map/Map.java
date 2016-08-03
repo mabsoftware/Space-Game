@@ -1,4 +1,6 @@
 package map;
+import java.util.ArrayList;
+
 import game.SpaceGame;
 
 public class Map
@@ -12,7 +14,7 @@ public class Map
 		//this.setRow(0, 100, 5, 5, 2, 600, 600);//
 		for (int i = 0; i < map1.length; i++)
 		{
-			this.setRow(i, Math.random() * 50 + 50, Math.random() * 5, Math.random() * 5, Math.random() * 3 + 1, Math.random() * 10000, Math.random() * 10000);
+			this.setRow(i, Math.random() * 200, Math.random() * 5, Math.random() * 5, Math.random() * 2 + 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
 		}
 		//this.setRow(1, 50, 0, 0, 2, 1000, 1);
 	} //
@@ -28,8 +30,9 @@ public class Map
 
 	}
 
-	public void setMap(SpaceGame game)
+	public ArrayList<Integer> setMap(SpaceGame game)
 	{	
+		ArrayList<Integer> pointsPlanets = new ArrayList<Integer>();
 		for (int i = 0; i < this.map1.length; i++)
 		{
 			int x = (int) (Math.random() * 7);
@@ -52,11 +55,13 @@ public class Map
 			else if (x == 3)
 			{
 				s = "assets/images/ShinyPlanet.png";
-				//game.addPointsPlanet(s, map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5]);
+				game.addPointsPlanet(s, map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5]);
+				pointsPlanets.add(i);
 			}
 		}
-
+		return pointsPlanets;
 	}
 }
+
 
 
