@@ -117,11 +117,8 @@ public class SpaceGame extends GraphicsProgram
 			}
 			enemies[0].action();
 			
-			System.out.println(player.getProjectiles());
-			
 			for (Projectile p : player.getProjectiles())
 			{
-				System.out.println(p);
 				if (p != null)
 				{
 					this.add(p);
