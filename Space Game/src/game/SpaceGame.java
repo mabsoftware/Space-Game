@@ -12,7 +12,6 @@ import ai.Enemy;
 import player.Laser;
 import player.Player;
 import player.Projectile;
-
 import java.awt.event.KeyEvent;
 import java.awt.Color;
 import background.Background;
