@@ -13,15 +13,11 @@ import ai.Enemy;
 import player.Player;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
-
 import java.awt.Color;
 import background.Background;
 import background.Star;
 import map.Map;
 import physics.GravityObject;
-
 
 public class SpaceGame extends GraphicsProgram 
 {
@@ -39,7 +35,6 @@ public class SpaceGame extends GraphicsProgram
 	private Score score;
 	private ArrayList<Integer> pointsPlanets;
 
-
 	public static void main(String args[])
 	{
 		new SpaceGame().start(); // run the application.
@@ -47,8 +42,6 @@ public class SpaceGame extends GraphicsProgram
 
 	public void init()
 	{
-		// Menu buttons initialized here.
-		
 		// The window and background their attributes are initialized here.
 		this.setSize(320*3, 240*3);
 		this.setTitle("Space Game"); // set the size and title of the window.
@@ -113,7 +106,7 @@ public class SpaceGame extends GraphicsProgram
 		{
 			this.draw();
 
-			// Monitor and move all objects here.
+			// Monitor and move player here.
 			player.monitor();
 			player.move(this);
 			player.adjustForGravity(gravityObjects);
@@ -124,14 +117,19 @@ public class SpaceGame extends GraphicsProgram
 					g.move();
 				}
 			}
+			
+			// Check to increase score.
 			this.orbitScore();
-			//GravityObject.handleGravityObjectInteractions(gravityObjects);
-
-			for (Star star: background.getBackground()) // Move the star background.
+			
+			// Move the star background.
+			for (Star star: background.getBackground()) 
 			{
 				star.move(-player.getVector().getXComponent() / 4, -player.getVector().getYComponent() / 4);
 			}
-			enemies[0].action();
+			
+			// Monitor and move enemies here.
+			for (Enemy e : enemies)
+				e.action();
 
 			for (int i = 0; i < player.getProjectiles().size(); i++)
 			{
@@ -139,7 +137,7 @@ public class SpaceGame extends GraphicsProgram
 				{
 					this.add(player.getProjectiles().get(i));
 					player.getProjectiles().get(i).adjustForGravity(gravityObjects);
-					player.getProjectiles().get(i).move();
+					player.getProjectiles().get(i).move(score);
 				}
 			} // Handle Projectiles.
 			this.handleCollisions();
@@ -148,7 +146,6 @@ public class SpaceGame extends GraphicsProgram
 			pause(15);
 		}
 	}
-
 
 	// Handle collisions
 	public void handleCollisions()
