@@ -23,7 +23,7 @@ public class GravityObject extends GImage
 
 	public GravityObject(String image, double radius, double xVel, double yVel, double multiplier, double xu, double yu, SpaceGame game)
 	{
-		super(image, xu - 500, xu - 500);
+		super(image, xu - game.getXUniverse(), xu - game.getYUniverse());
 		setXUniverse(xu);
 		setYUniverse(yu);
 

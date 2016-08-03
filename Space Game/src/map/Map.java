@@ -11,24 +11,9 @@ public class Map
 	public Map()
 	{
 		map1 = new double[100][6];
-		for (int i = 0; i < map1.length / 4; i++)
+		for (int i = 0; i < map1.length; i++)
 		{
-			this.setRow(i, Math.random() * 126 + 50, Math.random() * 5, Math.random() * 5, Math.random() * 1.5 + 1, Math.random() * 761, Math.random() * 10000 - 5000);
-		}
-		
-		for (int i = 0; i < map1.length / 4; i++)
-		{
-			this.setRow(i, Math.random() * 126 + 50, Math.random() * 5, Math.random() * 5, Math.random() * 1.5 + 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
-		}
-		
-		for (int i = 0; i < map1.length / 4; i++)
-		{
-			this.setRow(i, Math.random() * 126 + 50, Math.random() * 5, Math.random() * 5, Math.random() * 1.5 + 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
-		}
-		
-		for (int i = 0; i < map1.length / 4; i++)
-		{
-			this.setRow(i, Math.random() * 126 + 50, Math.random() * 5, Math.random() * 5, Math.random() * 1.5 + 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
+			this.setRow(i, Math.random() * 200, Math.random() * 5, Math.random() * 5, Math.random() * 2 + 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
 		}
 	}
 
@@ -42,31 +27,36 @@ public class Map
 		map1[row][5] = universeY;
 
 	}
-
+	
 	public ArrayList<Integer> setMap(SpaceGame game)
 	{	
 		ArrayList<Integer> pointsPlanets = new ArrayList<Integer>();
 		for (int i = 0; i < this.map1.length; i++)
 		{
+			//importing the differnt images that will be used in the game
 			int x = (int) (Math.random() * 7);
 			String s;
 			if (x % 4 == 0)
 			{
+				//Adding the Large Planet Image
 				s = "assets/images/LargePlanet.png";
 				game.addGravityObject(s, map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5]);
 			}
 			else if (x % 4 == 1)
 			{
+				//importing the image(s) of Mars 
 				s = "assets/images/mars.png";
 				game.addGravityObject(s, map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5]);
 			}
 			else if (x % 4 == 2)
 			{
+				//importing the image(s) of Uranus
 				s = "assets/images/uranus.png";
 				game.addGravityObject(s, map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5]);
 			}
 			else if (x == 3)
 			{
+				//importing the image(s) of the Shiny Planet, which will result in a gain of points by crashing into the planet
 				s = "assets/images/ShinyPlanet.png";
 				game.addPointsPlanet(s, map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5]);
 				pointsPlanets.add(i);

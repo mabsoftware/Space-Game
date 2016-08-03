@@ -9,6 +9,7 @@ public class BlackHole extends GravityObject
 	
 	public BlackHole(String image, double xUniverse, double yUniverse, SpaceGame game)
 	{
+		//Calling the super class and setting the location of the black hole somewhere (randomly) in the universe
 		super(image, 0, 0, 0, multiplier, xUniverse, yUniverse, game); // black holes don't move in the game, and you can't see them.
 		
 	}

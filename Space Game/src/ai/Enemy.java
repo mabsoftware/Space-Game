@@ -1,6 +1,8 @@
 package ai;
 
 import acm.graphics.GPolygon;
+import game.SpaceGame;
+
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -27,9 +29,9 @@ public class Enemy extends GPolygon
 	private double xUniverse;
 	private double yUniverse;
 
-	public Enemy(double xu, double yu, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers)
+	public Enemy(double xu, double yu, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers, SpaceGame game)
 	{
-		super(xu - 500, yu - 500);
+		super(xu - game.getXUniverse(), yu - game.getYUniverse());
 		setXUniverse(xu);
 		setYUniverse(yu);
 		
