@@ -104,7 +104,7 @@ public class Player extends GPolygon
 	
 	public void shoot(Score score, Enemy[] enemies)
 	{
-		myProjectiles.add(new Projectile(this));
+		myProjectiles.add(new Projectile(this, enemies));
 	}
 
 	public void monitor()
