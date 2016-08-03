@@ -121,6 +121,11 @@ public class Player extends GPolygon
 		return myProjectiles;
 	}
 	
+	public void removeProjectiles(int index)
+	{
+		myProjectiles.remove(index);
+	}
+	
 	public void move(SpaceGame s)
 	{ 
 		//super.move(myVector.getXComponent(), myVector.getYComponent());
