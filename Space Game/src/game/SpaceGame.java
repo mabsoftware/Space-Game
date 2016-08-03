@@ -156,9 +156,7 @@ public class SpaceGame extends GraphicsProgram
 					b.sendToFront();
 					add(b);
 					return;
-					// 
 				}
-
 			}
 		}
 	}
