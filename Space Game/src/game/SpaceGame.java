@@ -126,6 +126,7 @@ public class SpaceGame extends GraphicsProgram
 			for (Enemy e : enemies)
 				e.action();
 
+			// Handle projectiles.
 			for (int i = 0; i < player.getProjectiles().size(); i++)
 			{
 				if (player.getProjectiles().get(i) != null)
@@ -134,7 +135,7 @@ public class SpaceGame extends GraphicsProgram
 					player.getProjectiles().get(i).adjustForGravity(gravityObjects);
 					player.getProjectiles().get(i).move(score);
 				}
-			} // Handle Projectiles.
+			} 
 			this.handleCollisions();
 
 			// Clock tick
