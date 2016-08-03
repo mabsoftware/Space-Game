@@ -70,7 +70,7 @@ public class Map
 				s = "assets/images/uranus.png";
 				game.addGravityObject(s, map1[i][0], map1[i][1], map1[i][2], map1[i][3], map1[i][4], map1[i][5]);
 			}
-			else if (x == 3)
+			else
 			{
 				//importing the image(s) of the Shiny Planet, which will result in a gain of points by crashing into the planet
 				s = "assets/images/ShinyPlanet.png";
