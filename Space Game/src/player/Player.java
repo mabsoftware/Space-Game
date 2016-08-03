@@ -7,6 +7,7 @@ package player;
 import acm.graphics.*;
 import physics.Vector;
 import physics.GravityObject;
+import game.Score;
 import game.SpaceGame;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -25,8 +26,10 @@ public class Player extends GPolygon
 	private double myHeight;
 	private double xUniverse;
 	private double yUniverse;
+	private Score myScore;
+	private SpaceGame myGame;
 
-	public Player(double startX, double startY, double xVel, double yVel, SpaceGame game)
+	public Player(double startX, double startY, double xVel, double yVel, SpaceGame game, Score score)
 	{
 		super(startX, startY); // create player GImage.
 		setXUniverse(startX + game.getXUniverse());
@@ -60,6 +63,8 @@ public class Player extends GPolygon
 		left = false;
 		right = false;
 		health = 1000.;
+		
+		myGame = game;
 	}
 
 	public Vector getVector()
@@ -99,7 +104,7 @@ public class Player extends GPolygon
 	
 	public void shoot(SpaceGame game)
 	{
-		myProjectiles.add(new Projectile(this));
+		myProjectiles.add(new Projectile(this, myScore));
 	}
 
 	public void monitor()
@@ -176,7 +181,7 @@ public class Player extends GPolygon
 		}
 	}
 	
-	public double getHeightProjectile()
+	public double getHeight()
 	{
 		return myHeight;
 	}
@@ -200,4 +205,15 @@ public class Player extends GPolygon
 	{
 		this.yUniverse = y;
 	}
+	
+	public void reduceHealth(double damage)
+	{
+		health -= damage;
+		if (health <= 0)
+		{
+			myGame.gameOver();
+		}
+	}
 }
+
+

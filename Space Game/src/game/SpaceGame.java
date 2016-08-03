@@ -21,7 +21,7 @@ import physics.GravityObject;
 
 public class SpaceGame extends GraphicsProgram 
 {
-	//Defining all the variables that will be necessary in this class
+	//Defining all the variables that will be nesesary in this class
 	private boolean running; // game state.
 	private Player player;
 	private Player[] otherPlayers;
@@ -59,7 +59,7 @@ public class SpaceGame extends GraphicsProgram
 		add(score);
 		
 		// Initialize player
-		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0, this);
+		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0, this, score);
 		this.add(player); // add the player to the window.
 
 		//////////////////////////////////////////////////////////
@@ -75,7 +75,7 @@ public class SpaceGame extends GraphicsProgram
 		
 		// New enemies
 		enemies = new Enemy[1];
-		enemies[0] = new Enemy(5100, 5100, 0, 0, player, otherPlayers, this);
+		enemies[0] = new Enemy(600, 600, 0, 0, player, otherPlayers, this);
 		this.add(enemies[0]);
 
 		// Planets and black holes initialized here
@@ -141,8 +141,6 @@ public class SpaceGame extends GraphicsProgram
 			// Clock tick
 			pause(15);
 		}
-		score.gameOverMessage();
-		score.sendToFront();
 	}
 
 
@@ -158,7 +156,7 @@ public class SpaceGame extends GraphicsProgram
 				System.out.println(player.getXUniverse() + ", " + player.getYUniverse() + "  |  " + obj.getXUniverse() + ", " + obj.getYUniverse());
 				if (x + y <= obj.getMass())
 				{
-					running = false;
+					gameOver();
 					GImage b = new GImage("assets/images/explosion.png", 0, 0);
 					b.setSize(player.getWidth() * 2, player.getHeight() * 2);
 					b.setLocation(player.getX() - b.getWidth()/2, player.getY() - b.getHeight()/2);
@@ -168,6 +166,12 @@ public class SpaceGame extends GraphicsProgram
 				}
 			}
 		}
+	}
+
+	public void gameOver() {
+		running = false;
+		score.gameOverMessage();
+		score.sendToFront();
 	}
 
 	public void orbitScore()
@@ -274,3 +278,5 @@ public class SpaceGame extends GraphicsProgram
 		this.yUniverse = yUniverse;
 	}
 }
+
+
