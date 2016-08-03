@@ -21,7 +21,7 @@ import physics.GravityObject;
 
 public class SpaceGame extends GraphicsProgram 
 {
-	//Defining all the variables that will be nesesary in this class
+	//Defining all the variables that will be necessary in this class
 	private boolean running; // game state.
 	private Player player;
 	private Player[] otherPlayers;
@@ -75,7 +75,7 @@ public class SpaceGame extends GraphicsProgram
 		
 		// New enemies
 		enemies = new Enemy[1];
-		enemies[0] = new Enemy(600, 600, 0, 0, player, otherPlayers, this);
+		enemies[0] = new Enemy(5100, 5100, 0, 0, player, otherPlayers, this);
 		this.add(enemies[0]);
 
 		// Planets and black holes initialized here
