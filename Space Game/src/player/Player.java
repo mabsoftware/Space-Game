@@ -151,7 +151,7 @@ public class Player extends GPolygon
 
 	public void decreaseSpeed()
 	{
-		if (myVector.getXComponent() > 0 && myVector.getYComponent() > 0)
+		if (myVector.getXComponent() > -15 && myVector.getYComponent() > -15)
 		{
 			myVector.setXComponent(myVector.getXComponent() - Math.sin(Math.toRadians(angle)));
 			myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
