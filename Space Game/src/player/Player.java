@@ -27,6 +27,7 @@ public class Player extends GPolygon
 	private double xUniverse;
 	private double yUniverse;
 	private Score myScore;
+	private SpaceGame myGame;
 
 	public Player(double startX, double startY, double xVel, double yVel, SpaceGame game, Score score)
 	{
@@ -62,6 +63,8 @@ public class Player extends GPolygon
 		left = false;
 		right = false;
 		health = 1000.;
+		
+		myGame = game;
 	}
 
 	public Vector getVector()
@@ -201,5 +204,14 @@ public class Player extends GPolygon
 	public void setYUniverse(double y) 
 	{
 		this.yUniverse = y;
+	}
+	
+	public void reduceHealth(double damage)
+	{
+		health -= damage;
+		if (health <= 0)
+		{
+			myGame.gameOver();
+		}
 	}
 }
