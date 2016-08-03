@@ -18,7 +18,6 @@ public class Player extends GPolygon
 
 	private boolean left;
 	private boolean right;
-	//private Projectile[] myProjectiles;
 	private List<Projectile> myProjectiles;
 	public int missileIndex;
 	private double health;
