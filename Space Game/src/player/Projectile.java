@@ -17,12 +17,11 @@ public class Projectile extends GPolygon
 	private final double MISSILESPEED = 1.5;
 
 	private Vector myVector;
-	private Score myScore;
 	private Enemy[] myEnemies;
 	private double myDamage;
 	private Player myPlayer;
 
-	public Projectile(Player player, Score score)
+	public Projectile(Player player)
 	{
 		super(player.getX(), player.getY()); // create a Polygon.
 
@@ -41,7 +40,6 @@ public class Projectile extends GPolygon
 		myVector = new Vector(player.getHeight() * GMath.cosDegrees(player.getAngle() + 90), player.getHeight() * GMath.sinDegrees(player.getAngle() + 90));
 		myVector.multiplyByScalar(MISSILESPEED); // player's vector + missle's speed ( a scalar ).
 
-		myScore = score;
 		myDamage = Math.random() * 11 + 15;
 		myPlayer = player;
 	}
@@ -66,22 +64,21 @@ public class Projectile extends GPolygon
 		}
 	}
 
-	public void move()
+	public void move(Score score)
 	{
 		this.move(myVector.getXComponent(), myVector.getYComponent());
 		if (myPlayer.contains(getLocation()))
 		{
 			myPlayer.reduceHealth(myDamage);
 		}
-/*		
+		
 		for (int i = 0; i < myEnemies.length; i++)
 		{
 			if (myEnemies[i].contains(getLocation()))
 			{
-				myEnemies[i].reduceHealth(myDamage, myScore);
+				myEnemies[i].reduceHealth(myDamage, score);
 			}
 		}
-		*/
+		
 	}
 }
-
