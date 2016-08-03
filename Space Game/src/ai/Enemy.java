@@ -188,7 +188,7 @@ public class Enemy extends GPolygon
 
 	private void remove()
 	{
-		//sdghodushagasgdsbg
+		//sdghodushagasgsbg
 	}
 	
 }
