@@ -176,7 +176,7 @@ public class Player extends GPolygon
 		}
 	}
 	
-	public double getHeight()
+	public double getHeightProjectile()
 	{
 		return myHeight;
 	}
