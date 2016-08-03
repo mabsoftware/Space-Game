@@ -49,13 +49,13 @@ public class GravityObject extends GImage
 
 	public double getGravityScalar(Player p) // Force of gravity
 	{
-		double d = Math.sqrt(Math.pow((this.getXUniverse() + this.getWidth() / 2 - p.getXUniverse()), 2) + Math.pow((this.getY() + this.getHeight() / 2 - p.getY()), 2));
+		double d = Math.sqrt(Math.pow((this.getXUniverse() + this.getWidth() / 2 - p.getXUniverse()), 2) + Math.pow((this.getYUniverse() + this.getHeight() / 2 - p.getYUniverse()), 2));
 		return (myMultiplier * this.gravityMass() / Math.pow(d, 2));
 	}
 	
 	public double getGravityScalar(Projectile p) // Force of gravity
 	{
-		double d = Math.sqrt(Math.pow((this.getXUniverse() + this.getWidth() / 2 - p.getX()), 2) + Math.pow((this.getY() + this.getHeight() / 2 - p.getY()), 2));
+		double d = Math.sqrt(Math.pow((this.getXUniverse() + this.getWidth() / 2 - p.getX()), 2) + Math.pow((this.getYUniverse() + this.getHeight() / 2 - p.getY()), 2));
 		return (myMultiplier * this.getMass() / Math.pow(d, 2));
 	}
 
@@ -94,12 +94,12 @@ public class GravityObject extends GImage
 
 	public double getDistance(Player p) // The distance from a player 
 	{
-		return Math.sqrt(Math.pow(p.getXUniverse() - this.getXUniverse(), 2) + Math.pow(p.getY() - this.getY(), 2));
+		return Math.sqrt(Math.pow(p.getXUniverse() - this.getXUniverse(), 2) + Math.pow(p.getYUniverse() - this.getYUniverse(), 2));
 	}
 	
 	public double getDistance(Projectile p) // The distance from a player 
 	{
-		return Math.sqrt(Math.pow(p.getX() - this.getXUniverse(), 2) + Math.pow(p.getY() - this.getY(), 2));
+		return Math.sqrt(Math.pow(p.getX() - this.getXUniverse(), 2) + Math.pow(p.getY() - this.getYUniverse(), 2));
 	}
 
 	public double getYUniverse() {
