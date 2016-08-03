@@ -59,7 +59,7 @@ public class SpaceGame extends GraphicsProgram
 		add(score);
 		
 		// Initialize player
-		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
+		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0, this);
 		this.add(player); // add the player to the window.
 
 		//////////////////////////////////////////////////////////
@@ -118,7 +118,6 @@ public class SpaceGame extends GraphicsProgram
 					g.move();
 				}
 			}
-			this.handleCollisions();
 			this.orbitScore();
 			//GravityObject.handleGravityObjectInteractions(gravityObjects);
 
@@ -137,6 +136,7 @@ public class SpaceGame extends GraphicsProgram
 					player.getProjectiles().get(i).move();
 				}
 			} // Handle Projectiles.
+			this.handleCollisions();
 
 			// Clock tick
 			pause(15);
@@ -155,12 +155,13 @@ public class SpaceGame extends GraphicsProgram
 			{
 				double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
 				double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
+				System.out.println(player.getXUniverse() + ", " + player.getYUniverse() + "  |  " + obj.getXUniverse() + ", " + obj.getYUniverse());
 				if (x + y <= obj.getMass())
 				{
 					running = false;
 					GImage b = new GImage("assets/images/explosion.png", 0, 0);
 					b.setSize(player.getWidth() * 2, player.getHeight() * 2);
-					b.setLocation(this.getXUniverse() + this.getWidth()/2, this.getYUniverse() + this.getHeight()/2);
+					b.setLocation(player.getX() - b.getWidth()/2, player.getY() - b.getHeight()/2);
 					b.sendToFront();
 					add(b);
 					return; //game over
