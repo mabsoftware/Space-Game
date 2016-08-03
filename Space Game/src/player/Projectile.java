@@ -19,9 +19,9 @@ public class Projectile extends GPolygon
 	{
 		super(p.getX(), p.getY()); // create a Polygon.
 		
-		this.addVertex(0, -5);
-		this.addVertex(3, 5);
-		this.addVertex(-3, 5);
+		this.addPolarEdge(5, 60);
+		this.addPolarEdge(5, 180);
+		this.addPolarEdge(5, 300);
 		
 		this.recenter();
 		
