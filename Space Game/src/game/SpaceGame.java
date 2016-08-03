@@ -170,7 +170,8 @@ public class SpaceGame extends GraphicsProgram
 				obj.setLocation(obj.getXUniverse() - this.getXUniverse(), obj.getYUniverse() - this.getYUniverse());	
 		}
 	}
-
+	
+	// Add planets method, called by map class
 	public void addGravityObject(String image,
 			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
 	{
