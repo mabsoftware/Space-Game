@@ -1,5 +1,5 @@
 /* Player Class.
- * Last edited 8 / 01 / 16.
+ * Last edited 8 / 03 / 16.
  * Extremely Important Class.
  */
 package player;
@@ -41,7 +41,7 @@ public class Player extends GPolygon
 		
 		myProjectiles = new Projectile[100];
 		
-		this.setColor(Color.RED);
+		this.setColor(Color.GREEN);
 		this.setFillColor(Color.RED);
 		this.setFilled(true);
 		this.setVisible(true);
