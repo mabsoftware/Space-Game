@@ -111,7 +111,7 @@ public class SpaceGame extends GraphicsProgram
 				}
 			}
 			this.handleCollisions();
-
+			this.orbitScore();
 			//GravityObject.handleGravityObjectInteractions(gravityObjects);
 
 			for (Star star: background.getBackground()) // Move the star background.
@@ -119,7 +119,7 @@ public class SpaceGame extends GraphicsProgram
 				star.move(-player.getVector().getXComponent() / 4, -player.getVector().getYComponent() / 4);
 			}
 			enemies[0].action();
-			
+
 			for (Projectile p : player.getProjectiles())
 			{
 				if (p != null)
@@ -174,7 +174,7 @@ public class SpaceGame extends GraphicsProgram
 			}
 		}
 	}
-	
+
 	// Sets screen coordinates of all objects based on Universe coordinates
 	public void draw() 
 	{
@@ -184,7 +184,7 @@ public class SpaceGame extends GraphicsProgram
 				obj.setLocation(obj.getXUniverse() - this.getXUniverse(), obj.getYUniverse() - this.getYUniverse());	
 		}
 	}
-	
+
 	// Add planets method, called by map class
 	public void addGravityObject(String image,
 			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
@@ -199,7 +199,7 @@ public class SpaceGame extends GraphicsProgram
 		gravityObjects[gravityIndex] = new PointsPlanet(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse, this);
 		gravityIndex++;
 	}
-	
+
 	// All user input is handled here.
 	public void keyPressed(KeyEvent k)
 	{
