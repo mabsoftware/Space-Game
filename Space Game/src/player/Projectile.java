@@ -14,15 +14,16 @@ import physics.GravityObject; // import Gravity object class.
 
 public class Projectile extends GPolygon
 {
-	private final double MISSILESPEED = 1.5;
+	private final double MISSILESPEED = .5;
 
 	private Vector myVector;
-	private Score myScore;
 	private Enemy[] myEnemies;
 	private double myDamage;
 	private Player myPlayer;
+	private double xUniverse;
+	private double yUniverse;
 
-	public Projectile(Player player, Score score)
+	public Projectile(Player player, Enemy[] enemies)
 	{
 		super(player.getX(), player.getY()); // create a Polygon.
 
@@ -41,9 +42,9 @@ public class Projectile extends GPolygon
 		myVector = new Vector(player.getHeight() * GMath.cosDegrees(player.getAngle() + 90), player.getHeight() * GMath.sinDegrees(player.getAngle() + 90));
 		myVector.multiplyByScalar(MISSILESPEED); // player's vector + missle's speed ( a scalar ).
 
-		myScore = score;
 		myDamage = Math.random() * 11 + 15;
 		myPlayer = player;
+		myEnemies = enemies;
 	}
 
 	public Vector getVector()
@@ -66,22 +67,38 @@ public class Projectile extends GPolygon
 		}
 	}
 
-	public void move()
+	public void move(Score score)
 	{
 		this.move(myVector.getXComponent(), myVector.getYComponent());
 		if (myPlayer.contains(getLocation()))
 		{
 			myPlayer.reduceHealth(myDamage);
 		}
-/*		
+		
 		for (int i = 0; i < myEnemies.length; i++)
 		{
-			if (myEnemies[i].contains(getLocation()))
+			if (myEnemies[i].contains(getXUniverse(), getYUniverse()))
 			{
-				myEnemies[i].reduceHealth(myDamage, myScore);
+				myEnemies[i].reduceHealth(myDamage, score);
 			}
 		}
-		*/
+	}
+
+	public double getXUniverse() {
+		return xUniverse;
+	}
+
+	public void setXUniverse(double xUniverse) {
+		this.xUniverse = xUniverse;
+	}
+
+	public double getYUniverse() {
+		return yUniverse;
+	}
+
+	public void setYUniverse(double yUniverse) {
+		this.yUniverse = yUniverse;
 	}
 }
+
 

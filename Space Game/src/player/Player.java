@@ -5,6 +5,7 @@
 package player;
 
 import acm.graphics.*;
+import ai.Enemy;
 import physics.Vector;
 import physics.GravityObject;
 import game.Score;
@@ -26,7 +27,6 @@ public class Player extends GPolygon
 	private double myHeight;
 	private double xUniverse;
 	private double yUniverse;
-	private Score myScore;
 	private SpaceGame myGame;
 
 	public Player(double startX, double startY, double xVel, double yVel, SpaceGame game, Score score)
@@ -102,9 +102,9 @@ public class Player extends GPolygon
 		right = false;
 	}
 	
-	public void shoot(SpaceGame game)
+	public void shoot(Score score, Enemy[] enemies)
 	{
-		myProjectiles.add(new Projectile(this, myScore));
+		myProjectiles.add(new Projectile(this, enemies));
 	}
 
 	public void monitor()
