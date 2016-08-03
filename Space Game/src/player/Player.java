@@ -216,5 +216,3 @@ public class Player extends GPolygon
 		}
 	}
 }
-
-
