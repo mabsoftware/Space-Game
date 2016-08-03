@@ -60,22 +60,14 @@ public class SpaceGame extends GraphicsProgram
 		// Initialize player
 		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0, this, score);
 		this.add(player); // add the player to the window.
-
-		//////////////////////////////////////////////////////////
-		// Just initializing otherPlayers to test.              //
-		//////////////////////////////////////////////////////////
-		otherPlayers = new Player[5];
-		/*enemies = new Enemy[500];
-		for (int i = 0; i < enemies.length; i++)
-		{
-			enemies[i] = new Enemy((int) (Math.random() * 10000), (int) (Math.random() * 10000), 0, 0, player, otherPlayers);
-			this.add(enemies[i]);
-		}*/
 		
 		// New enemies
-		enemies = new Enemy[1];
-		enemies[0] = new Enemy(5100, 5100, 0, 0, player, otherPlayers, this);
-		this.add(enemies[0]);
+		enemies = new Enemy[250];
+		for (int i = 0; i < enemies.length; i++)
+		{
+			enemies[i] = new Enemy((int) (Math.random() * 10000), (int) (Math.random() * 10000), 0, 0, player, this);
+			this.add(enemies[i]);
+		}
 
 		// Planets and black holes initialized here
 		gravityObjects = new GravityObject[500];
