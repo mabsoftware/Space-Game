@@ -11,24 +11,9 @@ public class Map
 	public Map()
 	{
 		map1 = new double[100][6];
-		for (int i = 0; i < map1.length / 4; i++)
+		for (int i = 0; i < map1.length; i++)
 		{
-			this.setRow(i, Math.random() * 126 + 50, Math.random() * 5, Math.random() * 5, Math.random() * 1.5 + 1, Math.random() * 761, Math.random() * 10000 - 5000);
-		}
-		
-		for (int i = 0; i < map1.length / 4; i++)
-		{
-			this.setRow(i, Math.random() * 126 + 50, Math.random() * 5, Math.random() * 5, Math.random() * 1.5 + 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
-		}
-		
-		for (int i = 0; i < map1.length / 4; i++)
-		{
-			this.setRow(i, Math.random() * 126 + 50, Math.random() * 5, Math.random() * 5, Math.random() * 1.5 + 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
-		}
-		
-		for (int i = 0; i < map1.length / 4; i++)
-		{
-			this.setRow(i, Math.random() * 126 + 50, Math.random() * 5, Math.random() * 5, Math.random() * 1.5 + 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
+			this.setRow(i, Math.random() * 200, Math.random() * 5, Math.random() * 5, Math.random() * 2 + 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
 		}
 	}
 
