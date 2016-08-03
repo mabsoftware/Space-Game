@@ -10,9 +10,7 @@ import acm.graphics.*;
 import physics.PointsPlanet;
 import acm.program.GraphicsProgram;
 import ai.Enemy;
-import player.Laser;
 import player.Player;
-import player.Projectile;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.awt.Color;
@@ -34,7 +32,6 @@ public class SpaceGame extends GraphicsProgram
 	private double xUniverse;
 	private double yUniverse;
 	private Enemy[] enemies;
-	private Laser laser;
 	private Score score;
 	private ArrayList<Integer> pointsPlanets;
 
