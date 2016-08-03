@@ -16,6 +16,7 @@ public class GravityObject extends GImage
 {
 	private Vector myVector; // gravity objects move too.
 	private double myMass;
+	private double gravityMass;
 	private double myMultiplier; // Multiplier on strength of gravitational force. Black holes have a multiplier of 100.
 	private double xUniverse; // Coordinates in entire map
 	private double yUniverse;
@@ -29,10 +30,16 @@ public class GravityObject extends GImage
 		myVector = new Vector(xVel, yVel); // set GravityObject's vector.
 
 		myMass = Math.pow(radius, 2); // Mass is proportional to area
-
+		gravityMass = radius * (radius/2);
+		
 		this.setSize(radius * 2, radius * 2);
 
 		myMultiplier = multiplier;
+	}
+	
+	public double gravityMass()
+	{
+		return gravityMass;
 	}
 
 	public double getMass()
@@ -43,7 +50,7 @@ public class GravityObject extends GImage
 	public double getGravityScalar(Player p) // Force of gravity
 	{
 		double d = Math.sqrt(Math.pow((this.getX() - p.getX()), 2) + Math.pow((this.getY() - p.getY()), 2));
-		return (myMultiplier * this.getMass() / Math.pow(d, 2));
+		return (myMultiplier * this.gravityMass() / Math.pow(d, 2));
 	}
 	
 	public double getGravityScalar(Projectile p) // Force of gravity
