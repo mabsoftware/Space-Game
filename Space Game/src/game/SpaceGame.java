@@ -13,11 +13,15 @@ import ai.Enemy;
 import player.Player;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+import javax.swing.JButton;
+
 import java.awt.Color;
 import background.Background;
 import background.Star;
 import map.Map;
 import physics.GravityObject;
+
 
 public class SpaceGame extends GraphicsProgram 
 {
@@ -35,6 +39,7 @@ public class SpaceGame extends GraphicsProgram
 	private Score score;
 	private ArrayList<Integer> pointsPlanets;
 
+
 	public static void main(String args[])
 	{
 		new SpaceGame().start(); // run the application.
@@ -42,8 +47,9 @@ public class SpaceGame extends GraphicsProgram
 
 	public void init()
 	{
+		// Menu buttons initialized here.
+		
 		// The window and background their attributes are initialized here.
-
 		this.setSize(320*3, 240*3);
 		this.setTitle("Space Game"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
@@ -75,7 +81,7 @@ public class SpaceGame extends GraphicsProgram
 		
 		// New enemies
 		enemies = new Enemy[1];
-		enemies[0] = new Enemy(600, 600, 0, 0, player, otherPlayers, this);
+		enemies[0] = new Enemy(5100, 5100, 0, 0, player, otherPlayers, this);
 		this.add(enemies[0]);
 
 		// Planets and black holes initialized here
@@ -153,7 +159,6 @@ public class SpaceGame extends GraphicsProgram
 			{
 				double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
 				double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
-				System.out.println(player.getXUniverse() + ", " + player.getYUniverse() + "  |  " + obj.getXUniverse() + ", " + obj.getYUniverse());
 				if (x + y <= obj.getMass())
 				{
 					gameOver();
@@ -167,13 +172,8 @@ public class SpaceGame extends GraphicsProgram
 			}
 		}
 	}
-
-	public void gameOver() {
-		running = false;
-		score.gameOverMessage();
-		score.sendToFront();
-	}
-
+	
+	// Score increase when near planet
 	public void orbitScore()
 	{
 		for (int i = 0; i < pointsPlanets.size(); i++)
@@ -243,7 +243,7 @@ public class SpaceGame extends GraphicsProgram
 		}
 		else if (k.getKeyChar() == ' ')
 		{
-			player.shoot(this);
+			player.shoot(score, enemies);
 			player.decreaseSpeed();
 		}
 	}
@@ -258,6 +258,12 @@ public class SpaceGame extends GraphicsProgram
 		{
 			player.stopMovingRight();
 		}
+	}
+	
+	public void gameOver() {
+		running = false;
+		score.gameOverMessage();
+		score.sendToFront();
 	}
 
 	// Getters and Setters for Universe coordinates
