@@ -133,6 +133,17 @@ public class Enemy extends GPolygon
 		
 	}
 	
+	public void attackPlayer()
+	{
+		double s = Math.random() * 0.5 + (1.0 - 0.5);
+		double x = target.getVector().getXComponent() - (Math.random() * 5 - 3);
+		double y = target.getVector().getYComponent() - (Math.random() * 5 - 3);
+		
+		myVector.setXComponent(x);
+		myVector.setYComponent(y);
+		myVector.multiplyByScalar(s);
+	}
+	
 	/*
 	private void fire()
 	{
