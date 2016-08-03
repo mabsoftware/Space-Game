@@ -4,6 +4,7 @@
  */
 package player;
 
+import acm.graphics.GMath;
 import acm.graphics.GPolygon;
 import physics.Vector;
 import java.awt.Color;
@@ -11,7 +12,7 @@ import physics.GravityObject; // import Gravity object class.
 
 public class Projectile extends GPolygon
 {
-	private final double MISSILESPEED = 1.5;
+	private final double MISSILESPEED = 1.1;
 	
 	private Vector myVector;
 
@@ -31,7 +32,7 @@ public class Projectile extends GPolygon
 		this.setColor(Color.YELLOW);
 		this.setFilled(true);
 
-		myVector = new Vector(p.getHeight() * Math.cos(p.getAngle()), p.getHeight() * Math.sin(p.getAngle()));
+		myVector = new Vector(p.getHeightProjectile() * GMath.cosDegrees(p.getAngle() + 90), p.getHeightProjectile() * GMath.sinDegrees(p.getAngle() + 90));
 		myVector.multiplyByScalar(MISSILESPEED); // player's vector + missle's speed ( a scalar ).
 	}
 
