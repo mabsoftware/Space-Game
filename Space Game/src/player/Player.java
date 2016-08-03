@@ -1,6 +1,6 @@
 /* Player Class.
  * Last edited 8 / 01 / 16.
- * Extremely Important Class.
+ * Extremely Important Class...
  */
 package player;
 
