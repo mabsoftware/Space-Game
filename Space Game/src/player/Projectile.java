@@ -1,9 +1,11 @@
+/* Projectile Class
+ * Written for Player.java.
+ * Constructor parameters: Player p.
+ */
 package player;
 
-import java.awt.Image;
 import acm.graphics.GPolygon;
 import physics.Vector;
-
 import java.awt.Color;
 import physics.GravityObject; // import Gravity object class.
 
@@ -18,8 +20,10 @@ public class Projectile extends GPolygon
 		super(p.getX(), p.getY()); // create a Polygon.
 		
 		this.addPolarEdge(5, 0);
-		this.addPolarEdge(5, 120);
-		this.addPolarEdge(5, 240);
+		this.addPolarEdge(3, 120);
+		this.addPolarEdge(3, 240);
+		
+		this.rotate(p.getAngle());
 		
 		this.setFillColor(Color.YELLOW);
 		this.setColor(Color.YELLOW);
