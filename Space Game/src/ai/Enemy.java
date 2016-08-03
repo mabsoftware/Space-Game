@@ -141,7 +141,7 @@ public class Enemy extends GPolygon
 		myVector.multiplyByScalar(s);
 		
 		this.rotate(Math.atan((target.getX() - this.getX()) / (target.getY() - this.getY())));
-	}
+	} // function written to make AI intelligent.
 	
 	/*
 	private void fire()
