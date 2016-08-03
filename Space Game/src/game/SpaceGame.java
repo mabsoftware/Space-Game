@@ -7,12 +7,14 @@
 package game;
 
 import acm.graphics.*;
+import physics.PointsPlanet;
 import acm.program.GraphicsProgram;
 import ai.Enemy;
 import player.Laser;
 import player.Player;
 import player.Projectile;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.awt.Color;
 import background.Background;
 import background.Star;
@@ -34,6 +36,7 @@ public class SpaceGame extends GraphicsProgram
 	private Enemy[] enemies;
 	private Laser laser;
 	private Score score;
+	private ArrayList<Integer> pointsPlanets;
 
 	public static void main(String args[])
 	{
@@ -64,11 +67,11 @@ public class SpaceGame extends GraphicsProgram
 		otherPlayers = new Player[5];
 
 		// Planets and black holes initialized here
-		gravityObjects = new GravityObject[100];
+		gravityObjects = new GravityObject[500];
 		gravityIndex = 0;
 		map = new Map();
 		map.setMap(this);
-		
+		pointsPlanets = map.setMap(this);
 		for (GravityObject g: gravityObjects)
 		{
 			if (g != null)
@@ -158,6 +161,20 @@ public class SpaceGame extends GraphicsProgram
 		}
 	}
 
+	public void orbitScore()
+	{
+		for (int i = 0; i < pointsPlanets.size(); i++)
+		{
+			GravityObject obj = gravityObjects[pointsPlanets.get(i)];
+			double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
+			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
+			if (x + y <= obj.getMass() * 2)
+			{
+				score.increaseScore(1);
+			}
+		}
+	}
+	
 	// Sets screen coordinates of all objects based on Universe coordinates
 	public void draw() 
 	{
@@ -176,6 +193,13 @@ public class SpaceGame extends GraphicsProgram
 		gravityIndex++;
 	}
 
+	public void addPointsPlanet(String image,
+			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
+	{
+		gravityObjects[gravityIndex] = new PointsPlanet(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse, this);
+		gravityIndex++;
+	}
+	
 	// All user input is handled here.
 	public void keyPressed(KeyEvent k)
 	{
