@@ -1,6 +1,7 @@
 package ai;
 
 import acm.graphics.GPolygon;
+import game.Score;
 import game.SpaceGame;
 
 import java.awt.Color;
@@ -174,5 +175,21 @@ public class Enemy extends GPolygon
 	{
 		yUniverse = y;
 	}
+
+	public void reduceHealth(double damage, Score score)
+	{
+		health -= damage;
+		if (health <= 0)
+		{
+			remove();
+			score.increaseScore(value);
+		}
+	}
+
+	private void remove()
+	{
+		//sdghodushagasgsbg
+	}
 	
 }
+
