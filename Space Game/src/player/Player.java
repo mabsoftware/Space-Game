@@ -1,6 +1,6 @@
 /* Player Class.
  * Last edited 8 / 01 / 16.
- * Extremely Important Class...
+ * Extremely Important Class.
  */
 package player;
 
@@ -30,13 +30,12 @@ public class Player extends GPolygon
 		setYUniverse(startY + 500);
 
 		// Draw the polygon here.
-		this.addEdge(0, -3);
-		this.addEdge(2, -1);
-		this.addEdge(1, 2);
-		this.addEdge(-1,  2);
-		this.addEdge(-2,  1);
-		this.scale(6);
-		this.recenter();
+		this.addVertex(0, -3);
+		this.addVertex(2, 1);
+		this.addVertex(1, 2);
+		this.addVertex(-1,  2);
+		this.addVertex(-2,  1);
+		this.scale(5);
 		
 		// Done drawing the polygon.
 		
