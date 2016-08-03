@@ -145,14 +145,14 @@ public class SpaceGame extends GraphicsProgram
 		{
 			if (obj != null)
 			{
-				double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth()/2)), 2);
-				double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight()/2)), 2);
+				double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
+				double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
 				if (x + y <= obj.getMass())
 				{
 					running = false;
 					GImage b = new GImage("assets/images/explosion.png", 0, 0);
-					b.setSize(player.getWidth()*2, player.getHeight()*2);
-					b.setLocation(getWidth()/2 - b.getWidth()/2, getHeight()/2 - b.getHeight()/2);
+					b.setSize(player.getWidth() * 2, player.getHeight() * 2);
+					b.setLocation(getWidth() / 2 - b.getWidth() / 2, getHeight() / 2 - b.getHeight() / 2);
 					b.sendToFront();
 					add(b);
 					return;
@@ -169,6 +169,10 @@ public class SpaceGame extends GraphicsProgram
 			double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth() / 2)), 2);
 			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
 			if (x + y <= obj.getMass() * 2)
+			{
+				score.increaseScore(2);
+			}
+			else if (x + y <= obj.getMass() * 3)
 			{
 				score.increaseScore(1);
 			}
