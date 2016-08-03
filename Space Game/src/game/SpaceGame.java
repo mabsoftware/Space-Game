@@ -59,7 +59,7 @@ public class SpaceGame extends GraphicsProgram
 		add(score);
 
 		//////////////////////////////////////////////////////////
-		// Just initializing otherPlayers to test.               //
+		// Just initializing otherPlayers to test.              //
 		//////////////////////////////////////////////////////////
 		otherPlayers = new Player[5];
 
