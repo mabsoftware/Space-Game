@@ -14,7 +14,7 @@ public class Score extends GLabel
 	{
 		super("Score: 0", x, y);
 		Font score = new Font("score", 1, 40);
-		setColor(Color.WHITE);
+		setColor(Color.WHITE); //The color of the score during the game will be filled with the color white
 		super.setFont(score);
 		points = 0;
 		myGame = game;
