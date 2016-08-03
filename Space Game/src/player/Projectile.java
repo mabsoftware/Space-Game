@@ -20,6 +20,8 @@ public class Projectile extends GPolygon
 	private Enemy[] myEnemies;
 	private double myDamage;
 	private Player myPlayer;
+	private double xUniverse;
+	private double yUniverse;
 
 	public Projectile(Player player)
 	{
@@ -71,14 +73,31 @@ public class Projectile extends GPolygon
 		{
 			myPlayer.reduceHealth(myDamage);
 		}
-		/*
+		
 		for (int i = 0; i < myEnemies.length; i++)
 		{
-			if (myEnemies[i].contains(getLocation()))
+			if (myEnemies[i].contains(getXUniverse(), getYUniverse()))
 			{
 				myEnemies[i].reduceHealth(myDamage, score);
 			}
 		}
-		*/
+	}
+
+	public double getXUniverse() {
+		return xUniverse;
+	}
+
+	public void setXUniverse(double xUniverse) {
+		this.xUniverse = xUniverse;
+	}
+
+	public double getYUniverse() {
+		return yUniverse;
+	}
+
+	public void setYUniverse(double yUniverse) {
+		this.yUniverse = yUniverse;
 	}
 }
+
+
