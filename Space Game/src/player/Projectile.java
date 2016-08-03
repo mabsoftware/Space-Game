@@ -23,7 +23,7 @@ public class Projectile extends GPolygon
 	private double xUniverse;
 	private double yUniverse;
 
-	public Projectile(Player player)
+	public Projectile(Player player, Enemy[] enemies)
 	{
 		super(player.getX(), player.getY()); // create a Polygon.
 
@@ -44,6 +44,7 @@ public class Projectile extends GPolygon
 
 		myDamage = Math.random() * 11 + 15;
 		myPlayer = player;
+		myEnemies = enemies;
 	}
 
 	public Vector getVector()
