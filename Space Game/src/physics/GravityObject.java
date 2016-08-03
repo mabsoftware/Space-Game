@@ -1,7 +1,7 @@
-/* Add Documentation Here.
- *
- * 
- * 
+/* Gravity Object Class
+ * Extends GImage
+ * Constructor Parameters: image, radius, x velocity, y velocity, gravity multiplier, x universe, y universe, and game instance.
+ * Instrumental class.
  */
 
 package physics;
@@ -10,6 +10,7 @@ import player.Projectile;
 import acm.graphics.GImage;
 import physics.Vector;
 import player.Player;
+import game.SpaceGame;
 
 public class GravityObject extends GImage
 {
@@ -19,7 +20,7 @@ public class GravityObject extends GImage
 	private double xUniverse; // Coordinates in entire map
 	private double yUniverse;
 
-	public GravityObject(String image, double radius, double xVel, double yVel, double multiplier, double xu, double yu)
+	public GravityObject(String image, double radius, double xVel, double yVel, double multiplier, double xu, double yu, SpaceGame game)
 	{
 		super(image, xu - 500, xu - 500);
 		setXUniverse(xu);
@@ -42,13 +43,13 @@ public class GravityObject extends GImage
 	public double getGravityScalar(Player p) // Force of gravity
 	{
 		double d = Math.sqrt(Math.pow((this.getX() - p.getX()), 2) + Math.pow((this.getY() - p.getY()), 2));
-		return (myMultiplier * this.getMass() / Math.pow(d, 2) / 12);
+		return (myMultiplier * this.getMass() / Math.pow(d, 2));
 	}
 	
 	public double getGravityScalar(Projectile p) // Force of gravity
 	{
 		double d = Math.sqrt(Math.pow((this.getX() - p.getX()), 2) + Math.pow((this.getY() - p.getY()), 2));
-		return (myMultiplier * this.getMass() / Math.pow(d, 2) / 12);
+		return (myMultiplier * this.getMass() / Math.pow(d, 2));
 	}
 
 	public Vector getVector()
