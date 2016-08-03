@@ -16,6 +16,7 @@ public class Projectile extends GPolygon
 {
 	private final double MISSILESPEED = .5;
 
+	//Defining the private instance variables
 	private Vector myVector;
 	private Enemy[] myEnemies;
 	private double myDamage;
