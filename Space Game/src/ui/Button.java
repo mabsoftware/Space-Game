@@ -33,5 +33,5 @@ public class Button extends GRect
 	public String getLabel()
 	{
 		return label;
-	}
+	} // for use with ButtonLabel.java only.
 }

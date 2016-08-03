@@ -1,3 +1,4 @@
+// Helper class for Button.java.
 package ui;
 
 import acm.graphics.GLabel;
