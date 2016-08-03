@@ -12,7 +12,7 @@ public class Map
 		//this.setRow(0, 100, 5, 5, 2, 600, 600);//
 		for (int i = 0; i < map1.length; i++)
 		{
-			this.setRow(i, Math.random() * 100, Math.random() * 5, Math.random() * 5, 1, Math.random() * 10000 - 5000, Math.random() * 10000 - 5000);
+			this.setRow(i, Math.random() * 50 + 50, Math.random() * 5, Math.random() * 5, 1, Math.random() * 10000, Math.random() * 10000);
 		}
 		//this.setRow(1, 50, 0, 0, 2, 1000, 1);
 	} //
