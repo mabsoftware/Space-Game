@@ -19,9 +19,11 @@ public class Projectile extends GPolygon
 	{
 		super(p.getX(), p.getY()); // create a Polygon.
 		
-		this.addVertex(-5, 0);
-		this.addVertex(3, 3);
-		this.addVertex(-3, 3);
+		this.addVertex(0, -5);
+		this.addVertex(3, 5);
+		this.addVertex(-3, 5);
+		
+		this.recenter();
 		
 		this.rotate(p.getAngle());
 		
@@ -30,7 +32,6 @@ public class Projectile extends GPolygon
 		this.setFilled(true);
 
 		myVector = new Vector(p.getHeight() * Math.cos(p.getAngle()), p.getHeight() * Math.sin(p.getAngle()));
-		System.out.println(myVector.getXComponent() + " | " + myVector.getYComponent());
 		myVector.multiplyByScalar(MISSILESPEED); // player's vector + missle's speed ( a scalar ).
 	}
 
