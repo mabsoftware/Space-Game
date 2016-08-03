@@ -24,10 +24,12 @@ public class Enemy extends GPolygon
 //	private int laserExists;
 	private double health;
 	private int value;
+	private double xUniverse;
+	private double yUniverse;
 
-	public Enemy(double startX, double startY, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers)
+	public Enemy(double xUniverse, double yUniverse, double xVel, double yVel, Player thisPlayer, Player[] otherPlayers)
 	{
-		super(startX, startY);
+		super(xUniverse - 500, yUniverse - 500);
 
 		this.addEdge(0, -10);
 		this.addEdge(-8, 5);
@@ -118,7 +120,9 @@ public class Enemy extends GPolygon
 	{
 		myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
 		myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
-		move(myVector.getXComponent(), myVector.getYComponent());
+		setXUniverse(myVector.getXComponent());
+		setYUniverse(myVector.getYComponent());
+		
 	}
 	
 	/*
@@ -143,5 +147,25 @@ public class Enemy extends GPolygon
 		}
 	}
 	*/
+	
+	public double getXUniverse() 
+	{
+		return xUniverse;
+	}
+	
+	public void setXUniverse(double x)
+	{
+		xUniverse = x;
+	}
+	
+	public double getYUniverse()
+	{
+		return yUniverse;
+	}
+	
+	public void setYUniverse(double y)
+	{
+		yUniverse = y;
+	}
 	
 }
