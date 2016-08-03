@@ -3,7 +3,7 @@
  * Main method and main class
  * Contains game loop.
  */
-
+//
 package game;
 
 import acm.graphics.*;
