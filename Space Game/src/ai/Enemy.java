@@ -50,8 +50,8 @@ public class Enemy extends GPolygon
 			}
 		}
 		myPlayers.add(thisPlayer);
-		target = myPlayers.get(0);
-		distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
+		//target = myPlayers.get(0);
+		//distance = Math.sqrt(Math.pow(this.getX() - target.getXUniverse(), 2) + Math.pow(this.getY() - target.getYUniverse(), 2));
 //		if ((int) (Math.random() * 4) == 0)
 //		{
 //			type = 0;
