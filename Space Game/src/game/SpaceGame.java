@@ -134,7 +134,7 @@ public class SpaceGame extends GraphicsProgram
 					player.getProjectiles().get(i).adjustForGravity(gravityObjects);
 					player.getProjectiles().get(i).move();
 				}
-			} // Handle Projectiles.
+			} // Handle Projectiles
 			this.handleCollisions();
 
 			// Clock tick
