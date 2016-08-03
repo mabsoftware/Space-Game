@@ -65,6 +65,12 @@ public class SpaceGame extends GraphicsProgram
 		// Just initializing otherPlayers to test.              //
 		//////////////////////////////////////////////////////////
 		otherPlayers = new Player[5];
+		enemies = new Enemy[500];
+		for (int i = 0; i < enemies.length; i++)
+		{
+			enemies[0] = new Enemy((int) (Math.random() * 10000), (int) (Math.random() * 10000), 0, 0, player, otherPlayers);
+			this.add(enemies[0]);
+		}
 
 		// Planets and black holes initialized here
 		gravityObjects = new GravityObject[500];
@@ -85,9 +91,6 @@ public class SpaceGame extends GraphicsProgram
 		running = true; // running boolean for the game loop.
 		player = new Player(this.getWidth() / 2, this.getHeight() / 2, 0, 0);
 		this.add(player); // add the player to the window.
-		enemies = new Enemy[1];
-		enemies[0] = new Enemy(this.getWidth() / 3, this.getHeight() / 3, 0, 0, player, otherPlayers);
-		this.add(enemies[0]);
 		// User input and output is initialized here.
 		this.addKeyListeners();
 	}
@@ -118,7 +121,7 @@ public class SpaceGame extends GraphicsProgram
 			{
 				star.move(-player.getVector().getXComponent() / 4, -player.getVector().getYComponent() / 4);
 			}
-			enemies[0].action();
+//			enemies[0].action();
 
 			for (Projectile p : player.getProjectiles())
 			{
@@ -203,7 +206,7 @@ public class SpaceGame extends GraphicsProgram
 		gravityObjects[gravityIndex] = new PointsPlanet(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse, this);
 		gravityIndex++;
 	}
-
+	
 	// All user input is handled here.
 	public void keyPressed(KeyEvent k)
 	{

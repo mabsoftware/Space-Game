@@ -9,6 +9,8 @@ import physics.Vector;
 import physics.GravityObject;
 import game.SpaceGame;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player extends GPolygon
 {
@@ -16,7 +18,8 @@ public class Player extends GPolygon
 
 	private boolean left;
 	private boolean right;
-	private Projectile[] myProjectiles;
+	//private Projectile[] myProjectiles;
+	private List<Projectile> myProjectiles;
 	public int missileIndex;
 	private double health;
 	private double angle;
@@ -39,14 +42,12 @@ public class Player extends GPolygon
 		
 		// Done drawing the polygon.
 		
-		myProjectiles = new Projectile[100];
+		myProjectiles = new ArrayList<Projectile>();
 		
 		this.setColor(Color.GREEN);
 		this.setFillColor(Color.RED);
 		this.setFilled(true);
 		this.setVisible(true);
-		
-		myProjectiles = new Projectile[100]; // list
 		
 		myVector = new Vector(xVel, yVel); // set initial player vector.
 
@@ -94,8 +95,7 @@ public class Player extends GPolygon
 	
 	public void shoot(SpaceGame game)
 	{
-		myProjectiles[missileIndex] = new Projectile(this);
-		missileIndex++;
+		myProjectiles.add(new Projectile(this));
 	}
 
 	public void laser(SpaceGame game)
@@ -116,7 +116,7 @@ public class Player extends GPolygon
 		}
 	} // monitor user - I know the angles look backwards, but the rotate function is different.
 
-	public Projectile[] getProjectiles()
+	public List<Projectile> getProjectiles()
 	{
 		return myProjectiles;
 	}
