@@ -174,6 +174,12 @@ public class SpaceGame extends GraphicsProgram
 		score.sendToFront();
 	}
 
+	public void gameOver() {
+		running = false;
+		score.gameOverMessage();
+		score.sendToFront();
+	}
+
 	public void orbitScore()
 	{
 		for (int i = 0; i < pointsPlanets.size(); i++)
@@ -278,3 +284,5 @@ public class SpaceGame extends GraphicsProgram
 		this.yUniverse = yUniverse;
 	}
 }
+
+
