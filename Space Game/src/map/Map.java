@@ -62,6 +62,3 @@ public class Map
 		return pointsPlanets;
 	}
 }
-
-
-
