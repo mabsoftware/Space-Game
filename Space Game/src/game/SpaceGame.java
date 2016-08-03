@@ -144,21 +144,23 @@ public class SpaceGame extends GraphicsProgram
 	{
 		for (GravityObject obj : gravityObjects)
 		{
-			double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth()/2)), 2);
-			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight()/2)), 2);
-			if (x + y <= obj.getMass())
+			if (obj != null)
 			{
-				running = false;
-				GImage b = new GImage("assets/images/explosion.png", 0, 0);
-				b.setSize(player.getWidth()*2, player.getHeight()*2);
-				b.setLocation(getWidth()/2 - b.getWidth()/2, getHeight()/2 - b.getHeight()/2);
-				b.sendToFront();
-				add(b);
-				return;
-				// 
+				double x = Math.pow((player.getXUniverse() - (obj.getXUniverse() + obj.getWidth()/2)), 2);
+				double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight()/2)), 2);
+				if (x + y <= obj.getMass())
+				{
+					running = false;
+					GImage b = new GImage("assets/images/explosion.png", 0, 0);
+					b.setSize(player.getWidth()*2, player.getHeight()*2);
+					b.setLocation(getWidth()/2 - b.getWidth()/2, getHeight()/2 - b.getHeight()/2);
+					b.sendToFront();
+					add(b);
+					return;
+					// 
+				}
+
 			}
-
-
 		}
 	}
 
@@ -175,7 +177,7 @@ public class SpaceGame extends GraphicsProgram
 	public void addGravityObject(String image,
 			double radius, double xVel, double yVel, double multiplier, double xUniverse, double yUniverse)
 	{
-		gravityObjects[gravityIndex] = new GravityObject(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse);
+		gravityObjects[gravityIndex] = new GravityObject(image, radius, xVel, yVel, multiplier, xUniverse, yUniverse, this);
 		gravityIndex++;
 	}
 
