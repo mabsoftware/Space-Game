@@ -1,3 +1,5 @@
+// UNUSED CLASS
+
 package player;
 
 import acm.graphics.GLine;
