@@ -10,7 +10,7 @@ public class Map
 
 	public Map()
 	{
-		map1 = new double[249][6];
+		map1 = new double[150][6];
 		
 		for (int i = 0; i < map1.length / 4; i++)
 		{
