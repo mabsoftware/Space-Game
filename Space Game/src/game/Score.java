@@ -41,9 +41,16 @@ public class Score extends GLabel
 	public void gameOverMessage() // Display the game over message in large font in the middle of the screen
 	{
 		setFont("fantasy-bold-35");
-		
+
 		setColor(Color.CYAN);
-		super.setLabel("Game Over... Score: " + points + ".   " + kills + " enemies destroyed.");
+		if (points == 1)
+		{
+			super.setLabel("Game Over... Score: " + points + ".   " + kills + " enemy destroyed.");
+		}
+		else
+		{
+			super.setLabel("Game Over... Score: " + points + ".   " + kills + " enemies destroyed.");
+		}
 		setLocation(myGame.getWidth() / 2 - getWidth() / 2, myGame.getHeight() / 4);
 	}
 
