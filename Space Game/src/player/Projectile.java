@@ -8,6 +8,7 @@ import acm.graphics.GMath;
 import acm.graphics.GPolygon;
 import ai.Enemy;
 import game.Score;
+import game.SpaceGame;
 import physics.Vector;
 import java.awt.Color;
 import physics.GravityObject; // import Gravity object class.
@@ -24,9 +25,9 @@ public class Projectile extends GPolygon
 	private double xUniverse;
 	private double yUniverse;
 
-	public Projectile(Player player, Enemy[] enemies)
+	public Projectile(Player player, Enemy[] enemies, SpaceGame game)
 	{
-		super(player.getX(), player.getY()); // create a Polygon.
+		super(player.getXUniverse() - game.getXUniverse(), player.getYUniverse() - game.getYUniverse()); // create a Polygon.
 
 		this.addPolarEdge(5, 60);
 		this.addPolarEdge(5, 180);
@@ -61,7 +62,7 @@ public class Projectile extends GPolygon
 			{
 				double scalar = g.getGravityScalar(this);
 				double distance = g.getDistance(this);
-				Vector temp = new Vector(g.getXUniverse() - this.getX(), g.getYUniverse() - this.getY());
+				Vector temp = new Vector(g.getXUniverse() - this.getXUniverse(), g.getYUniverse() - this.getYUniverse());
 				temp.multiplyByScalar(scalar / distance);
 				myVector.add(temp);
 			}
@@ -70,8 +71,10 @@ public class Projectile extends GPolygon
 
 	public void move(Score score)
 	{
-		this.move(myVector.getXComponent(), myVector.getYComponent());
-		if (myPlayer.contains(getLocation()))
+		setXUniverse(myVector.getXComponent());
+		setYUniverse(myVector.getYComponent());
+		
+		/*if (myPlayer.contains(getLocation()))
 		{
 			myPlayer.reduceHealth(myDamage);
 		}
@@ -82,7 +85,7 @@ public class Projectile extends GPolygon
 			{
 				myEnemies[i].reduceHealth(myDamage, score);
 			}
-		}
+		} */
 	}
 
 	public double getXUniverse() {
