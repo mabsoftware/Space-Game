@@ -66,7 +66,7 @@ public class SpaceGame extends GraphicsProgram
 		this.add(player); // add the player to the window.
 		
 		// New enemies
-		enemies = new Enemy[200];
+		enemies = new Enemy[50];
 		for (int i = 0; i < enemies.length; i++)
 		{
 			enemies[i] = new Enemy((int) (Math.random() * 10000), (int) (Math.random() * 10000), 0, 0, player, this);
