@@ -1,16 +1,16 @@
+/*
+ *
+ *
+ */
 package ai;
 
 import acm.graphics.GPolygon;
 import game.Score;
 import game.SpaceGame;
-
 import java.awt.Color;
 import java.util.ArrayList;
-
 import java.util.List;
-import player.Laser;
 import player.Player;
-import player.Projectile;
 import physics.Vector;
 
 public class Enemy extends GPolygon
