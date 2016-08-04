@@ -1,5 +1,5 @@
 package ui;
-//
+
 import java.awt.Color;
 
 import acm.graphics.GLabel;
