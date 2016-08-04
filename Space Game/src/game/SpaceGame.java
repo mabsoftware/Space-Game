@@ -316,5 +316,3 @@ public class SpaceGame extends GraphicsProgram
 		this.yUniverse = yUniverse;
 	}
 }
-
-
