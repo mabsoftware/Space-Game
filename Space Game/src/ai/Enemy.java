@@ -94,8 +94,8 @@ public class Enemy extends GPolygon
 	{
 		double d = Math.sqrt(Math.pow(target.getX() - this.getX(), 2) + Math.pow(target.getY() - this.getY(), 2));
 		double s = (Math.random() * 3 + SPEED) / d;
-		myVector.setXComponent(target.getX() - this.getX() + Math.random() * 3 - 2);
-		myVector.setYComponent(target.getY() - this.getY() + Math.random() * 3 - 2);
+		myVector.setXComponent(target.getX() - this.getX() + Math.random() * 10 - 5);
+		myVector.setYComponent(target.getY() - this.getY() + Math.random() * 10 - 5);
 		myVector.multiplyByScalar(s);
 		
 		this.rotate(Math.atan((target.getX() - this.getX()) / (target.getY() - this.getY())));
