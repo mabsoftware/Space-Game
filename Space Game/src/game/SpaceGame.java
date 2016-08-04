@@ -13,6 +13,9 @@ import ai.Enemy;
 import player.Player;
 import player.Projectile;
 import ui.Button;
+import ui.StartBackground;
+import ui.Title;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,16 +49,21 @@ public class SpaceGame extends GraphicsProgram
 	{
 		// The window and background their attributes are initialized here.
 		this.setSize(320*3, 240*3);
-		this.setTitle("Space Game"); // set the size and title of the window.
+		this.setTitle("GravityShip"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
-		Button start = new Button("Start", Color.RED, 10, 10, this.getWidth() - 20, 100, this);
-		Button controls = new Button("Controls", Color.RED, 10, 120, this.getWidth() - 20, 100, this);
-		Button quit = new Button("Quit", Color.RED, 10, 230, this.getWidth() - 20, 100, this);
+		double offset = 70;
+		StartBackground startBackground = new StartBackground(this);
+		Title title = new Title("Gravity Ship", Color.WHITE, 50, 50, this);
+		Button start = new Button("Start", Color.RED, 10, offset, this.getWidth() - 20, 100, this);
+		Button controls = new Button("Controls", Color.RED, 10, offset + 120, this.getWidth() - 20, 100, this);
+		Button quit = new Button("Quit", Color.RED, 10, offset + 240, this.getWidth() - 20, 100, this);
 		addMouseListeners();
 		this.waitForClick();
 		start.removeText();
 		controls.removeText();
 		quit.removeText();
+		this.remove(title);
+		this.remove(startBackground);
 		this.remove(start);
 		this.remove(controls);
 		this.remove(quit); // controls.
