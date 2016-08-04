@@ -15,8 +15,8 @@ import player.Projectile;
 import ui.Button;
 import ui.StartBackground;
 import ui.Title;
-
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
@@ -39,6 +39,15 @@ public class SpaceGame extends GraphicsProgram
 	private Score score;
 	private ArrayList<Integer> pointsPlanets;
 	private int shootCounter;
+	
+	Title title;
+	Button start;
+	Button controls;
+	Button quit;
+	
+	boolean startBoolean;
+	boolean controlsBoolean;
+	boolean quitBoolean;
 
 	public static void main(String args[])
 	{
@@ -51,14 +60,18 @@ public class SpaceGame extends GraphicsProgram
 		this.setSize(320*3, 240*3);
 		this.setTitle("GravityShip"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
-		double offset = 70;
+		double offset = 150;
+		startBoolean = false;
+		controlsBoolean = false;
+		quitBoolean = false;
 		StartBackground startBackground = new StartBackground(this);
-		Title title = new Title("Gravity Ship", Color.WHITE, 50, 50, this);
-		Button start = new Button("Start", Color.RED, 10, offset, this.getWidth() - 20, 100, this);
-		Button controls = new Button("Controls", Color.RED, 10, offset + 120, this.getWidth() - 20, 100, this);
-		Button quit = new Button("Quit", Color.RED, 10, offset + 240, this.getWidth() - 20, 100, this);
+		title = new Title("Gravity Ship", Color.WHITE, this.getWidth() / 2, 50, this);
+		start = new Button("Start", Color.RED, 10, offset, this.getWidth() - 20, 100, this);
+		controls = new Button("Controls", Color.RED, 10, offset + 120, this.getWidth() - 20, 100, this);
+		quit = new Button("Quit", Color.RED, 10, offset + 240, this.getWidth() - 20, 100, this);
 		addMouseListeners();
 		this.waitForClick();
+		if (quitBoolean) System.exit(0);
 		start.removeText();
 		controls.removeText();
 		quit.removeText();
@@ -288,6 +301,22 @@ public class SpaceGame extends GraphicsProgram
 				player.decreaseSpeed();
 				shootCounter = 50;
 			}
+		}
+	}
+	
+	public void mouseMove(MouseEvent e)
+	{
+		if (start.contains(e.getX(), e.getY()))
+		{
+			startBoolean = true;
+		}
+		else if (controls.contains(e.getX(), e.getY()))
+		{
+			controlsBoolean = true;
+		}
+		else if (quit.contains(e.getX(), e.getY()))
+		{
+			quitBoolean = true;
 		}
 	}
 

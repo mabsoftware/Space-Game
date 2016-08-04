@@ -11,6 +11,7 @@ public class Title extends GLabel
 		super(s, x, y);
 		this.setColor(c);
 		this.setFont("fantasy-bold-48");
+		this.setLocation(this.getX() - this.getWidth() / 2, this.getY() + 40);
 		game.add(this);
 	}
 }
