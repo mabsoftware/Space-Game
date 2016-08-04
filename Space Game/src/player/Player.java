@@ -28,6 +28,7 @@ public class Player extends GPolygon
 	private double xUniverse;
 	private double yUniverse;
 	private SpaceGame myGame;
+	private double maxSpeed;
 
 	public Player(double startX, double startY, double xVel, double yVel, SpaceGame game, Score score)
 	{
@@ -57,6 +58,7 @@ public class Player extends GPolygon
 		this.setVisible(true);
 		
 		myVector = new Vector(xVel, yVel); // set initial player vector.
+		maxSpeed = 20;
 
 		missileIndex = 0;
 		
@@ -119,6 +121,11 @@ public class Player extends GPolygon
 			this.rotate(-2);
 			angle += 2;
 		}
+		// max speed control
+		if (myVector.getXComponent() > maxSpeed) myVector.setXComponent(maxSpeed);
+		if (myVector.getXComponent() < -maxSpeed) myVector.setXComponent(-maxSpeed);
+		if (myVector.getYComponent() > maxSpeed) myVector.setYComponent(maxSpeed);
+		if (myVector.getYComponent() < -maxSpeed) myVector.setYComponent(-maxSpeed);
 	} // monitor user - I know the angles look backwards, but the rotate function is different.
 
 	public List<Projectile> getProjectiles()
@@ -133,7 +140,6 @@ public class Player extends GPolygon
 	
 	public void move(SpaceGame s)
 	{ 
-		//super.move(myVector.getXComponent(), myVector.getYComponent());
 		s.setXUniverse(s.getXUniverse() + myVector.getXComponent());
 		s.setYUniverse(s.getYUniverse() + myVector.getYComponent());
 		setXUniverse(getXUniverse() + myVector.getXComponent());
@@ -149,21 +155,17 @@ public class Player extends GPolygon
 	}
 
 	public void increaseSpeed()
-	{
-		if (myVector.getXComponent() < 15 && myVector.getYComponent() < 15)
-		{
-			myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
-			myVector.setYComponent(myVector.getYComponent() - Math.cos(Math.toRadians(angle)));
-		} // Player Speed Control.
+{
+		myVector.setXComponent(myVector.getXComponent() + Math.sin(Math.toRadians(angle)));
+		myVector.setYComponent(myVector.getYComponent() - Math.cos(Math.toRadians(angle)));
+		// Player Speed Control.
 	}
 
 	public void decreaseSpeed()
 	{
-		if (myVector.getXComponent() > -15 && myVector.getYComponent() > -15)
-		{
-			myVector.setXComponent(myVector.getXComponent() - Math.sin(Math.toRadians(angle)));
-			myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
-		} // players can only decrease speed - they can't go backwards.
+		myVector.setXComponent(myVector.getXComponent() - Math.sin(Math.toRadians(angle)));
+		myVector.setYComponent(myVector.getYComponent() + Math.cos(Math.toRadians(angle)));
+		// players can only decrease speed - they can't go backwards.
 	}
 
 	public void adjustForGravity(GravityObject[] gObjects)
