@@ -19,9 +19,9 @@ public class Projectile extends GPolygon
 
 	//Defining the private instance variables
 	private Vector myVector;
-	private Enemy[] myEnemies;
-	private double myDamage;
-	private Player myPlayer;
+//	private Enemy[] myEnemies;
+//	private double myDamage;
+//	private Player myPlayer;
 	private double xUniverse;
 	private double yUniverse;
 
@@ -44,9 +44,9 @@ public class Projectile extends GPolygon
 		myVector = new Vector(player.getHeight() * GMath.cosDegrees(player.getAngle() + 90), player.getHeight() * GMath.sinDegrees(player.getAngle() + 90));
 		myVector.multiplyByScalar(MISSILESPEED); // player's vector + missle's speed ( a scalar ).
 
-		myDamage = Math.random() * 11 + 15;
-		myPlayer = player;
-		myEnemies = enemies;
+//		myDamage = Math.random() * 11 + 15;
+//		myPlayer = player;
+//		myEnemies = enemies;
 	}
 
 	public Vector getVector()
