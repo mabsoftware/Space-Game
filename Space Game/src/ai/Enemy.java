@@ -38,8 +38,12 @@ public class Enemy extends GPolygon
 		SPEED = 5;
 
 		this.addEdge(0, -10);
+		this.addEdge(3, -3);
 		this.addEdge(-8, 5);
 		this.addEdge(8, 5);
+		this.addEdge(-3, -3);
+		this.recenter();
+		this.scale(3);
 		this.setFillColor(Color.YELLOW);
 		this.setColor(Color.GREEN);
 		this.setFilled(true);
