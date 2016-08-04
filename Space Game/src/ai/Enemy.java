@@ -16,13 +16,11 @@ import physics.Vector;
 public class Enemy extends GPolygon
 {
 
-	private double distance;
 	private Player target;
 	private List<Player> myPlayers;
 	private double angle;
 	private Vector myVector;
 	private double health;
-	private int value;
 	private double xUniverse;
 	private double yUniverse;
 	private final double SPEED;
@@ -50,7 +48,6 @@ public class Enemy extends GPolygon
 		myPlayers = new ArrayList<Player>();
 		myVector = new Vector(xVel, yVel);
 		angle = 0;
-		value = (int) (Math.random() * 51) + 75;
 		
 		/*for (int i = 0; i < otherPlayers.length; i++)
 		{
@@ -61,7 +58,6 @@ public class Enemy extends GPolygon
 		}*/
 		myPlayers.add(0, thisPlayer);
 		target = thisPlayer;
-		distance = Math.sqrt(Math.pow(this.getXUniverse() - target.getXUniverse(), 2) + Math.pow(this.getYUniverse() - target.getYUniverse(), 2));
 //		if ((int) (Math.random() * 4) == 0)
 //		{
 //			type = 0;
@@ -122,13 +118,13 @@ public class Enemy extends GPolygon
 		yUniverse = y;
 	}
 
-	public void reduceHealth(double damage, Score score)
+/*	public void reduceHealth(double damage, Score score)
 	{
 		health -= damage;
 		if (health <= 0)
 		{
 			remove();
-			score.increaseScore(value);
+			score.increaseScore((int) (Math.random() * 51) + 75);
 		}
 	}
 
@@ -136,6 +132,6 @@ public class Enemy extends GPolygon
 	{
 		//sdghodushagasgsbg
 	}
-	
+	*/
 }
 
