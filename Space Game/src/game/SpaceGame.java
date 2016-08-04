@@ -127,7 +127,8 @@ public class SpaceGame extends GraphicsProgram
 			
 			// Monitor and move enemies here.
 			for (Enemy e : enemies)
-				e.action();
+				if (e != null)
+					e.action();
 
 			// Handle projectiles.
 			for (int i = 0; i < player.getProjectiles().size(); i++)
@@ -159,7 +160,7 @@ public class SpaceGame extends GraphicsProgram
 				{
 					gameOver();
 					GImage b = new GImage("assets/images/explosion.png", 0, 0);
-					b.setSize(player.getWidth() * 2, player.getHeight() * 2);
+					b.setSize(player.getWidth() * 3, player.getHeight() * 3);
 					b.setLocation(player.getX() - b.getWidth()/2, player.getY() - b.getHeight()/2);
 					b.sendToFront();
 					add(b);
@@ -167,24 +168,29 @@ public class SpaceGame extends GraphicsProgram
 				}
 			}
 		}
-		for (Enemy e : enemies)
+		for (int j = 0; j < enemies.length; j++)
 		{
-			List<Projectile> p = player.getProjectiles();
-			for (int i = 0; i < p.size(); i++)
+			Enemy e = enemies[j];
+			if (e != null)
 			{
-				if (e.contains(p.get(i).getX(), p.get(i).getY()))
+				List<Projectile> p = player.getProjectiles();
+				for (int i = 0; i < p.size(); i++)
 				{
-					remove(p.get(i));
-					player.removeProjectiles(i);
-					remove(e);
-					score.increaseScore(1);
+					if (e.contains(p.get(i).getX(), p.get(i).getY()))
+					{
+						remove(p.get(i));
+						player.removeProjectiles(i);
+						remove(e);
+						score.increaseScore(1);
+					}
+					
 				}
-				
-			}
-			if (e.contains(this.getWidth()/2, this.getHeight()/2))
-			{
-				score.increaseScore(-1);
-				remove(e);
+				if (player.getBounds().intersects(e.getBounds()))
+				{
+					remove(e);
+					enemies[j] = null;
+					score.increaseScore(-1);
+				}
 			}
 		}
 	}
