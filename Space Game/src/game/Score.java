@@ -43,7 +43,7 @@ public class Score extends GLabel
 		setFont("fantasy-bold-35");
 
 		setColor(Color.CYAN);
-		if (points == 1)
+		if (kills == 1)
 		{
 			super.setLabel("Game Over... Score: " + points + ".   " + kills + " enemy destroyed.");
 		}
