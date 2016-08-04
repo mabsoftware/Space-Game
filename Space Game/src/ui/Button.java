@@ -12,7 +12,7 @@ public class Button extends GRect
 	{
 		super(x, y, width, height);
 		this.setColor(Color.GREEN);
-		this.setFillColor(Color.BLACK);
+		this.setFillColor(c);
 		this.setFilled(true);
 		label = s;
 		game.add(this);
