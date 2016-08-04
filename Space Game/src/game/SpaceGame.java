@@ -47,7 +47,7 @@ public class SpaceGame extends GraphicsProgram
 	
 	boolean startBoolean;
 	boolean controlsBoolean;
-	boolean quitBoolean;
+	boolean quitBoolean; // Not used, for future UI development.
 
 	public static void main(String args[])
 	{
