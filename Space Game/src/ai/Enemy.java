@@ -41,7 +41,7 @@ public class Enemy extends GPolygon
 		this.addEdge(3, -3);
 		this.addEdge(-8, 5);
 		this.addEdge(8, 5);
-		this.addEdge(-3, -3);
+		this.addEdge(-3, -3); // super cool drawing.
 		this.recenter();
 		this.scale(3);
 		this.setFillColor(Color.YELLOW);
