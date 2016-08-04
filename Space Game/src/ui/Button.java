@@ -7,6 +7,8 @@ import game.SpaceGame;
 public class Button extends GRect
 {
 	private String label;
+	private ButtonLabel text;
+	SpaceGame game;
 	
 	public Button(String s, Color c, double x, double y, double width, double height, SpaceGame game)
 	{
@@ -16,7 +18,9 @@ public class Button extends GRect
 		this.setFilled(true);
 		label = s;
 		game.add(this);
-		game.add(new ButtonLabel(this));
+		text = new ButtonLabel(this);
+		game.add(text);
+		this.game = game;
 	}
 	
 	boolean isClicked(double mouseX, double mouseY)
@@ -32,4 +36,9 @@ public class Button extends GRect
 	{
 		return label;
 	} // for use with ButtonLabel.java only.
+	
+	public void removeText()
+	{
+		game.remove(text);
+	}
 }

@@ -53,6 +53,9 @@ public class SpaceGame extends GraphicsProgram
 		Button quit = new Button("Quit", Color.RED, 10, 230, this.getWidth() - 20, 100, this);
 		addMouseListeners();
 		this.waitForClick();
+		start.removeText();
+		controls.removeText();
+		quit.removeText();
 		this.remove(start);
 		this.remove(controls);
 		this.remove(quit);
