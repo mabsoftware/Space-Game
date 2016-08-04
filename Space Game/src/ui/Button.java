@@ -12,13 +12,11 @@ public class Button extends GRect
 	{
 		super(x, y, width, height);
 		this.setColor(Color.GREEN);
-		this.setFillColor(c);
+		this.setFillColor(Color.BLACK);
 		this.setFilled(true);
-		
+		label = s;
 		game.add(this);
 		game.add(new ButtonLabel(this));
-		
-		label = s;
 	}
 	
 	boolean isClicked(double mouseX, double mouseY)
