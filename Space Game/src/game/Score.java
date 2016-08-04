@@ -9,6 +9,7 @@ public class Score extends GLabel
 
 	private static int points;
 	private SpaceGame myGame;
+	private int kills;
 
 	public Score(int x, int y, SpaceGame game)
 	{
@@ -19,10 +20,15 @@ public class Score extends GLabel
 		points = 0;
 		myGame = game;
 		sendToFront();
+		kills = 0;
 	}
 
 	public void increaseScore(int value) // Increase the score by one point
 	{
+		if (value > 2)
+		{
+			kills++;
+		}
 		points += value;
 		super.setLabel("Score: " + points);
 	}
@@ -34,10 +40,10 @@ public class Score extends GLabel
 
 	public void gameOverMessage() // Display the game over message in large font in the middle of the screen
 	{
-		setFont("fantasy-bold-48");
+		setFont("fantasy-bold-35");
 		
 		setColor(Color.CYAN);
-		super.setLabel("Game Over... Score: " + points);
+		super.setLabel("Game Over... Score: " + points + ".   " + kills + " enemies destroyed.");
 		setLocation(myGame.getWidth() / 2 - getWidth() / 2, myGame.getHeight() / 4);
 	}
 
