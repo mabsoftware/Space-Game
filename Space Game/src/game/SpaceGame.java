@@ -172,7 +172,6 @@ public class SpaceGame extends GraphicsProgram
 			List<Projectile> p = player.getProjectiles();
 			for (int i = 0; i < p.size(); i++)
 			{
-				
 				if (e.contains(p.get(i).getX(), p.get(i).getY()))
 				{
 					remove(p.get(i));
@@ -181,6 +180,11 @@ public class SpaceGame extends GraphicsProgram
 					score.increaseScore(1);
 				}
 				
+			}
+			if (e.contains(this.getWidth()/2, this.getHeight()/2))
+			{
+				score.increaseScore(-1);
+				remove(e);
 			}
 		}
 	}
