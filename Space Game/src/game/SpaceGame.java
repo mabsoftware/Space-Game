@@ -12,7 +12,7 @@ import acm.program.GraphicsProgram;
 import ai.Enemy;
 import player.Player;
 import player.Projectile;
-
+import ui.Button;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +24,8 @@ import physics.GravityObject;
 
 public class SpaceGame extends GraphicsProgram 
 {
-	//Defining all the variables that will be nesesary in this class
 	private boolean running; // game state.
 	private Player player;
-	private Player[] otherPlayers;
 	private Background background;
 	private GravityObject[] gravityObjects;
 	private int gravityIndex;
@@ -42,7 +40,7 @@ public class SpaceGame extends GraphicsProgram
 	public static void main(String args[])
 	{
 		new SpaceGame().start(); // run the application.
-	}
+	} // Start the application.
 
 	public void init()
 	{
@@ -50,12 +48,14 @@ public class SpaceGame extends GraphicsProgram
 		this.setSize(320*3, 240*3);
 		this.setTitle("Space Game"); // set the size and title of the window.
 		this.setBackground(Color.BLACK);
-//		Button startButton = new Button("startGame", Color.WHITE, 10, 10, 500, 100, this)
-//		add (startButton);
-//		addMouseListeners();
-//		boolean clicked = startButton.isClicked(mouse.X, mouse.Y);
-//		while ()
-		
+		Button start = new Button("Start", Color.RED, 10, 10, this.getWidth() - 20, 100, this);
+		Button controls = new Button("Controls", Color.RED, 10, 120, this.getWidth() - 20, 100, this);
+		Button quit = new Button("Quit", Color.RED, 10, 230, this.getWidth() - 20, 100, this);
+		addMouseListeners();
+		this.waitForClick();
+		this.remove(start);
+		this.remove(controls);
+		this.remove(quit);
 		//setting the size of the universe/map
 		this.setXUniverse(5000);
 		this.setYUniverse(5000);
