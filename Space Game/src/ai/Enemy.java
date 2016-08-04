@@ -80,43 +80,6 @@ public class Enemy extends GPolygon
 		this.attackPlayer();
 		this.move();
 	}
-
-	private void findTarget()
-	{
-		for (int i = 0; i < myPlayers.size(); i++)
-		{
-			if (Math.sqrt(Math.pow(this.getXUniverse() - target.getXUniverse(), 2) + Math.pow(this.getYUniverse() - target.getYUniverse(), 2)) < distance)
-			{
-				target = myPlayers.get(i);
-				distance = Math.sqrt(Math.pow(this.getXUniverse() - target.getXUniverse(), 2) + Math.pow(this.getYUniverse() - target.getYUniverse(), 2));
-			}
-		}	
-	}
-
-	private void followTarget()
-	{
-		double angle = Math.atan2(Math.abs(target.getYUniverse() - this.getYUniverse()), Math.abs(target.getXUniverse() - this.getYUniverse()));
-		if (angle < 0)
-		{
-			angle += 180;
-		}
-		setAngle(angle);
-	}
-
-	private void setAngle(double newAngle)
-	{
-		double rotateAngle = newAngle - angle;
-		rotate(rotateAngle);
-		angle = newAngle;
-		while (angle >= 360)
-		{
-			angle -= 360;
-		}
-		while (angle < 0)
-		{
-			angle += 360;
-		}
-	}
 	
 	private void move()
 	{
@@ -130,9 +93,9 @@ public class Enemy extends GPolygon
 	public void attackPlayer()
 	{
 		double d = Math.sqrt(Math.pow(target.getX() - this.getX(), 2) + Math.pow(target.getY() - this.getY(), 2));
-		double s = (Math.random() * 3 - 2 + SPEED) / d;
-		myVector.setXComponent(target.getX() - this.getX());
-		myVector.setYComponent(target.getY() - this.getY());
+		double s = (Math.random() * 3 + SPEED) / d;
+		myVector.setXComponent(target.getX() - this.getX() + Math.random() * 3 - 2);
+		myVector.setYComponent(target.getY() - this.getY() + Math.random() * 3 - 2);
 		myVector.multiplyByScalar(s);
 		
 		this.rotate(Math.atan((target.getX() - this.getX()) / (target.getY() - this.getY())));
