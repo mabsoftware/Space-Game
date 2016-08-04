@@ -125,7 +125,7 @@ public class SpaceGame extends GraphicsProgram
 				star.move(-player.getVector().getXComponent() / 4, -player.getVector().getYComponent() / 4);
 			}
 			
-			// Monitor and move enemies here.
+			// Monitor and move enemies here. 
 			for (Enemy e : enemies)
 				if (e != null)
 					e.action();
