@@ -11,8 +11,11 @@ import physics.PointsPlanet;
 import acm.program.GraphicsProgram;
 import ai.Enemy;
 import player.Player;
+import player.Projectile;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.Color;
 import background.Background;
 import background.Star;
@@ -143,7 +146,7 @@ public class SpaceGame extends GraphicsProgram
 		}
 	}
 
-	// Handle collisions
+	// Handle collisions between player and planets as well as enemies and projectiles
 	public void handleCollisions()
 	{
 		for (GravityObject obj : gravityObjects)
@@ -164,6 +167,22 @@ public class SpaceGame extends GraphicsProgram
 				}
 			}
 		}
+		for (Enemy e : enemies)
+		{
+			List<Projectile> p = player.getProjectiles();
+			for (int i = 0; i < p.size(); i++)
+			{
+				
+				if (e.contains(p.get(i).getX(), p.get(i).getY()))
+				{
+					remove(p.get(i));
+					player.removeProjectiles(i);
+					remove(e);
+					score.increaseScore(1);
+				}
+				
+			}
+		}
 	}
 	
 	// Score increase when near planet
@@ -176,7 +195,7 @@ public class SpaceGame extends GraphicsProgram
 			double y = Math.pow((player.getYUniverse() - (obj.getYUniverse() + obj.getHeight() / 2)), 2);
 			if (x + y <= obj.getMass() * 2)
 			{
-				score.increaseScore(2);
+				score.increaseScore(1);
 			}
 			else if (x + y <= obj.getMass() * 3)
 			{
