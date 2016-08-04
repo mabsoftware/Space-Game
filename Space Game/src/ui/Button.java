@@ -40,5 +40,5 @@ public class Button extends GRect
 	public void removeText()
 	{
 		game.remove(text);
-	}
+	} // added remove text method.
 }

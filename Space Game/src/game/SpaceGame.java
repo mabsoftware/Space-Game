@@ -58,7 +58,7 @@ public class SpaceGame extends GraphicsProgram
 		quit.removeText();
 		this.remove(start);
 		this.remove(controls);
-		this.remove(quit);
+		this.remove(quit); // controls.
 		//setting the size of the universe/map
 		this.setXUniverse(5000);
 		this.setYUniverse(5000);

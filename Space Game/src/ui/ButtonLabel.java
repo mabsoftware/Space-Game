@@ -13,5 +13,5 @@ public class ButtonLabel extends GLabel
 		this.setFont("fantasy-bold-48");
 		this.setLocation(a.getX() + ((a.getWidth() - this.getWidth()) / 2), a.getY() + 70);
 
-	}
+	} // updated.
 }
