@@ -28,7 +28,9 @@ public class Projectile extends GPolygon
 	public Projectile(Player player, Enemy[] enemies, SpaceGame game)
 	{
 		super(player.getXUniverse() - game.getXUniverse(), player.getYUniverse() - game.getYUniverse()); // create a Polygon.
-
+		this.setXUniverse(player.getXUniverse());
+		this.setYUniverse(player.getYUniverse());
+		
 		this.addPolarEdge(5, 60);
 		this.addPolarEdge(5, 180);
 		this.addPolarEdge(5, 300);
@@ -40,6 +42,7 @@ public class Projectile extends GPolygon
 		this.setFillColor(Color.RED);
 		this.setColor(Color.YELLOW);
 		this.setFilled(true);
+		this.sendToFront();
 
 		myVector = new Vector(player.getHeight() * GMath.cosDegrees(player.getAngle() + 90), player.getHeight() * GMath.sinDegrees(player.getAngle() + 90));
 		myVector.multiplyByScalar(MISSILESPEED); // player's vector + missle's speed ( a scalar ).
@@ -69,23 +72,10 @@ public class Projectile extends GPolygon
 		}
 	}
 
-	public void move(Score score)
+	public void move()
 	{
-		setXUniverse(myVector.getXComponent());
-		setYUniverse(myVector.getYComponent());
-		
-		/*if (myPlayer.contains(getLocation()))
-		{
-			myPlayer.reduceHealth(myDamage);
-		}
-		
-		for (int i = 0; i < myEnemies.length; i++)
-		{
-			if (myEnemies[i].contains(getXUniverse(), getYUniverse()))
-			{
-				myEnemies[i].reduceHealth(myDamage, score);
-			}
-		} */
+		setXUniverse(getXUniverse() + myVector.getXComponent());
+		setYUniverse(getYUniverse() + myVector.getYComponent());
 	}
 
 	public double getXUniverse() {
@@ -104,13 +94,7 @@ public class Projectile extends GPolygon
 		this.yUniverse = yUniverse;
 	}
 
-	public double getX() {
-		return xUniverse;
-	}
 
-	public double getY() {
-		return yUniverse;
-	}
 }
 
 

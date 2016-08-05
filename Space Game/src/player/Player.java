@@ -107,7 +107,9 @@ public class Player extends GPolygon
 	
 	public void shoot(Score score, Enemy[] enemies)
 	{
-		myProjectiles.add(new Projectile(this, enemies, myGame));
+		Projectile p = new Projectile(this, enemies, myGame);
+		myProjectiles.add(p);
+		myGame.add(p);
 	}
 
 	public void monitor()
@@ -146,13 +148,7 @@ public class Player extends GPolygon
 		setXUniverse(getXUniverse() + myVector.getXComponent());
 		setYUniverse(getYUniverse() + myVector.getYComponent());
 		
-		for (Projectile p : myProjectiles)
-		{
-			if (p != null)
-			{
-				p.move(p.getVector().getXComponent(), p.getVector().getYComponent());
-			}
-		}
+		
 	}
 
 	public void increaseSpeed()

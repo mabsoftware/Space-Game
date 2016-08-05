@@ -165,9 +165,8 @@ public class SpaceGame extends GraphicsProgram
 			{
 				if (player.getProjectiles().get(i) != null)
 				{
-					this.add(player.getProjectiles().get(i));
 					player.getProjectiles().get(i).adjustForGravity(gravityObjects);
-					player.getProjectiles().get(i).move(score);
+					player.getProjectiles().get(i).move();
 				}
 			} 
 			this.handleCollisions();
@@ -203,12 +202,15 @@ public class SpaceGame extends GraphicsProgram
 			Enemy e = enemies[j];
 			if (e != null)
 			{
-				List<Projectile> p = player.getProjectiles();
-				for (int i = 0; i < p.size(); i++)
+				
+				for (int i = 0; i < player.getProjectiles().size(); i++)
 				{
-					if (e.getBounds().intersects(p.get(i).getBounds()))
+					Projectile p = player.getProjectiles().get(i);
+					//if (p.getXUniverse() >= (e.getXUniverse()-e.getWidth()) && p.getXUniverse() <= (e.getXUniverse()+e.getWidth()) &&
+						//	p.getYUniverse() >= (e.getYUniverse()-e.getHeight()) && p.getYUniverse() <= (e.getYUniverse()+e.getHeight()))
+					if (e.getBounds().contains(p.getCurrentPoint()))
 					{
-						remove(p.get(i));
+						remove(p);
 						player.removeProjectiles(i);
 						remove(e);
 						enemies[j] = null;
@@ -259,6 +261,10 @@ public class SpaceGame extends GraphicsProgram
 		{
 			if (e != null)
 				e.setLocation(e.getXUniverse() - this.getXUniverse(), e.getYUniverse() - this.getYUniverse());
+		}
+		for (Projectile p : player.getProjectiles())
+		{
+			p.setLocation(p.getXUniverse() - this.getXUniverse(), p.getYUniverse() - this.getYUniverse());
 		}
 	}
 
