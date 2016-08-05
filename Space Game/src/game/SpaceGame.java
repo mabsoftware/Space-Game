@@ -208,7 +208,7 @@ public class SpaceGame extends GraphicsProgram
 					Projectile p = player.getProjectiles().get(i);
 					//if (p.getXUniverse() >= (e.getXUniverse()-e.getWidth()) && p.getXUniverse() <= (e.getXUniverse()+e.getWidth()) &&
 						//	p.getYUniverse() >= (e.getYUniverse()-e.getHeight()) && p.getYUniverse() <= (e.getYUniverse()+e.getHeight()))
-					if (e.getBounds().contains(p.getCurrentPoint()))
+					if (e.getBounds().intersects(p.getBounds()))
 					{
 						remove(p);
 						player.removeProjectiles(i);
