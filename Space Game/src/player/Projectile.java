@@ -103,6 +103,14 @@ public class Projectile extends GPolygon
 	public void setYUniverse(double yUniverse) {
 		this.yUniverse = yUniverse;
 	}
+
+	public double getX() {
+		return xUniverse;
+	}
+
+	public double getY() {
+		return yUniverse;
+	}
 }
 
 
