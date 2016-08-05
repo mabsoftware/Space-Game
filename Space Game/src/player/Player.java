@@ -50,7 +50,6 @@ public class Player extends GPolygon
 		
 		// Done drawing the polygon.
 		
-		myProjectiles = new ArrayList<Projectile>();
 		
 		this.setColor(Color.GREEN);
 		this.setFillColor(Color.RED);
@@ -65,6 +64,8 @@ public class Player extends GPolygon
 		left = false;
 		right = false;
 		health = 1000.;
+		
+		myProjectiles = new ArrayList<Projectile>();
 		
 		myGame = game;
 	}

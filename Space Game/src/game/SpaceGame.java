@@ -211,10 +211,13 @@ public class SpaceGame extends GraphicsProgram
 						remove(p.get(i));
 						player.removeProjectiles(i);
 						remove(e);
+						enemies[j] = null;
 						score.increaseScore((int)(Math.random()*6) + 10);
 					}
-					
 				}
+			}
+			if (e != null)
+			{
 				if (player.getBounds().intersects(e.getBounds()))
 				{
 					remove(e);
